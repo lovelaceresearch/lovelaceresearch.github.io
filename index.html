@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovelace Research</title>
+    <meta name="description" content="Independent research-led innovation lab for personal & humane AI">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #fafafa;
+            font-weight: 300;
+        }
+
+        header {
+            padding: 0 32px;
+            border-bottom: 1px solid #e5e5e5;
+        }   
+
+        header .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 500;
+            color: #000;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+        
+        .hero .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .hero .description {
+            font-size: 16px;
+            color: #444;
+            max-width: 600px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+        
+        h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 32px;
+            letter-spacing: -0.02em;
+        }
+        
+        h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #000;
+        }
+        
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+        
+        .research-item {
+            padding: 24px 0;
+        }
+        
+        .research-item h3 {
+            color: #000;
+            margin-bottom: 8px;
+        }
+        
+        .research-item p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 0;
+        }
+        
+        /* Approach Section */
+        .approach-points {
+            margin-top: 24px;
+        }
+        
+        .approach-points li {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: #444;
+            list-style: none;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .approach-points li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #666;
+        }
+        
+        /* Contact */
+        .contact-info {
+            font-size: 16px;
+            color: #444;
+        }
+        
+        .contact-info a {
+            color: #000;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+            transition: border-color 0.2s ease;
+        }
+        
+        .contact-info a:hover {
+            border-color: #000;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: left;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero .subtitle {
+                font-size: 18px;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Selection */
+        ::selection {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Lovelace Research</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Independent research-led innovation lab for personal & humane AI</h1>
+                <p class="subtitle">Advancing the future of artificial intelligence through thoughtful research and design</p>
+                <p class="description">
+                    We explore fundamental questions about AI systems, focusing on mental models, frameworks, 
+                    and architectures that prioritize human values and personal alignment. Our work aims to 
+                    create meaningful change in how we think about and build AI technologies.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About</h2>
+                <p>
+                    Lovelace Research operates as a non-American PARC, infused with design thinking principles. 
+                    We believe in fundamental change through rigorous research that ultimately translates into 
+                    transformative products and paradigm shifts.
+                </p>
+                <p>
+                    Our approach combines deep technical research with human-centered design, ensuring that 
+                    advances in AI serve to augment and empower individuals rather than replace human agency.
+                </p>
+            </div>
+        </section>
+
+        <!-- Research Areas -->
+        <section id="research">
+            <div class="container">
+                <h2>Research Areas</h2>
+                <p>Our interdisciplinary research spans multiple domains, each contributing to our vision of personal and humane AI.</p>
+                
+                <div class="research-grid">
+                    <div class="research-item">
+                        <h3>Mental Models</h3>
+                        <p>Understanding how humans conceptualize and interact with AI systems to build more intuitive interfaces.</p>
+                    </div>
+                    
+                    <div class="research-item">
+                        <h3>Frameworks</h3>
+                        <p>Developing theoretical and practical frameworks for evaluating and designing AI systems.</p>
+                    </div>
+                    
+                    <div class="research-item">
+                        <h3>Futures</h3>
+                        <p>Exploring potential trajectories of AI development and their implications for society.</p>
+                    </div>
+                    
+                    <div class="research-item">
+                        <h3>System Architecture</h3>
+                        <p>Designing AI architectures that prioritize transparency, control, and human agency.</p>
+                    </div>
+                    
+                    <div class="research-item">
+                        <h3>Fine-tuning</h3>
+                        <p>Advancing techniques for personalizing AI models while maintaining safety and alignment.</p>
+                    </div>
+                    
+                    <div class="research-item">
+                        <h3>Personal Model Alignment</h3>
+                        <p>Ensuring AI systems align with individual values and preferences without compromising broader safety.</p>
+                    </div>
+                    
+                    <div class="research-item">
+                        <h3>Reasoning</h3>
+                        <p>Improving AI reasoning capabilities while maintaining interpretability and human oversight.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approach -->
+        <section id="approach">
+            <div class="container">
+                <h2>Our Approach</h2>
+                <p>
+                    We believe that meaningful progress in AI requires a fundamental rethinking of current paradigms. 
+                    Our methodology combines rigorous research with practical application.
+                </p>
+                
+                <ul class="approach-points">
+                    <li>Research-led innovation that prioritizes long-term impact over short-term gains</li>
+                    <li>Design thinking principles applied to technical AI research</li>
+                    <li>Focus on personal and humane AI that augments human capabilities</li>
+                    <li>Interdisciplinary collaboration across technology, design, and social sciences</li>
+                    <li>Open research culture that shares insights with the broader community</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contributors -->
+        <section id="contributors">
+            <div class="container">
+                <h2>Contributors</h2>
+                <p>Our interdisciplinary team brings together expertise from AI research, design, and human-computer interaction.</p>
+                
+                <div class="contributors-grid" id="contributors-grid">
+                    <!-- Contributors will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <h2>Contact</h2>
+                <div class="contact-info">
+                    <p>
+                        Interested in our research or potential collaboration? 
+                        <a href="mailto:hello@lovelaceresearch.org">Get in touch</a>
+                    </p>
+                    <p>
+                        Follow our work and updates on 
+                        <a href="https://twitter.com/lovelaceresearch" target="_blank">Twitter</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Lovelace Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load and render contributors from JSON
+        async function loadContributors() {
+            try {
+                const response = await fetch('contributors.json');
+                const data = await response.json();
+                renderContributors(data.contributors);
+            } catch (error) {
+                console.error('Error loading contributors:', error);
+            }
+        }
+
+        function renderContributors(contributors) {
+            const grid = document.getElementById('contributors-grid');
+            
+            contributors.forEach(contributor => {
+                const card = createContributorCard(contributor);
+                grid.appendChild(card);
+            });
+        }
+
+        function createContributorCard(contributor) {
+            const card = document.createElement('div');
+            card.className = 'contributor-card';
+            
+            // Create photo section
+            const photoDiv = document.createElement('div');
+            photoDiv.className = 'contributor-photo';
+            
+            const photoPlaceholder = document.createElement('div');
+            photoPlaceholder.className = 'photo-placeholder';
+            
+            if (contributor.photo) {
+                const img = document.createElement('img');
+                img.src = contributor.photo;
+                img.alt = contributor.name;
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                img.style.borderRadius = '50%';
+                photoPlaceholder.appendChild(img);
+            } else {
+                photoPlaceholder.textContent = contributor.initials;
+            }
+            
+            photoDiv.appendChild(photoPlaceholder);
+            
+            // Create info section
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'contributor-info';
+            
+            // Name
+            const name = document.createElement('h3');
+            name.textContent = contributor.name;
+            infoDiv.appendChild(name);
+            
+            // Role
+            const role = document.createElement('p');
+            role.className = 'role';
+            role.textContent = contributor.role;
+            infoDiv.appendChild(role);
+            
+            // Affiliation (now before keywords)
+            const affiliation = document.createElement('p');
+            affiliation.className = 'affiliation';
+            affiliation.textContent = contributor.affiliation;
+            infoDiv.appendChild(affiliation);
+            
+            // Keywords
+            const keywordsDiv = document.createElement('div');
+            keywordsDiv.className = 'keywords';
+            
+            contributor.keywords.forEach(keyword => {
+                const keywordSpan = document.createElement('span');
+                keywordSpan.className = 'keyword';
+                keywordSpan.textContent = keyword;
+                keywordsDiv.appendChild(keywordSpan);
+            });
+            
+            infoDiv.appendChild(keywordsDiv);
+            
+            // Links
+            const linksDiv = document.createElement('div');
+            linksDiv.className = 'contributor-links';
+            
+            contributor.links.forEach(link => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link.url;
+                linkElement.className = 'link-pill';
+                linkElement.textContent = link.label;
+                linkElement.target = '_blank';
+                linksDiv.appendChild(linkElement);
+            });
+            
+            infoDiv.appendChild(linksDiv);
+            
+            // Assemble card
+            card.appendChild(photoDiv);
+            card.appendChild(infoDiv);
+            
+            return card;
+        }
+
+        // Load contributors when page loads
+        document.addEventListener('DOMContentLoaded', loadContributors);
+    </script>
+</body>
+</html>
