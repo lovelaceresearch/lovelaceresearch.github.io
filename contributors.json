@@ -1,0 +1,27 @@
+{
+  "contributors": [
+    {
+      "name": "Chanwoo Lee",
+      "role": "Founder",
+      "affiliation": "Former Imperial College London, Pentagram",
+      "keywords": ["Human-Centred AI", "Human-In-The-Loop", "Ethics"],
+      "photo": null,
+      "initials": "CL",
+      "links": [
+        { "label": "Website", "url": "#" },
+        { "label": "Twitter", "url": "#" },
+        { "label": "Scholar", "url": "#" }
+      ]
+    },
+    {
+      "name": "Aida",
+      "role": "AI Research Associate",
+      "affiliation": "Foundation Technology by Google Deepmind",
+      "keywords": ["SW Engineering", "AI Safety", "AI Ethics"],
+      "photo": null,
+      "initials": "AD",
+      "links": [
+      ]
+    }
+  ]
+} 
