@@ -59,7 +59,7 @@ body {
 
 /* Sections */
 section {
-    padding: 60px 0;
+    padding: 40px 0;
     border-bottom: 1px solid #e5e5e5;
 }
 
@@ -246,23 +246,200 @@ p {
     color: #444;
 }
 
+.email-container {
+    position: relative;
+    display: inline-block;
+}
+
 .contact-info a {
     color: #000;
     text-decoration: none;
     border-bottom: 1px solid #ccc;
     transition: border-color 0.2s ease;
+    cursor: pointer;
 }
 
 .contact-info a:hover {
     border-color: #000;
 }
 
+.hover-tooltip {
+    position: absolute;
+    left: 0;
+    top: -30px;
+    font-size: 12px;
+    color: #666;
+    background-color: #f8f8f8;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    border: 1px solid #e5e5e5;
+}
+
+.email-container:hover .hover-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.copied-message {
+    position: absolute;
+    left: 0;
+    top: -30px;
+    font-size: 12px;
+    color: #666;
+    background-color: #f0f8f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    border: 1px solid #d4edda;
+}
+
+.copied-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Clocks Section */
+.clocks-section {
+    padding: 40px 0 20px;
+    border-bottom: none;
+}
+
+.clocks {
+    display: flex;
+    gap: 40px;
+    justify-content: flex-start;
+    margin-bottom: 32px;
+}
+
+.clock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.clock .location {
+    font-size: 11px;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.clock .time {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+    font-size: 13px;
+    color: #888;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
 /* Footer */
 footer {
-    padding: 40px 0;
-    text-align: left;
+    padding: 60px 0 40px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-content {
+    margin-bottom: 40px;
+}
+
+.footer-info h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.footer-info p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+    max-width: 400px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    transition: border-color 0.2s ease;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    border-color: #000;
+}
+
+.newsletter {
+    display: flex;
+    gap: 8px;
+    max-width: 300px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: #999;
+}
+
+.newsletter-input::placeholder {
+    color: #999;
+}
+
+.newsletter-button {
+    padding: 8px 16px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.newsletter-button:hover {
+    background-color: #333;
+}
+
+.footer-bottom {
+    padding-top: 0;
+}
+
+.footer-bottom p {
     color: #999;
     font-size: 14px;
+    margin: 0;
 }
 
 /* Responsive */
@@ -307,6 +484,27 @@ footer {
     
     section {
         padding: 40px 0;
+    }
+    
+    footer {
+        padding: 40px 0 30px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .newsletter {
+        flex-direction: column;
+        gap: 12px;
+        max-width: 100%;
+    }
+    
+    .clocks {
+        gap: 20px;
+        margin-bottom: 24px;
     }
 }
 

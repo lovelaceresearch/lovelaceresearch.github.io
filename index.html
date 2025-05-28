@@ -225,28 +225,18 @@
         <section class="hero">
             <div class="container">
                 <h1>Independent research-led innovation lab for personal & humane AI</h1>
-                <p class="subtitle">Advancing the future of artificial intelligence through thoughtful research and design</p>
+                <p class="subtitle">Alternative research, Innovative product, Thoughtful impact.</p>
+                <p>
+                    Lovelace Research aims to be a new PARC, infused with design thinking. 
+                    We believe in fundamental paradigm redesign that ultimately translates into 
+                    transformative products.
+                </p>
                 <p class="description">
                     We explore fundamental questions about AI systems, focusing on mental models, frameworks, 
                     and architectures that prioritize human values and personal alignment. Our work aims to 
                     create meaningful change in how we think about and build AI technologies.
                 </p>
-            </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about">
-            <div class="container">
-                <h2>About</h2>
-                <p>
-                    Lovelace Research operates as a non-American PARC, infused with design thinking principles. 
-                    We believe in fundamental change through rigorous research that ultimately translates into 
-                    transformative products and paradigm shifts.
-                </p>
-                <p>
-                    Our approach combines deep technical research with human-centered design, ensuring that 
-                    advances in AI serve to augment and empower individuals rather than replace human agency.
-                </p>
             </div>
         </section>
 
@@ -295,10 +285,22 @@
             </div>
         </section>
 
+        <!-- Contributors -->
+        <section id="contributors">
+            <div class="container">
+                <h2>Contributors</h2>
+                <p>Our interdisciplinary team brings together expertise from AI research, design, and human-computer interaction.</p>
+                
+                <div class="contributors-grid" id="contributors-grid">
+                    <!-- Contributors will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
         <!-- Approach -->
         <section id="approach">
             <div class="container">
-                <h2>Our Approach</h2>
+                <h2>Approach</h2>
                 <p>
                     We believe that meaningful progress in AI requires a fundamental rethinking of current paradigms. 
                     Our methodology combines rigorous research with practical application.
@@ -313,40 +315,45 @@
                 </ul>
             </div>
         </section>
-
-        <!-- Contributors -->
-        <section id="contributors">
-            <div class="container">
-                <h2>Contributors</h2>
-                <p>Our interdisciplinary team brings together expertise from AI research, design, and human-computer interaction.</p>
-                
-                <div class="contributors-grid" id="contributors-grid">
-                    <!-- Contributors will be dynamically loaded here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact">
-            <div class="container">
-                <h2>Contact</h2>
-                <div class="contact-info">
-                    <p>
-                        Interested in our research or potential collaboration? 
-                        <a href="mailto:hello@lovelaceresearch.org">Get in touch</a>
-                    </p>
-                    <p>
-                        Follow our work and updates on 
-                        <a href="https://twitter.com/lovelaceresearch" target="_blank">Twitter</a>
-                    </p>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Lovelace Research. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Lovelace Research</h3>
+                    <p>Independent research-led innovation lab for personal & humane AI</p>
+                    
+                    <div class="footer-links">
+                        <span class="email-container">
+                            <a href="#" id="email-link" data-email="hello@lovelaceresearch.org">Get in touch</a>
+                            <span id="hover-tooltip" class="hover-tooltip">Copy email</span>
+                            <span id="copied-message" class="copied-message">Copied!</span>
+                        </span>
+                        <a href="https://instagram.com/lovelaceresearch" target="_blank">Instagram</a>
+                    </div>
+                    
+                    <div class="newsletter">
+                        <input type="email" placeholder="Enter your email for updates" class="newsletter-input">
+                        <button type="button" class="newsletter-button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clocks">
+                <div class="clock">
+                    <span class="location">London BST</span>
+                    <span class="time" id="london-time">00:00:00</span>
+                </div>
+                <div class="clock">
+                    <span class="location">Seoul KST</span>
+                    <span class="time" id="seoul-time">00:00:00</span>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lovelace Research.</p>
+            </div>
         </div>
     </footer>
 
@@ -455,6 +462,135 @@
 
         // Load contributors when page loads
         document.addEventListener('DOMContentLoaded', loadContributors);
+
+        // Email clipboard functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailLink = document.getElementById('email-link');
+            const copiedMessage = document.getElementById('copied-message');
+            const hoverTooltip = document.getElementById('hover-tooltip');
+            const emailContainer = document.querySelector('.email-container');
+            
+            emailLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const email = this.getAttribute('data-email');
+                
+                // Hide hover tooltip immediately when clicked
+                hoverTooltip.style.opacity = '0';
+                
+                // Copy to clipboard
+                navigator.clipboard.writeText(email).then(function() {
+                    // Show copied message
+                    copiedMessage.classList.add('show');
+                    
+                    // Hide message after 2 seconds
+                    setTimeout(function() {
+                        copiedMessage.classList.remove('show');
+                    }, 2000);
+                }).catch(function(err) {
+                    // Fallback for older browsers
+                    console.error('Could not copy text: ', err);
+                    
+                    // Create temporary input element for fallback
+                    const tempInput = document.createElement('input');
+                    tempInput.value = email;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                    
+                    // Show copied message
+                    copiedMessage.classList.add('show');
+                    setTimeout(function() {
+                        copiedMessage.classList.remove('show');
+                    }, 2000);
+                });
+            });
+
+            // Handle hover states to prevent tooltip conflicts
+            emailContainer.addEventListener('mouseenter', function() {
+                if (!copiedMessage.classList.contains('show')) {
+                    hoverTooltip.style.opacity = '1';
+                    hoverTooltip.style.transform = 'translateY(0)';
+                }
+            });
+
+            emailContainer.addEventListener('mouseleave', function() {
+                hoverTooltip.style.opacity = '0';
+                hoverTooltip.style.transform = 'translateY(5px)';
+            });
+        });
+
+        // Real-time clock functionality
+        function updateClocks() {
+            const now = new Date();
+            
+            // London time (BST/GMT)
+            const londonTime = new Intl.DateTimeFormat('en-GB', {
+                timeZone: 'Europe/London',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            }).format(now);
+            
+            // Seoul time (KST)
+            const seoulTime = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'Asia/Seoul',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            }).format(now);
+            
+            document.getElementById('london-time').textContent = londonTime;
+            document.getElementById('seoul-time').textContent = seoulTime;
+        }
+
+        // Update clocks immediately and then every second
+        document.addEventListener('DOMContentLoaded', function() {
+            updateClocks();
+            setInterval(updateClocks, 1000);
+        });
+
+        // Newsletter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterButton = document.querySelector('.newsletter-button');
+            const newsletterInput = document.querySelector('.newsletter-input');
+            
+            newsletterButton.addEventListener('click', function() {
+                const email = newsletterInput.value.trim();
+                
+                if (email && email.includes('@')) {
+                    // Simple email validation
+                    newsletterButton.textContent = 'Subscribed!';
+                    newsletterButton.style.backgroundColor = '#28a745';
+                    newsletterInput.value = '';
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(function() {
+                        newsletterButton.textContent = 'Subscribe';
+                        newsletterButton.style.backgroundColor = '#000';
+                    }, 3000);
+                } else {
+                    // Show error state
+                    newsletterInput.style.borderColor = '#dc3545';
+                    newsletterInput.focus();
+                    
+                    // Reset border after 2 seconds
+                    setTimeout(function() {
+                        newsletterInput.style.borderColor = '#ddd';
+                    }, 2000);
+                }
+            });
+            
+            // Allow Enter key to submit
+            newsletterInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    newsletterButton.click();
+                }
+            });
+        });
     </script>
 </body>
 </html>
