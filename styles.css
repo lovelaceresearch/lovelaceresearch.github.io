@@ -1,0 +1,322 @@
+/* Lovelace Research - Minimal Design System */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #fafafa;
+    font-weight: 300;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header */
+
+
+.logo {
+    font-size: 24px;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+/* Hero Section */
+.hero {
+    padding: 80px 0;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
+}
+
+.hero .subtitle {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.hero .description {
+    font-size: 16px;
+    color: #444;
+    max-width: 600px;
+}
+
+/* Sections */
+section {
+    padding: 60px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #000;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* Research Areas */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.research-item {
+    padding: 24px 0;
+}
+
+.research-item h3 {
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.research-item p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* Approach Section */
+.approach-points {
+    margin-top: 24px;
+}
+
+.approach-points li {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: #444;
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+}
+
+.approach-points li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #666;
+}
+
+/* Contributors */
+.contributors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.contributor-card {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.contributor-photo {
+    flex-shrink: 0;
+}
+
+.photo-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.2s ease;
+}
+
+.contributor-info h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #000;
+}
+
+.contributor-info .role {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.contributor-info .affiliation {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 0;
+}
+
+.keyword {
+    background-color: #f0f0f0;
+    color: #555;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.contributor-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+}
+
+.link-pill {
+    background-color: #000;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.link-pill:hover {
+    background-color: #333;
+    transform: translateY(-1px);
+}
+
+.contributor-card:hover .contributor-links {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contributor-card:hover .photo-placeholder {
+    background-color: #ddd;
+}
+
+.contributor-card:hover .keyword {
+    background-color: #e8e8e8;
+}
+
+/* Contact */
+.contact-info {
+    font-size: 16px;
+    color: #444;
+}
+
+.contact-info a {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    transition: border-color 0.2s ease;
+}
+
+.contact-info a:hover {
+    border-color: #000;
+}
+
+/* Footer */
+footer {
+    padding: 40px 0;
+    text-align: left;
+    color: #999;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero .subtitle {
+        font-size: 18px;
+    }
+    
+    .research-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .contributors-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .contributor-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .contributor-photo {
+        align-self: center;
+    }
+    
+    .contributor-links {
+        justify-content: center;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+    background-color: #000;
+    color: #fff;
+} 
