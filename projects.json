@@ -1,0 +1,68 @@
+{
+  "projects": [
+    {
+      "title": "PersonalGPT",
+      "status": "active",
+      "description": "An open-source framework for creating personalized AI assistants that align with individual user values and preferences while maintaining safety constraints.",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "#"
+        },
+        {
+          "label": "Demo",
+          "url": "#"
+        }
+      ],
+      "tags": ["Open Source", "Personalization", "AI Safety"]
+    },
+    {
+      "title": "Mental Model Toolkit",
+      "status": "active",
+      "description": "A design toolkit for researchers and practitioners to understand and design better human-AI interaction patterns based on cognitive mental models.",
+      "links": [
+        {
+          "label": "Toolkit",
+          "url": "#"
+        },
+        {
+          "label": "Documentation",
+          "url": "#"
+        }
+      ],
+      "tags": ["Design Tools", "HCI", "Mental Models"]
+    },
+    {
+      "title": "AI Reasoning Visualizer",
+      "status": "completed",
+      "description": "An interactive tool for visualizing and understanding AI reasoning processes, making complex model decisions more transparent to end users.",
+      "links": [
+        {
+          "label": "Live Demo",
+          "url": "#"
+        },
+        {
+          "label": "Paper",
+          "url": "#"
+        }
+      ],
+      "tags": ["Interpretability", "Visualization", "Transparency"]
+    },
+    {
+      "title": "Humane AI Guidelines",
+      "status": "active",
+      "description": "A collaborative effort to establish design principles and guidelines for creating more humane AI systems that prioritize human agency and wellbeing.",
+      "links": [
+        {
+          "label": "Guidelines",
+          "url": "#"
+        },
+        {
+          "label": "Community",
+          "url": "#"
+        }
+      ],
+      "tags": ["Guidelines", "Ethics", "Community"]
+    }
+  ]
+} 

@@ -1,0 +1,57 @@
+{
+  "publications": [
+    {
+      "title": "Personal AI Alignment: A Framework for Individual Value Integration",
+      "authors": ["Chanwoo Lee", "Aida"],
+      "venue": "Conference on Human-AI Interaction",
+      "year": 2024,
+      "type": "Conference Paper",
+      "abstract": "We propose a novel framework for aligning AI systems with individual user values while maintaining broader safety constraints. Our approach combines fine-tuning techniques with personal preference modeling.",
+      "links": [
+        {
+          "label": "Paper",
+          "url": "#"
+        },
+        {
+          "label": "Code",
+          "url": "#"
+        }
+      ],
+      "tags": ["AI Alignment", "Personalization", "Fine-tuning"]
+    },
+    {
+      "title": "Mental Models in Human-AI Collaboration: A Design Thinking Approach",
+      "authors": ["Aida", "Chanwoo Lee"],
+      "venue": "Journal of AI Research",
+      "year": 2024,
+      "type": "Journal Article",
+      "abstract": "This paper explores how humans conceptualize AI systems and proposes design principles for more intuitive AI interfaces based on cognitive mental models.",
+      "links": [
+        {
+          "label": "Paper",
+          "url": "#"
+        },
+        {
+          "label": "Dataset",
+          "url": "#"
+        }
+      ],
+      "tags": ["Mental Models", "HCI", "Design Thinking"]
+    },
+    {
+      "title": "Reasoning Transparency in Large Language Models",
+      "authors": ["Chanwoo Lee"],
+      "venue": "Workshop on Interpretable AI",
+      "year": 2023,
+      "type": "Workshop Paper",
+      "abstract": "We investigate methods for making AI reasoning processes more transparent and interpretable to end users, focusing on large language model architectures.",
+      "links": [
+        {
+          "label": "Paper",
+          "url": "#"
+        }
+      ],
+      "tags": ["Interpretability", "Reasoning", "LLMs"]
+    }
+  ]
+} 
