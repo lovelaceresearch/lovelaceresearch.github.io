@@ -600,6 +600,30 @@ footer {
         align-items: flex-start;
         gap: 12px;
     }
+    
+    .publication-links,
+    .publication-tags,
+    .project-links,
+    .project-tags {
+        justify-content: flex-start;
+        width: 100%;
+    }
+    
+    .publication-links {
+        justify-content: flex-start;
+    }
+    
+    .publication-tags {
+        justify-content: flex-start;
+    }
+    
+    .project-links {
+        justify-content: flex-start;
+    }
+    
+    .project-tags {
+        justify-content: flex-start;
+    }
 }
 
 /* Smooth scrolling */
