@@ -36,6 +36,19 @@
             <input type="text" id="text-input" placeholder="Enter text or URL..." class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-500 dark:focus:ring-blue-400 transition-shadow duration-300">
         </div>
 
+        <!-- Dot Style Selection -->
+        <div class="flex items-center justify-center space-x-6">
+            <span class="text-gray-700 dark:text-gray-300 font-medium">Dot Style:</span>
+            <div class="flex items-center space-x-3">
+                <input type="radio" id="dot-style-square" name="dot-style" value="square" checked class="form-radio h-4 w-4 text-blue-600 dark:text-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400">
+                <label for="dot-style-square" class="text-gray-700 dark:text-gray-300">Square</label>
+            </div>
+            <div class="flex items-center space-x-3">
+                <input type="radio" id="dot-style-rounded" name="dot-style" value="rounded" class="form-radio h-4 w-4 text-blue-600 dark:text-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400">
+                <label for="dot-style-rounded" class="text-gray-700 dark:text-gray-300">Rounded</label>
+            </div>
+        </div>
+
         <!-- Generate Button -->
         <button id="generate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
             Generate QR Code
@@ -71,6 +84,8 @@
         const qrcodeContainer = document.getElementById('qrcode-container');
         const qrcodeDiv = document.getElementById('qrcode');
         const errorMessage = document.getElementById('error-message');
+        const dotStyleSquare = document.getElementById('dot-style-square');
+        const dotStyleRounded = document.getElementById('dot-style-rounded');
 
         let qrCode = null; // To hold the QRCodeStyling instance
 
@@ -79,6 +94,7 @@
          */
         function generateQRCode() {
             const text = textInput.value.trim();
+            const dotType = dotStyleSquare.checked ? 'square' : 'rounded';
 
             // Hide previous messages and buttons
             errorMessage.classList.add('hidden');
@@ -102,7 +118,7 @@
                     data: text,
                     dotsOptions: {
                         color: "#000000",
-                        type: "square"
+                        type: dotType // Use selected dot type
                     },
                     backgroundOptions: {
                         color: "#ffffff",
@@ -114,7 +130,10 @@
                 qrCode.append(qrcodeDiv);
             } else {
                 qrCode.update({
-                    data: text
+                    data: text,
+                    dotsOptions: {
+                        type: dotType // Update dot type
+                    }
                 });
             }
 
