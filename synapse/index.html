@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synapse - Research Reflection Intelligence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1D1C1B;
+            background-color: #FCFBFA;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            background: #FCFBFA;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #F0F0F0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1D1C1B;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1D1C1B;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #83B9DB;
+        }
+
+        .cta-button {
+            background: #83B9DB;
+            color: #FCFBFA;
+            padding: 0.75rem 1.25rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #6BA3CC;
+        }
+
+        .cta-button.secondary {
+            background: #EB4510;
+        }
+
+        .cta-button.secondary:hover {
+            background: #D63E0E;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #FCFBFA;
+            padding: 8rem 0 6rem;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            color: #1D1C1B;
+            max-width: 800px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            color: #1D1C1B;
+            max-width: 700px;
+            font-weight: 400;
+        }
+
+        .hero .cta-button {
+            font-size: 1rem;
+            padding: 1rem 1.5rem;
+        }
+
+        /* Section Spacing */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section.alt {
+            background: #F0F0F0;
+        }
+
+        /* Value Proposition */
+        .value-prop h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1D1C1B;
+            font-weight: 600;
+            max-width: 600px;
+        }
+
+        .value-prop .description {
+            font-size: 1.1rem;
+            color: #1D1C1B;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            opacity: 0.8;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .feature {
+            background: transparent;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1D1C1B;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #1D1C1B;
+            opacity: 0.8;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* How It Works */
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1D1C1B;
+            font-weight: 600;
+            max-width: 600px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step-number {
+            color: #83B9DB;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1D1C1B;
+            font-weight: 600;
+        }
+
+        .step p {
+            color: #1D1C1B;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        /* Use Cases */
+        .use-cases h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1D1C1B;
+            font-weight: 600;
+            max-width: 600px;
+        }
+
+        .use-case {
+            margin-bottom: 5rem;
+        }
+
+        .use-case h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: #1D1C1B;
+            font-weight: 600;
+        }
+
+        .use-case .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #83B9DB;
+            font-weight: 500;
+        }
+
+        .use-case p {
+            color: #1D1C1B;
+            opacity: 0.8;
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: #1D1C1B;
+            color: #FCFBFA;
+            padding: 6rem 0;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .quote-author {
+            font-weight: 500;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        /* Screenshots */
+        .screenshot-placeholder {
+            background: #F0F0F0;
+            border: 2px solid #83B9DB;
+            border-radius: 8px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1D1C1B;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: #83B9DB;
+            opacity: 0.1;
+        }
+
+        .screenshot-placeholder.large {
+            height: 500px;
+        }
+
+        .screenshot-placeholder.small {
+            height: 300px;
+        }
+
+        .screenshot-container {
+            margin: 4rem 0;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 6rem 0;
+            background: #FCFBFA;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1D1C1B;
+            font-weight: 600;
+            max-width: 600px;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: #1D1C1B;
+            opacity: 0.8;
+            max-width: 500px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #F0F0F0;
+            color: #1D1C1B;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #1D1C1B;
+        }
+
+        .footer-section a {
+            color: #1D1C1B;
+            opacity: 0.7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1D1C1B;
+            opacity: 0.2;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+                         .screenshot-grid {
+                 grid-template-columns: 1fr;
+             }
+
+             .cta-buttons {
+                 flex-direction: column;
+                 align-items: flex-start;
+             }
+         }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Synapse</div>
+            <ul class="nav-links">
+                <li><a href="#platform">Platform</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#company">Company</a></li>
+            </ul>
+            <a href="#demo" class="cta-button">Book a demo</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>For anyone who wants to leverage their missed intel, insight and idea.</h1>
+            <p class="subtitle">Get going by your past insights & ideas that you've missed. Understand yourself better and deeper by looking back. Connect all kinds of dots: idea on note, line from pdf, and an email thread. Grow, not delegate, critical thinking with AI double.</p>
+            <a href="#demo" class="cta-button secondary">Book a demo</a>
+            
+            <div class="screenshot-container">
+                <div class="screenshot-placeholder large">
+                    🖥️ Synapse Dashboard - Research Overview & Connections
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Built for serious research.</h2>
+            <p style="font-size: 1.1rem; color: #1D1C1B; opacity: 0.8; max-width: 700px; margin-top: 1rem;">As researchers generate hundreds of documents, notes, and communications every month, they use Synapse to analyze this vast amount of data — revealing insights that help them understand patterns and connect overlooked ideas.</p>
+        </div>
+    </section>
+
+    <section class="section alt value-prop" id="platform">
+        <div class="container">
+            <h2>Harnessing the power of human reflection.</h2>
+            <p class="description">There's no replacement for human insight. That's why we built Synapse — to help researchers explore every corner of their intellectual journey. Because when we reflect more, we can discover more.</p>
+            
+            <div class="features-list">
+                <div class="feature">
+                    <h3>1. Ingest</h3>
+                    <p>From research papers and meeting notes, to email threads and calendar events — Synapse Ingest accepts your raw and unstructured data, analyzes this vast amount of information instantaneously, and puts it into meaningful categories.</p>
+                    <div class="screenshot-placeholder small">
+                        📄 Data Import Interface - Files, Emails & Calendar
+                    </div>
+                </div>
+                <div class="feature">
+                    <h3>2. Connect and Analyze</h3>
+                    <p>Our intelligent analysis puts you 'in the loop'. Discover connections between your scattered insights with AI guidance — then use these patterns to understand your research journey more deeply.</p>
+                    <div class="screenshot-placeholder small">
+                        🔗 Connection Analysis - Pattern Recognition
+                    </div>
+                </div>
+                <div class="feature">
+                    <h3>3. Reflect</h3>
+                    <p>Synapse asks thought-provoking questions based on your unique research patterns. Get prompted to reflect on connections you might have missed, turning isolated insights into breakthrough understanding.</p>
+                    <div class="screenshot-placeholder small">
+                        💭 Reflection Interface - AI-Generated Questions
+                    </div>
+                </div>
+                <div class="feature">
+                    <h3>4. Unlock Hidden Insights</h3>
+                    <p>Transform years of research into actionable knowledge. Rediscover forgotten connections, understand your intellectual evolution, and identify patterns that inform your future work.</p>
+                    <div class="screenshot-placeholder small">
+                        💡 Insights Dashboard - Connected Knowledge Map
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section how-it-works">
+        <div class="container">
+            <h2>For everyone who knows there's more to learn.</h2>
+            
+            <div class="screenshot-container">
+                <div class="screenshot-grid">
+                    <div class="screenshot-placeholder">
+                        👨‍🎓 Academic Research Workflow
+                    </div>
+                    <div class="screenshot-placeholder">
+                        💼 Industry Research Dashboard
+                    </div>
+                </div>
+            </div>
+            
+            <div class="process-grid">
+                <div class="step">
+                    <div class="step-number">Because research journeys are complex.</div>
+                    <h3>Academic Researchers</h3>
+                    <p>Uncover connections between literature reviews, experimental data, and theoretical frameworks. Rediscover insights from old papers and conference notes that could inform your current work and reveal new research directions.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">Because insights are buried in communications.</div>
+                    <h3>Industry Professionals</h3>
+                    <p>Connect market research, user feedback, and strategic documents. Find patterns in client communications and project outcomes that drive better decisions and reveal overlooked opportunities.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">Because dissertation research is overwhelming.</div>
+                    <h3>PhD Students</h3>
+                    <p>Navigate the complexity of years-long research by connecting early explorations with current findings. Transform scattered notes and evolving ideas into a coherent intellectual narrative.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">Because knowledge compounds over time.</div>
+                    <h3>Research Teams</h3>
+                    <p>Enable collective reflection across team members' individual research journeys. Share insights, discover complementary work, and build on each other's intellectual foundations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="container">
+            <blockquote class="quote">
+                "Synapse helped me rediscover a connection I made two years ago between user behavior patterns and market trends. That forgotten insight became the foundation of our most successful product launch."
+            </blockquote>
+            <div class="quote-author">Dr. Sarah Chen, Product Research Lead</div>
+        </div>
+    </section>
+
+    <section class="section alt use-cases" id="use-cases">
+        <div class="container">
+            <div class="use-case">
+                <div class="subtitle">Deep Learning is in your future.</div>
+                <h3>Because language use is always evolving.</h3>
+                <p>Every research domain benefits from understanding how ideas develop over time. Question, reflect, and discover new connections — Synapse equips you with the tools to participate fully in the knowledge-powered world.</p>
+                
+                <div class="screenshot-placeholder">
+                    🧠 AI-Powered Research Evolution Timeline
+                </div>
+            </div>
+
+            <div class="use-case">
+                <h3>Your research has more to tell you.</h3>
+                <p>From analyzing scattered notes to connecting forgotten insights, Synapse helps experts like you to uncover every connection. About 80% of research intelligence is buried in unstructured documents and communications. Understanding your unique research patterns makes discovery far more meaningful.</p>
+                
+                <div class="screenshot-placeholder">
+                    📊 Research Intelligence Analytics View
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta section" id="demo">
+        <div class="container">
+            <h2>Build your own reflection journey</h2>
+            <p>Start with structured or unstructured research data. Whether you're a PhD student, industry researcher, or academic — Synapse can help you categorize, connect and reflect on your intellectual journey.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button secondary">Book a demo</a>
+                <a href="#" class="cta-button">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <a href="#">Overview</a>
+                    <a href="#">AI Models</a>
+                    <a href="#">Infrastructure</a>
+                    <a href="#">Security</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Use Cases</h4>
+                    <a href="#">Academic Research</a>
+                    <a href="#">Industry Research</a>
+                    <a href="#">PhD Students</a>
+                    <a href="#">Research Teams</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">FAQ</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Documentation</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#">About us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Synapse 2025</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
