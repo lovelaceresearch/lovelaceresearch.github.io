@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- QR Code generation library with SVG support -->
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom style for the QR code to ensure it's not blurry */
+        #qrcode canvas, #qrcode svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen transition-colors duration-500">
+
+    <div class="w-full max-w-xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 space-y-6 transform hover:scale-105 transition-transform duration-500">
+        
+        <!-- Header -->
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-gray-800 dark:text-white">QR Code Generator</h1>
+            <p class="text-gray-500 dark:text-gray-400 mt-2">Enter text or a URL to generate a QR code.</p>
+        </div>
+
+        <!-- Input Field -->
+        <div>
+            <label for="text-input" class="sr-only">Enter Text or URL</label>
+            <input type="text" id="text-input" placeholder="Enter text or URL..." class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-500 dark:focus:ring-blue-400 transition-shadow duration-300">
+        </div>
+
+        <!-- Generate Button -->
+        <button id="generate-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            Generate QR Code
+        </button>
+
+        <!-- QR Code Display Area -->
+        <div id="qrcode-container" class="w-128 h-128 mx-auto p-0 bg-white rounded-lg shadow-inner flex items-center justify-center hidden">
+             <div id="qrcode" class="w-full h-full"></div>
+        </div>
+
+        <!-- Download Buttons -->
+        <div class="flex space-x-4">
+            <button id="download-png-btn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-500 dark:focus:ring-green-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hidden">
+                Download PNG
+            </button>
+            <button id="download-svg-btn" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-4 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hidden">
+                Download SVG
+            </button>
+        </div>
+        
+        <!-- Error Message -->
+        <div id="error-message" class="text-red-500 text-center font-medium hidden">
+            Please enter some text or a URL first.
+        </div>
+    </div>
+
+    <script>
+        // DOM Element References
+        const generateBtn = document.getElementById('generate-btn');
+        const downloadPngBtn = document.getElementById('download-png-btn');
+        const downloadSvgBtn = document.getElementById('download-svg-btn');
+        const textInput = document.getElementById('text-input');
+        const qrcodeContainer = document.getElementById('qrcode-container');
+        const qrcodeDiv = document.getElementById('qrcode');
+        const errorMessage = document.getElementById('error-message');
+
+        let qrCode = null; // To hold the QRCodeStyling instance
+
+        /**
+         * Generates the QR code based on the user's input.
+         */
+        function generateQRCode() {
+            const text = textInput.value.trim();
+
+            // Hide previous messages and buttons
+            errorMessage.classList.add('hidden');
+            downloadPngBtn.classList.add('hidden');
+            downloadSvgBtn.classList.add('hidden');
+            qrcodeContainer.classList.add('hidden');
+
+            // 1. Validate input
+            if (!text) {
+                errorMessage.classList.remove('hidden');
+                textInput.focus();
+                return;
+            }
+
+            // 2. Initialize or update QR code
+            if (!qrCode) {
+                qrCode = new QRCodeStyling({
+                    width: 512,
+                    height: 512,
+                    type: 'svg',
+                    data: text,
+                    dotsOptions: {
+                        color: "#000000",
+                        type: "square"
+                    },
+                    backgroundOptions: {
+                        color: "#ffffff",
+                    },
+                    qrOptions: {
+                        errorCorrectionLevel: 'H' // High correction level for robustness
+                    }
+                });
+                qrCode.append(qrcodeDiv);
+            } else {
+                qrCode.update({
+                    data: text
+                });
+            }
+
+            // 3. Show the QR code and download buttons
+            qrcodeContainer.classList.remove('hidden');
+            downloadPngBtn.classList.remove('hidden');
+            downloadSvgBtn.classList.remove('hidden');
+        }
+
+        /**
+         * Downloads the generated QR code as a PNG image.
+         */
+        function downloadPNG() {
+            if (!qrCode) return;
+            qrCode.download({ name: "qrcode", extension: "png" });
+        }
+        
+        /**
+         * Downloads the generated QR code as an SVG file.
+         */
+        function downloadSVG() {
+            if (!qrCode) return;
+            qrCode.download({ name: "qrcode", extension: "svg" });
+        }
+
+        // --- Event Listeners ---
+
+        // Generate QR code on button click
+        generateBtn.addEventListener('click', generateQRCode);
+
+        // Allow pressing Enter to generate
+        textInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                generateQRCode();
+            }
+        });
+        
+        // Download QR code on button click
+        downloadPngBtn.addEventListener('click', downloadPNG);
+        downloadSvgBtn.addEventListener('click', downloadSVG);
+
+    </script>
+
+</body>
+</html>
