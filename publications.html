@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Lovelace Research</title>
+    <meta name="description" content="Our contributors' research on the field of personal and humane AI">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-block">
+                <a href="index.html" class="sidebar-title">Lovelace Research</a>
+                <p class="sidebar-subtitle">Independent research-led innovation lab for personal & humane AI</p>
+            </div>
+            
+            <div class="sidebar-block">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="prototypes.html">Prototypes</a></li>
+                        <li><a href="publications.html" class="nav-active">Publications</a></li>
+                        <li><a href="opinion-notes.html">Opinion Notes</a></li>
+                        <li><a href="reading-list.html">Reading List</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="sidebar-block sidebar-block--footer">
+                <div class="sidebar-contact">
+                    <a href="https://instagram.com/lovelaceresearch" target="_blank">IG</a>
+                    <span class="email-container">
+                        <a href="#" id="email-link" data-email="office@lovelace-research.com">office@lovelace-research.com</a>
+                        <span id="hover-tooltip" class="hover-tooltip">Copy email</span>
+                        <span id="copied-message" class="copied-message">Copied!</span>
+                    </span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Research Areas -->
+            <section id="research">
+                <div class="container">
+                    <div class="title-block">
+                        <h2>Research Areas</h2>
+                    </div>
+                    <p>Our interdisciplinary research spans multiple domains, each contributing to our vision of personal and humane AI.</p>
+                    
+                    <div class="research-grid">
+                        <div class="research-item">
+                            <h3>Mental Models</h3>
+                            <p>Understanding how humans conceptualize and interact with AI systems to build more intuitive interfaces.</p>
+                        </div>
+                        
+                        <div class="research-item">
+                            <h3>Frameworks</h3>
+                            <p>Developing theoretical and practical frameworks for evaluating and designing AI systems.</p>
+                        </div>
+                        
+                        <div class="research-item">
+                            <h3>Futures</h3>
+                            <p>Exploring potential trajectories of AI development and their implications for society.</p>
+                        </div>
+                        
+                        <div class="research-item">
+                            <h3>System Architecture</h3>
+                            <p>Designing AI architectures that prioritize transparency, control, and human agency.</p>
+                        </div>
+                        
+                        <div class="research-item">
+                            <h3>Fine-tuning</h3>
+                            <p>Advancing techniques for personalizing AI models while maintaining safety and alignment.</p>
+                        </div>
+                        
+                        <div class="research-item">
+                            <h3>Personal Model Alignment</h3>
+                            <p>Ensuring AI systems align with individual values and preferences without compromising broader safety.</p>
+                        </div>
+                        
+                        <div class="research-item">
+                            <h3>Reasoning</h3>
+                            <p>Improving AI reasoning capabilities while maintaining interpretability and human oversight.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications -->
+            <section id="publications">
+                <div class="container">
+                    <div class="title-block">
+                        <h2>Publications</h2>
+                    </div>
+                    <p>Our contributors' research on the field of personal and humane AI.</p>
+                    
+                    <div class="publications-list" id="publications-list">
+                        <!-- Publications will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="mobile-nav-container">
+            <div class="mobile-nav-menu">
+                <div class="sidebar-block">
+                     <div class="sidebar-contact">
+                        <a href="https://instagram.com/lovelaceresearch" target="_blank">IG</a>
+                        <span class="email-container">
+                            <a href="#" id="email-link-mobile" data-email="office@lovelace-research.com">office@lovelace-research.com</a>
+                            <span id="hover-tooltip-mobile" class="hover-tooltip">Copy email</span>
+                            <span id="copied-message-mobile" class="copied-message">Copied!</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="prototypes.html">Prototypes</a></li>
+                            <li><a href="publications.html" class="nav-active">Publications</a></li>
+                            <li><a href="opinion-notes.html">Opinion Notes</a></li>
+                            <li><a href="reading-list.html">Reading List</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="mobile-nav-trigger">
+                <div class="mobile-nav-trigger-content">
+                    <div class="mobile-nav-title">
+                        <a href="index.html" class="sidebar-title">Lovelace Research</a>
+                        <p class="sidebar-subtitle mobile-only">Independent research-led innovation lab for personal & humane AI</p>
+                    </div>
+                    <span class="icon">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load and render publications from JSON
+        async function loadPublications() {
+            try {
+                const response = await fetch('publications.json');
+                const data = await response.json();
+                renderPublications(data.publications);
+            } catch (error) {
+                console.error('Error loading publications:', error);
+            }
+        }
+
+        function renderPublications(publications) {
+            const list = document.getElementById('publications-list');
+            
+            publications.forEach(publication => {
+                const item = createPublicationItem(publication);
+                list.appendChild(item);
+            });
+        }
+
+        function createPublicationItem(publication) {
+            const item = document.createElement('div');
+            item.className = 'publication-item';
+            
+            const title = document.createElement('h3');
+            title.className = 'publication-title';
+            title.textContent = publication.title;
+            item.appendChild(title);
+            
+            const meta = document.createElement('div');
+            meta.className = 'publication-meta';
+            meta.innerHTML = `
+                <span class="publication-authors">${publication.authors.join(', ')}</span> • 
+                <span class="publication-venue">${publication.venue}</span> • 
+                <span class="publication-year">${publication.year}</span>
+            `;
+            item.appendChild(meta);
+            
+            const abstract = document.createElement('p');
+            abstract.className = 'publication-abstract';
+            abstract.textContent = publication.abstract;
+            item.appendChild(abstract);
+            
+            const footer = document.createElement('div');
+            footer.className = 'publication-footer';
+            
+            const linksDiv = document.createElement('div');
+            linksDiv.className = 'publication-links';
+            
+            publication.links.forEach(link => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link.url;
+                linkElement.className = 'publication-link';
+                linkElement.textContent = link.label;
+                linkElement.target = '_blank';
+                linksDiv.appendChild(linkElement);
+            });
+            
+            const tagsDiv = document.createElement('div');
+            tagsDiv.className = 'publication-tags';
+            
+            publication.tags.forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'publication-tag';
+                tagSpan.textContent = tag;
+                tagsDiv.appendChild(tagSpan);
+            });
+            
+            footer.appendChild(linksDiv);
+            footer.appendChild(tagsDiv);
+            item.appendChild(footer);
+            
+            return item;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPublications);
+
+
+    </script>
+    <script src="common.js" defer></script>
+</body>
+</html>

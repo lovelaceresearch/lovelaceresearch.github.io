@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lovelace Research</title>
-    <meta name="description" content="Independent research-led innovation lab for personal & humane AI">
+    <title>Prototypes - Lovelace Research</title>
+    <meta name="description" content="Open-source tools and frameworks advancing personal and humane AI research">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
             <div class="sidebar-block">
                 <nav class="sidebar-nav">
                     <ul>
-                        <li><a href="prototypes.html">Prototypes</a></li>
+                        <li><a href="prototypes.html" class="nav-active">Prototypes</a></li>
                         <li><a href="publications.html">Publications</a></li>
                         <li><a href="opinion-notes.html">Opinion Notes</a></li>
                         <li><a href="reading-list.html">Reading List</a></li>
@@ -47,8 +47,20 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Blank index page as requested -->
-    </main>
+            <!-- Projects -->
+            <section id="projects">
+                <div class="container">
+                    <div class="title-block">
+                        <h2>Prototypes</h2>
+                    </div>
+                    <p>Open-source tools and frameworks advancing personal and humane AI research.</p>
+                    
+                    <div class="projects-grid" id="projects-grid">
+                        <!-- Projects will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+        </main>
 
         <div class="mobile-nav-container">
             <div class="mobile-nav-menu">
@@ -65,7 +77,7 @@
                 <div class="sidebar-block">
                     <nav class="sidebar-nav">
                         <ul>
-                            <li><a href="prototypes.html">Prototypes</a></li>
+                            <li><a href="prototypes.html" class="nav-active">Prototypes</a></li>
                             <li><a href="publications.html">Publications</a></li>
                             <li><a href="opinion-notes.html">Opinion Notes</a></li>
                             <li><a href="reading-list.html">Reading List</a></li>
@@ -86,6 +98,82 @@
         </div>
     </div>
 
+    <script>
+        // Load and render projects from JSON
+        async function loadProjects() {
+            try {
+                const response = await fetch('projects.json');
+                const data = await response.json();
+                renderProjects(data.projects);
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+
+        function renderProjects(projects) {
+            const grid = document.getElementById('projects-grid');
+            
+            projects.forEach(project => {
+                const item = createProjectItem(project);
+                grid.appendChild(item);
+            });
+        }
+
+        function createProjectItem(project) {
+            const item = document.createElement('div');
+            item.className = 'project-item';
+            
+            const title = document.createElement('h3');
+            title.className = 'project-title';
+            title.textContent = project.title;
+            item.appendChild(title);
+            
+            const status = document.createElement('span');
+            status.className = `project-status ${project.status}`;
+            status.textContent = project.status.charAt(0).toUpperCase() + project.status.slice(1);
+            item.appendChild(status);
+            
+            const description = document.createElement('p');
+            description.className = 'project-description';
+            description.textContent = project.description;
+            item.appendChild(description);
+            
+            const footer = document.createElement('div');
+            footer.className = 'project-footer';
+            
+            const linksDiv = document.createElement('div');
+            linksDiv.className = 'project-links';
+            
+            project.links.forEach(link => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link.url;
+                linkElement.className = 'project-link';
+                linkElement.textContent = link.label;
+                linkElement.target = '_blank';
+                linksDiv.appendChild(linkElement);
+            });
+            
+            const tagsDiv = document.createElement('div');
+            tagsDiv.className = 'project-tags';
+            
+            project.tags.forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'project-tag';
+                tagSpan.textContent = tag;
+                tagsDiv.appendChild(tagSpan);
+            });
+            
+            footer.appendChild(linksDiv);
+            footer.appendChild(tagsDiv);
+            item.appendChild(footer);
+            
+            return item;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProjects);
+
+
+    </script>
     <script src="common.js" defer></script>
 </body>
 </html>

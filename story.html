@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story - Lovelace Research</title>
+    <meta name="description" content="Our mission, research areas, and approach to personal and humane AI">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-block">
+                <a href="index.html" class="sidebar-title">Lovelace Research</a>
+                <p class="sidebar-subtitle">Independent research-led innovation lab for personal & humane AI</p>
+            </div>
+            
+            <div class="sidebar-block">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="prototypes.html">Prototypes</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="reading-list.html">Reading List</a></li>
+                        <li><a href="story.html" class="nav-active">Story</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="sidebar-block sidebar-block--footer">
+                <div class="sidebar-contact">
+                    <a href="https://instagram.com/lovelaceresearch" target="_blank">IG</a>
+                    <span class="email-container">
+                        <a href="#" id="email-link" data-email="office@lovelace-research.com">office@lovelace-research.com</a>
+                        <span id="hover-tooltip" class="hover-tooltip">Copy email</span>
+                        <span id="copied-message" class="copied-message">Copied!</span>
+                    </span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <h1>Independent research-led innovation lab for personal & humane AI</h1>
+                    <p class="subtitle">Alternative research, Innovative product, Thoughtful impact.</p>
+                    <p>
+                        Lovelace Research aims to be a new PARC, infused with design thinking. 
+                        We believe in fundamental paradigm redesign that ultimately translates into 
+                        transformative products.
+                    </p>
+                    <p class="description">
+                        We explore fundamental questions about AI systems, focusing on mental models, frameworks, 
+                        and architectures that prioritize human values and personal alignment. Our work aims to 
+                        create meaningful change in how we think about and build AI technologies.
+                    </p>
+
+                </div>
+            </section>
+
+            <!-- Contributors -->
+            <section id="contributors">
+                <div class="container">
+                    <div class="title-block">
+                        <h2>Contributors</h2>
+                    </div>
+                    <p>Our interdisciplinary team brings together expertise from AI research, design, and human-computer interaction.</p>
+                    
+                    <div class="contributors-grid" id="contributors-grid">
+                        <!-- Contributors will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Approach -->
+            <section id="approach">
+                 <div class="container">
+                    <div class="title-block">
+                        <h2>Approach</h2>
+                    </div>
+                    <p>
+                        We believe that meaningful progress in AI requires a fundamental rethinking of current paradigms. 
+                        Our methodology combines rigorous research with practical application.
+                    </p>
+                    
+                    <ul class="approach-points">
+                        <li>Research-led innovation that prioritizes long-term impact over short-term gains</li>
+                        <li>Design thinking principles applied to technical AI research</li>
+                        <li>Focus on personal and humane AI that augments human capabilities</li>
+                        <li>Interdisciplinary collaboration across technology, design, and social sciences</li>
+                        <li>Open research culture that shares insights with the broader community</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <div class="mobile-nav-container">
+            <div class="mobile-nav-menu">
+                <div class="sidebar-block">
+                     <div class="sidebar-contact">
+                        <a href="https://instagram.com/lovelaceresearch" target="_blank">IG</a>
+                        <span class="email-container">
+                            <a href="#" id="email-link-mobile" data-email="office@lovelace-research.com">office@lovelace-research.com</a>
+                            <span id="hover-tooltip-mobile" class="hover-tooltip">Copy email</span>
+                            <span id="copied-message-mobile" class="copied-message">Copied!</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="prototypes.html">Prototypes</a></li>
+                            <li><a href="publications.html">Publications</a></li>
+                            <li><a href="reading-list.html">Reading List</a></li>
+                            <li><a href="story.html" class="nav-active">Story</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="mobile-nav-trigger">
+                <div class="mobile-nav-trigger-content">
+                    <div class="mobile-nav-title">
+                        <a href="index.html" class="sidebar-title">Lovelace Research</a>
+                        <p class="sidebar-subtitle mobile-only">Independent research-led innovation lab for personal & humane AI</p>
+                    </div>
+                    <span class="icon">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load and render contributors from JSON
+        async function loadContributors() {
+            try {
+                const response = await fetch('contributors.json');
+                const data = await response.json();
+                renderContributors(data.contributors);
+            } catch (error) {
+                console.error('Error loading contributors:', error);
+            }
+        }
+
+        function renderContributors(contributors) {
+            const grid = document.getElementById('contributors-grid');
+            
+            contributors.forEach(contributor => {
+                const card = createContributorCard(contributor);
+                grid.appendChild(card);
+            });
+        }
+
+        function createContributorCard(contributor) {
+            const card = document.createElement('div');
+            card.className = 'contributor-card';
+            
+            const photoDiv = document.createElement('div');
+            photoDiv.className = 'contributor-photo';
+            
+            const photoPlaceholder = document.createElement('div');
+            photoPlaceholder.className = 'photo-placeholder';
+            
+            if (contributor.photo) {
+                const img = document.createElement('img');
+                img.src = contributor.photo;
+                img.alt = contributor.name;
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                img.style.borderRadius = '50%';
+                photoPlaceholder.appendChild(img);
+            } else {
+                photoPlaceholder.textContent = contributor.initials;
+            }
+            
+            photoDiv.appendChild(photoPlaceholder);
+            
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'contributor-info';
+            
+            const name = document.createElement('h3');
+            name.textContent = contributor.name;
+            infoDiv.appendChild(name);
+            
+            const role = document.createElement('p');
+            role.className = 'role';
+            role.textContent = contributor.role;
+            infoDiv.appendChild(role);
+            
+            const affiliation = document.createElement('p');
+            affiliation.className = 'affiliation';
+            affiliation.textContent = contributor.affiliation;
+            infoDiv.appendChild(affiliation);
+            
+            const keywordsDiv = document.createElement('div');
+            keywordsDiv.className = 'keywords';
+            
+            contributor.keywords.forEach(keyword => {
+                const keywordSpan = document.createElement('span');
+                keywordSpan.className = 'keyword';
+                keywordSpan.textContent = keyword;
+                keywordsDiv.appendChild(keywordSpan);
+            });
+            
+            infoDiv.appendChild(keywordsDiv);
+            
+            const linksDiv = document.createElement('div');
+            linksDiv.className = 'contributor-links';
+            
+            contributor.links.forEach(link => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link.url;
+                linkElement.className = 'link-pill';
+                linkElement.textContent = link.label;
+                linkElement.target = '_blank';
+                linksDiv.appendChild(linkElement);
+            });
+            
+            infoDiv.appendChild(linksDiv);
+            
+            card.appendChild(photoDiv);
+            card.appendChild(infoDiv);
+            
+            return card;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadContributors);
+
+
+    </script>
+    <script src="common.js" defer></script>
+</body>
+</html>
