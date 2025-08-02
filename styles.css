@@ -1,4 +1,6 @@
-/* Lovelace Research - Minimal Design System */
+/* ==========================================================================
+   1. Global & Base Styles
+   ========================================================================== */
 
 * {
     margin: 0;
@@ -6,75 +8,75 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
+    line-height: 1.2;
     color: #1a1a1a;
-    background-color: #fafafa;
+    background-color: #f6f6f6;
     font-weight: 300;
+}
+
+::selection {
+    background-color: #1a1a1a;
+    color: #f6f6f6;
+}
+
+/* ==========================================================================
+   2. Layout System
+   ========================================================================== */
+
+.page-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    min-height: 100vh;
+    gap: 16px;
+    padding: 16px;
+}
+
+.sidebar {
+    grid-column: 1 / span 3;
+    position: sticky;
+    top: 16px; /* Match page-container padding */
+    height: calc(100vh - 32px); /* (16px * 2) */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}
+
+.main-content {
+    grid-column: 4 / span 6;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 24px;
+    padding: 0; /* Contained by main-content */
 }
 
-/* Header */
-header {
-    padding: 1rem 0 1rem;
-    border-bottom: 1px solid #e5e5e5;
-}
+/* ==========================================================================
+   3. Typography
+   ========================================================================== */
 
-.logo {
-    font-size: 24px;
-    font-weight: 500;
-    color: #000;
-    text-decoration: none;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
     letter-spacing: -0.02em;
 }
 
-/* Hero Section */
-.hero {
-    padding: 80px 0;
-}
-
-.hero h1 {
+h1 {
     font-size: 48px;
     font-weight: 300;
-    line-height: 1.2;
     margin-bottom: 24px;
     letter-spacing: -0.03em;
 }
 
-.hero .subtitle {
-    font-size: 20px;
-    color: #666;
-    margin-bottom: 40px;
-    font-weight: 300;
-}
-
-.hero .description {
-    font-size: 16px;
-    color: #444;
-    max-width: 600px;
-}
-
-/* Sections */
-section {
-    padding: 40px 0;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-section:last-of-type {
-    border-bottom: none;
-}
-
 h2 {
     font-size: 28px;
-    font-weight: 400;
     margin-bottom: 32px;
-    letter-spacing: -0.02em;
 }
 
 h3 {
@@ -90,49 +92,147 @@ p {
     color: #444;
 }
 
-/* Research Areas */
-.research-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 32px;
-    margin-top: 32px;
-}
-
-.research-item {
-    padding: 24px 0;
-    border: 1px solid #e5e5e5;
-    padding: 24px;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-.research-item:hover {
-    border-color: #ccc;
-    background-color: #f8f8f8;
-}
-
-.research-item h3 {
+a {
     color: #000;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   4. Sidebar Components
+   ========================================================================== */
+
+.sidebar-block {
+    background: #000;
+    color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-block--footer {
+    margin-top: auto;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
     margin-bottom: 8px;
 }
 
-.research-item p {
+.sidebar-subtitle {
     font-size: 14px;
-    color: #666;
+    color: #a0a0a0;
+    font-weight: 300;
     margin-bottom: 0;
 }
 
-/* Approach Section */
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li a {
+    color: #fff;
+    font-size: 16px;
+    display: block;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.sidebar-nav li a:hover {
+    color: #888;
+}
+
+.sidebar-nav li a.nav-active {
+    font-weight: 500;
+}
+
+.sidebar-contact {
+    font-size: 13px;
+    color: #a0a0a0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-contact a {
+    color: #fff;
+    transition: color 0.2s ease;
+}
+
+.sidebar-contact a:hover {
+    color: #888;
+}
+
+/* ==========================================================================
+   5. Main Content Components
+   ========================================================================== */
+
+section {
+    padding: 40px 0;
+    border-bottom: none; 
+}
+
+#research {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+#projects, #publications {
+    padding: 0;
+    border-bottom: none;
+}
+
+.title-block {
+    background: #000;
+    color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 40px;
+}
+
+.title-block h2 {
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.title-block + p {
+    padding-left: 16px;
+}
+
+.hero {
+    padding: 0 0 40px 0;
+}
+
+.hero .subtitle {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.hero .description {
+    font-size: 16px;
+    color: #444;
+    max-width: 600px;
+}
+
 .approach-points {
     margin-top: 24px;
+    list-style: none;
 }
 
 .approach-points li {
     font-size: 16px;
     margin-bottom: 16px;
     color: #444;
-    list-style: none;
     position: relative;
     padding-left: 20px;
 }
@@ -144,20 +244,155 @@ p {
     color: #666;
 }
 
-/* Contributors */
-.contributors-grid {
+/* ==========================================================================
+   6. Grids & Cards (Projects, Publications, etc.)
+   ========================================================================== */
+
+/* --- Grids --- */
+.research-grid, .contributors-grid, .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
+    gap: 16px;
+    margin-top: 32px;
 }
 
+.research-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.contributors-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.projects-grid {
+    grid-template-columns: 1fr;
+}
+
+.publications-list {
+    margin-top: 32px;
+}
+
+
+/* --- Research Items --- */
+.research-item {
+    border: 1px solid #e5e5e5;
+    padding: 16px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.research-item:hover {
+    border-color: #ccc;
+    background-color: #f8f8f8;
+}
+
+.research-item h3 {
+    margin-bottom: 8px;
+}
+
+.research-item p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 0;
+}
+
+
+/* --- Project Items --- */
+.project-item {
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 16px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.project-item:hover {
+    border-color: #ccc;
+    background-color: #f8f8f8;
+}
+
+.project-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.project-status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    margin-bottom: 12px;
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+.project-status.active {
+    background-color: #e8f5e8;
+    color: #2d5a2d;
+}
+
+.project-status.completed {
+    background-color: #e8e8f5;
+    color: #2d2d5a;
+}
+
+.project-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 16px;
+}
+
+
+/* --- Publication Items --- */
+.publication-item {
+    padding: 24px 16px;
+    border-bottom: 1px solid #e5e5e5;
+    transition: all 0.2s ease;
+}
+
+.publication-item:last-child {
+    border-bottom: none;
+}
+
+.publication-item:hover {
+    background-color: #fafafa;
+    border-radius: 4px;
+}
+
+.publication-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.publication-meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.publication-venue {
+    font-style: italic;
+}
+
+.publication-year {
+    color: #888;
+}
+
+.publication-abstract {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+    max-width: 600px;
+}
+
+
+/* --- Contributor Cards --- */
 .contributor-card {
     display: flex;
     flex-direction: row;
-    text-align: left;
     gap: 20px;
-    position: relative;
     transition: all 0.2s ease;
 }
 
@@ -179,11 +414,14 @@ p {
     transition: all 0.2s ease;
 }
 
+.contributor-card:hover .photo-placeholder {
+    background-color: #ddd;
+}
+
 .contributor-info h3 {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 4px;
-    color: #000;
 }
 
 .contributor-info .role {
@@ -200,21 +438,66 @@ p {
     font-style: italic;
 }
 
-.keywords {
+
+/* --- Card/Item Footers & Tags --- */
+.project-footer, .publication-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.keywords, .project-tags, .publication-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 0;
 }
 
-.keyword {
+.keyword, .project-tag, .publication-tag {
     background-color: #f0f0f0;
     color: #555;
     padding: 4px 10px;
     border-radius: 12px;
     font-size: 12px;
+}
+
+.publication-tag {
+    padding: 2px 8px;
+    font-size: 11px;
+}
+
+.contributor-card:hover .keyword {
+    background-color: #e8e8e8;
+}
+
+/* ==========================================================================
+   7. Interactive Elements (Links, Tooltips)
+   ========================================================================== */
+
+.publication-link {
+    font-size: 13px;
+    border-bottom: 1px solid #ccc;
+    transition: border-color 0.2s ease;
+}
+
+.publication-link:hover {
+    border-color: #000;
+}
+
+.project-link, .link-pill {
+    background-color: #000;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 400;
     transition: all 0.2s ease;
+}
+
+.project-link:hover, .link-pill:hover {
+    background-color: #333;
+    transform: translateY(-1px);
 }
 
 .contributor-links {
@@ -226,39 +509,19 @@ p {
     transition: all 0.3s ease;
 }
 
-.link-pill {
-    background-color: #000;
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    text-decoration: none;
-    font-weight: 400;
-    transition: all 0.2s ease;
-}
-
-.link-pill:hover {
-    background-color: #333;
-    transform: translateY(-1px);
-}
-
 .contributor-card:hover .contributor-links {
     opacity: 1;
     transform: translateY(0);
 }
 
-.contributor-card:hover .photo-placeholder {
-    background-color: #ddd;
+.project-links {
+    display: flex;
+    gap: 8px;
 }
 
-.contributor-card:hover .keyword {
-    background-color: #e8e8e8;
-}
-
-/* Contact */
-.contact-info {
-    font-size: 16px;
-    color: #444;
+.publication-links {
+    display: flex;
+    gap: 12px;
 }
 
 .email-container {
@@ -266,208 +529,95 @@ p {
     display: inline-block;
 }
 
-.contact-info a {
-    color: #000;
-    text-decoration: none;
-    border-bottom: 1px solid #ccc;
-    transition: border-color 0.2s ease;
+.email-container a {
     cursor: pointer;
 }
 
-.contact-info a:hover {
-    border-color: #000;
-}
-
-.hover-tooltip {
+.hover-tooltip, .copied-message {
     position: absolute;
-    left: 0;
-    top: -30px;
-    font-size: 12px;
-    color: #666;
-    background-color: #f8f8f8;
-    padding: 4px 8px;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
     border-radius: 4px;
+    font-size: 12px;
     white-space: nowrap;
     opacity: 0;
-    transform: translateY(5px);
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
     pointer-events: none;
-    border: 1px solid #e5e5e5;
+}
+
+.copied-message {
+    background-color: #28a745;
 }
 
 .email-container:hover .hover-tooltip {
     opacity: 1;
-    transform: translateY(0);
-}
-
-.copied-message {
-    position: absolute;
-    left: 0;
-    top: -30px;
-    font-size: 12px;
-    color: #666;
-    background-color: #f0f8f0;
-    padding: 4px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateY(5px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-    border: 1px solid #d4edda;
+    transform: translateX(-50%) translateY(-5px);
 }
 
 .copied-message.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(-5px);
 }
 
-/* Clocks Section */
-.clocks-section {
-    padding: 40px 0 20px;
-    border-bottom: none;
+/* ==========================================================================
+   8. Mobile Navigation
+   ========================================================================== */
+
+.mobile-nav-container {
+    display: none; /* Hidden by default */
 }
 
-.clocks {
-    display: flex;
-    gap: 40px;
-    justify-content: flex-start;
-    margin-bottom: 32px;
+
+/* ==========================================================================
+   9. Responsive Design
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+    }
+    
+    .sidebar-block {
+        flex: 1;
+    }
+
+    .sidebar-block--footer {
+        margin-top: 0;
+        flex: 0 1 auto;
+    }
+
+    .main-content {
+        width: 100%;
+    }
 }
 
-.clock {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-}
-
-.clock .location {
-    font-size: 11px;
-    color: #bbb;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: left;
-}
-
-.clock .time {
-    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
-    font-size: 13px;
-    color: #888;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    text-align: left;
-}
-
-/* Footer */
-footer {
-    padding: 60px 0 40px;
-    background-color: #f8f8f8;
-    border-top: 1px solid #e5e5e5;
-}
-
-.footer-content {
-    margin-bottom: 40px;
-}
-
-.footer-info h3 {
-    font-size: 20px;
-    font-weight: 500;
-    color: #000;
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
-}
-
-.footer-info p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 24px;
-    max-width: 400px;
-}
-
-.footer-links {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 24px;
-    align-items: center;
-}
-
-.footer-links a {
-    color: #000;
-    text-decoration: none;
-    border-bottom: 1px solid #ccc;
-    transition: border-color 0.2s ease;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.footer-links a:hover {
-    border-color: #000;
-}
-
-.newsletter {
-    display: flex;
-    gap: 8px;
-    max-width: 300px;
-}
-
-.newsletter-input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 13px;
-    font-family: inherit;
-    background-color: #fff;
-    transition: border-color 0.2s ease;
-}
-
-.newsletter-input:focus {
-    outline: none;
-    border-color: #999;
-}
-
-.newsletter-input::placeholder {
-    color: #999;
-}
-
-.newsletter-button {
-    padding: 8px 16px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 13px;
-    font-family: inherit;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.newsletter-button:hover {
-    background-color: #333;
-}
-
-.footer-bottom {
-    padding-top: 0;
-}
-
-.footer-bottom p {
-    color: #999;
-    font-size: 14px;
-    margin: 0;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-    .container {
-        padding: 0 20px;
+    .page-container {
+        padding-bottom: 80px; /* Space for the fixed nav */
+    }
+
+    .sidebar {
+        display: none; /* Hide desktop sidebar */
     }
     
     .hero {
-        padding: 50px 0;
+        padding: 40px 0;
     }
     
-    .hero h1 {
+    h1 {
         font-size: 36px;
     }
     
@@ -475,24 +625,17 @@ footer {
         font-size: 18px;
     }
     
-    .research-grid {
+    .research-grid, .contributors-grid, .projects-grid {
         grid-template-columns: 1fr;
         gap: 24px;
     }
     
     .contributors-grid {
-        grid-template-columns: 1fr;
         gap: 32px;
     }
     
     .contributor-card {
-        flex-direction: row;
-        text-align: left;
         gap: 16px;
-    }
-    
-    .contributor-photo {
-        align-self: flex-start;
     }
     
     .photo-placeholder {
@@ -506,336 +649,132 @@ footer {
     }
     
     .contributor-links {
-        justify-content: flex-start;
         opacity: 1;
         transform: translateY(0);
     }
     
-    section {
-        padding: 40px 0;
-    }
-    
-    footer {
-        padding: 40px 0 30px;
-    }
-    
-    .footer-info h3 {
-        font-size: 18px;
-    }
-    
-    .footer-info p {
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-    
-    .footer-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin-bottom: 20px;
-    }
-    
-    .newsletter {
-        max-width: 100%;
-        margin-bottom: 32px;
-    }
-    
-    .newsletter-input {
-        min-width: 0;
-        flex: 1;
-    }
-    
-    .clocks {
-        gap: 24px;
-        margin-bottom: 24px;
-    }
-    
-    .footer-content {
-        margin-bottom: 32px;
-    }
-    
-    .publications-list {
-        gap: 24px;
-    }
-    
-    .publication-item {
-        padding: 20px;
-    }
-    
-    .publication-title {
-        font-size: 16px;
-    }
-    
-    .publication-meta {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .publication-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+    .publication-item, .project-item {
+        padding: 16px;
+        border-right: none;
+        border-left: none;
+        border-radius: 0;
     }
     
     .publication-item:hover {
-        margin: 0 -20px;
-        padding: 20px;
+        background: none;
     }
     
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-    
-    .project-item {
-        padding: 20px;
-    }
-    
-    .project-title {
-        font-size: 16px;
-    }
-    
-    .project-footer {
+    .publication-footer, .project-footer {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
     
-    .publication-links,
-    .publication-tags,
-    .project-links,
-    .project-tags {
-        justify-content: flex-start;
+    .publication-links, .project-links,
+    .publication-tags, .project-tags {
         width: 100%;
     }
-    
-    .publication-links {
-        justify-content: flex-start;
+
+    /* --- Mobile Nav Styles --- */
+    .mobile-nav-container {
+        display: block;
+        position: fixed;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        z-index: 1000;
+    }
+
+    .mobile-nav-trigger {
+        background: #000;
+        color: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .mobile-nav-trigger-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-nav-title {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-nav-title .sidebar-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 0;
+    }
+
+    .mobile-only {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transform: translateY(-5px);
+        transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease;
+    }
+
+    .mobile-nav-container.is-open .mobile-only {
+        opacity: 1;
+        max-height: 50px;
+        transform: translateY(0);
+        margin-top: 4px;
+        transition-delay: 0.1s;
+    }
+
+    .mobile-nav-trigger .icon {
+        font-size: 20px;
+        line-height: 1;
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-nav-container.is-open .mobile-nav-trigger .icon {
+        transform: rotate(45deg);
     }
     
-    .publication-tags {
-        justify-content: flex-start;
+    .mobile-nav-menu {
+        position: absolute;
+        bottom: calc(100% + 8px); /* 8px gap from trigger */
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     }
-    
-    .project-links {
-        justify-content: flex-start;
+
+    .mobile-nav-container.is-open .mobile-nav-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
     }
-    
-    .project-tags {
-        justify-content: flex-start;
+
+    .mobile-nav-menu .sidebar-block {
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .mobile-nav-container.is-open .mobile-nav-menu .sidebar-block:nth-child(1) {
+        transition-delay: 0.2s;
+    }
+
+    .mobile-nav-container.is-open .mobile-nav-menu .sidebar-block:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    .mobile-nav-container.is-open .mobile-nav-menu .sidebar-block {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Selection */
-::selection {
-    background-color: #000;
-    color: #fff;
-}
-
-/* Publications */
-.publications-list {
-    margin-top: 32px;
-}
-
-.publication-item {
-    padding: 24px 0;
-    border-bottom: 1px solid #e5e5e5;
-    transition: all 0.2s ease;
-}
-
-.publication-item:last-child {
-    border-bottom: none;
-}
-
-.publication-item:hover {
-    background-color: #fafafa;
-    margin: 0 -24px;
-    padding: 24px;
-    border-radius: 4px;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.publication-item:last-child:hover {
-    border-bottom: none;
-}
-
-.publication-title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #000;
-    margin-bottom: 6px;
-    line-height: 1.4;
-}
-
-.publication-meta {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.publication-authors {
-    font-weight: 400;
-}
-
-.publication-venue {
-    font-style: italic;
-}
-
-.publication-year {
-    color: #888;
-}
-
-.publication-abstract {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    max-width: 600px;
-}
-
-.publication-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.publication-links {
-    display: flex;
-    gap: 12px;
-}
-
-.publication-link {
-    color: #000;
-    text-decoration: none;
-    border-bottom: 1px solid #ccc;
-    transition: border-color 0.2s ease;
-    font-size: 13px;
-}
-
-.publication-link:hover {
-    border-color: #000;
-}
-
-.publication-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.publication-tag {
-    background-color: #f0f0f0;
-    color: #555;
-    padding: 2px 8px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 400;
-}
-
-/* Projects */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 32px;
-    margin-top: 32px;
-}
-
-.project-item {
-    border: 1px solid #e5e5e5;
-    border-radius: 4px;
-    padding: 24px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-.project-item:hover {
-    border-color: #ccc;
-    background-color: #f8f8f8;
-}
-
-.project-title {
-    font-size: 18px;
-    font-weight: 500;
-    color: #000;
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.project-status {
-    display: inline-block;
-    background-color: #f0f0f0;
-    color: #555;
-    padding: 2px 8px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 400;
-    margin-bottom: 12px;
-}
-
-.project-status.active {
-    background-color: #e8f5e8;
-    color: #2d5a2d;
-}
-
-.project-status.completed {
-    background-color: #e8e8f5;
-    color: #2d2d5a;
-}
-
-.project-description {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.5;
-    margin-bottom: 16px;
-}
-
-.project-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.project-links {
-    display: flex;
-    gap: 8px;
-}
-
-.project-link {
-    background-color: #000;
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    text-decoration: none;
-    font-weight: 400;
-    transition: all 0.2s ease;
-}
-
-.project-link:hover {
-    background-color: #333;
-    transform: translateY(-1px);
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.project-tag {
-    background-color: #f0f0f0;
-    color: #555;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 400;
-} 
