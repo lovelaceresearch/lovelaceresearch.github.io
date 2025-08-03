@@ -1,0 +1,16 @@
+{
+    "notes": [
+        {
+            "title": "On the Importance of 'Productive Friction' in AI Interfaces",
+            "date": "2024-05-15",
+            "summary": "In our rush to create seamless user experiences, we may be inadvertently designing AI systems that discourage deep thinking. This note explores the concept of 'productive friction'—thoughtfully introduced cognitive barriers that encourage users to pause, reflect, and engage more deeply with the AI's outputs.",
+            "link": "#"
+        },
+        {
+            "title": "Beyond the 'Black Box': Why We Need More Legible AI",
+            "date": "2024-03-22",
+            "summary": "The 'black box' nature of many advanced AI models poses a significant challenge to trust and accountability. I argue that we must prioritize the development of 'legible' AI systems—systems that can explain their reasoning in a way that is understandable to non-experts.",
+            "link": "#"
+        }
+    ]
+}

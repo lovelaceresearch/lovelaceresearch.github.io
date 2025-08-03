@@ -1,0 +1,16 @@
+{
+    "readingList": [
+        {
+            "title": "Thinking, Fast and Slow",
+            "author": "Daniel Kahneman",
+            "category": "Cognitive Science",
+            "summary": "A groundbreaking exploration of the two systems that drive the way we think. System 1 is fast, intuitive, and emotional; System 2 is slower, more deliberative, and more logical. Kahneman's work has profound implications for how we understand human-AI interaction."
+        },
+        {
+            "title": "The Society of Mind",
+            "author": "Marvin Minsky",
+            "category": "Artificial Intelligence",
+            "summary": "Minsky's classic work presents a theory of how intelligence can emerge from the interactions of many simple, non-intelligent agents. This book offers a compelling alternative to monolithic models of the mind and provides a rich source of inspiration for designing more modular and transparent AI systems."
+        }
+    ]
+}

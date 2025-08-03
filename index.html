@@ -1,15 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lovelace Research</title>
+    <meta name="description" content="Independent research-led innovation lab for personal & humane AI">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/slideshow.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-block">
+                <a href="/" class="sidebar-title">Lovelace Research</a>
+                <p class="sidebar-subtitle">Independent research-led innovation lab for personal & humane AI</p>
+            </div>
+            
+            <div class="sidebar-block">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="/prototypes/">Prototypes</a></li>
+                        <li><a href="/publications/">Publications</a></li>
+                        <li><a href="/opinion-notes/">Opinion Notes</a></li>
+                        <li><a href="/reading-list/">Reading List</a></li>
+                        <li><a href="/about/">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="sidebar-block sidebar-block--footer">
+                <div class="sidebar-contact">
+                    <a href="https://instagram.com/lovelaceresearch" target="_blank">IG</a>
+                    <span class="email-container">
+                        <a href="#" id="email-link" data-email="office@lovelace-research.com">office@lovelace-research.com</a>
+                        <span id="hover-tooltip" class="hover-tooltip">Copy email</span>
+                        <span id="copied-message" class="copied-message">Copied!</span>
+                    </span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="hero-slideshow">
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Personal & Humane AI</h1>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Research-led Innovation</h1>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Lovelace Research</h1>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+        <div class="mobile-nav-container">
+            <div class="mobile-nav-menu">
+                <div class="sidebar-block">
+                     <div class="sidebar-contact">
+                        <a href="https://instagram.com/lovelaceresearch" target="_blank">IG</a>
+                        <span class="email-container">
+                            <a href="#" id="email-link-mobile" data-email="office@lovelace-research.com">office@lovelace-research.com</a>
+                            <span id="hover-tooltip-mobile" class="hover-tooltip">Copy email</span>
+                            <span id="copied-message-mobile" class="copied-message">Copied!</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="/prototypes/">Prototypes</a></li>
+                            <li><a href="/publications/">Publications</a></li>
+                            <li><a href="/opinion-notes/">Opinion Notes</a></li>
+                            <li><a href="/reading-list/">Reading List</a></li>
+                            <li><a href="/about/">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="mobile-nav-trigger">
+                <div class="mobile-nav-trigger-content">
+                    <div class="mobile-nav-title">
+                        <a href="/" class="sidebar-title">Lovelace Research</a>
+                        <p class="sidebar-subtitle mobile-only">Independent research-led innovation lab for personal & humane AI</p>
+                    </div>
+                    <span class="icon">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/common.js" defer></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <script src="/slideshow.js" defer></script>
+</body>
 </html>

@@ -1,0 +1,28 @@
+{
+    "prototypes": [
+        {
+            "title": "Interactive Concept Mapper",
+            "status": "active",
+            "description": "A tool for visually exploring and organizing complex ideas using a graph-based interface. This prototype helps users build and navigate mental models of their research.",
+            "tags": ["Mental Models", "Systems Thinking", "HCI"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "View Prototype"
+                }
+            ]
+        },
+        {
+            "title": "Personal AI Alignment Simulator",
+            "status": "completed",
+            "description": "A simulation environment for testing and refining personal AI alignment strategies. Users can define their own ethical frameworks and observe how different AI agents behave.",
+            "tags": ["Personal Model Alignment", "Ethics", "Simulation"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "View Case Study"
+                }
+            ]
+        }
+    ]
+}

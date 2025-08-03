@@ -50,8 +50,9 @@ body {
 
 .main-content {
     grid-column: 4 / span 6;
-    padding-top: 0;
-    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* 32px */
 }
 
 .container {
@@ -170,12 +171,11 @@ a {
    ========================================================================== */
 
 section {
-    padding: 40px 0;
+    /* padding is now on main-content */
     border-bottom: none; 
 }
 
 #research {
-    padding-top: 0;
     padding-bottom: 0;
 }
 
@@ -184,7 +184,6 @@ section:last-of-type {
 }
 
 #projects, #publications {
-    padding: 0;
     border-bottom: none;
 }
 
@@ -193,7 +192,7 @@ section:last-of-type {
     color: #fff;
     border-radius: 8px;
     padding: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 24px; /* a bit smaller */
 }
 
 .title-block h2 {
