@@ -1,0 +1,28 @@
+{
+    "publications": [
+        {
+            "title": "A Framework for Humane AI Interaction",
+            "authors": ["Ada Lovelace", "Charles Babbage"],
+            "venue": "Journal of Conceptual Modeling",
+            "year": "2024",
+            "abstract": "This paper introduces a new framework for designing AI systems that prioritize human values and well-being. We argue that by focusing on transparency, controllability, and user agency, we can create AI that is not only powerful but also humane.",
+            "links": [
+                { "url": "#", "label": "PDF" },
+                { "url": "#", "label": "DOI" }
+            ],
+            "tags": ["Frameworks", "Mental Models", "HCI"]
+        },
+        {
+            "title": "The Illusion of Reasoning in Large Language Models",
+            "authors": ["Grace Hopper", "Alan Turing"],
+            "venue": "Workshop on AI Philosophy",
+            "year": "2023",
+            "abstract": "While large language models demonstrate impressive capabilities, their reasoning abilities are often superficial. This paper explores the limitations of current models and suggests pathways toward more robust and interpretable reasoning.",
+            "links": [
+                { "url": "#", "label": "PDF" },
+                { "url": "#", "label": "Blog Post" }
+            ],
+            "tags": ["Reasoning", "LLMs", "Futures"]
+        }
+    ]
+}
