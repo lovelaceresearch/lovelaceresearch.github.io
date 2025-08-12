@@ -1,11 +1,29 @@
 /* ==========================================================================
    1. Global & Base Styles
    ========================================================================== */
+@font-face {
+    font-family: 'Favorit Hangul';
+    src: url('fonts/ABCFavoritHangul-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Favorit Hangul';
+    src: url('fonts/ABCFavoritHangul-Medium.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    word-spacing: -0.02em;
+    font-weight: normal;
+    line-height: 1.2;
+    font-family: 'Favorit Hangul', sans-serif;
+    font-feature-settings: "zero", "ss01", "ss05", "ss06", "ss04", "ss03", "ss02", "ss05";
 }
 
 html {
@@ -34,18 +52,18 @@ body {
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr;
     min-height: 100vh;
-    gap: 16px;
-    padding: 16px;
+    gap: 12px;
+    padding: 12px;
 }
 
 .sidebar {
     grid-column: 1 / span 3;
     position: sticky;
-    top: 16px; /* Match page-container padding */
-    height: calc(100vh - 32px); /* (16px * 2) */
+    top: 12px; /* Match page-container padding */
+    height: calc(100vh - 24px); /* (12px * 2) */
     display: flex;
     flex-direction: column;
-    gap: 8px; 
+    gap: 12px; 
 }
 
 .main-content {
@@ -103,10 +121,10 @@ a {
    ========================================================================== */
 
 .sidebar-block {
-    background: #000;
+    background: #1a1a1a;
     color: #fff;
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 4px;
+    padding: 12px 12px 10px;
     display: flex;
     flex-direction: column;
 }
@@ -188,10 +206,10 @@ section:last-of-type {
 }
 
 .title-block {
-    background: #000;
+    background: #1a1a1a;
     color: #fff;
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 4px;
+    padding: 12px 12px 10px;
     margin-bottom: 24px; /* a bit smaller */
 }
 
@@ -203,7 +221,7 @@ section:last-of-type {
 }
 
 .title-block + p {
-    padding-left: 16px;
+    padding-left: 12px;
 }
 
 .hero {
@@ -250,7 +268,7 @@ section:last-of-type {
 /* --- Grids --- */
 .research-grid, .contributors-grid, .projects-grid {
     display: grid;
-    gap: 16px;
+    gap: 12px;
     margin-top: 32px;
 }
 
@@ -274,7 +292,7 @@ section:last-of-type {
 /* --- Research Items --- */
 .research-item {
     border: 1px solid #e5e5e5;
-    padding: 16px;
+    padding: 12px 12px 10px;
     border-radius: 4px;
     transition: all 0.2s ease;
     cursor: pointer;
@@ -300,7 +318,7 @@ section:last-of-type {
 .project-item {
     border: 1px solid #e5e5e5;
     border-radius: 4px;
-    padding: 16px;
+    padding: 12px 12px 10px;
     transition: all 0.2s ease;
     cursor: pointer;
 }
@@ -345,7 +363,7 @@ section:last-of-type {
 
 /* --- Publication Items --- */
 .publication-item {
-    padding: 24px 16px;
+    padding: 12px 12px 10px;
     border-bottom: 1px solid #e5e5e5;
     transition: all 0.2s ease;
 }
@@ -391,7 +409,7 @@ section:last-of-type {
 .contributor-card {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 12px;
     transition: all 0.2s ease;
 }
 
@@ -579,7 +597,7 @@ section:last-of-type {
     .page-container {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 12px;
     }
     
     .sidebar {
@@ -626,15 +644,15 @@ section:last-of-type {
     
     .research-grid, .contributors-grid, .projects-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 12px;
     }
     
     .contributors-grid {
-        gap: 32px;
+        gap: 12px;
     }
     
     .contributor-card {
-        gap: 16px;
+        gap: 12px;
     }
     
     .photo-placeholder {
@@ -653,7 +671,7 @@ section:last-of-type {
     }
     
     .publication-item, .project-item {
-        padding: 16px;
+        padding: 12px 12px 10px;
         border-right: none;
         border-left: none;
         border-radius: 0;
@@ -678,16 +696,16 @@ section:last-of-type {
     .mobile-nav-container {
         display: block;
         position: fixed;
-        bottom: 16px;
-        left: 16px;
-        right: 16px;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
         z-index: 1000;
     }
 
     .mobile-nav-trigger {
         background: #000;
         color: #fff;
-        padding: 16px;
+        padding: 12px;
         border-radius: 8px;
         cursor: pointer;
     }
@@ -738,12 +756,12 @@ section:last-of-type {
     
     .mobile-nav-menu {
         position: absolute;
-        bottom: calc(100% + 8px); /* 8px gap from trigger */
+        bottom: calc(100% + 12px); /* 12px gap from trigger */
         left: 0;
         right: 0;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);

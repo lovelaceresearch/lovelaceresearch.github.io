@@ -36,16 +36,28 @@
   // Helper – mobile navigation toggle
   //--------------------------------------------------------------
   function setupMobileNav() {
-    const trigger = document.querySelector('.mobile-nav-trigger');
-    const menu    = document.querySelector('.mobile-nav-menu');
+    const container = document.querySelector('.mobile-nav-container');
+    if (!container) return;
+
+    const trigger = container.querySelector('.mobile-nav-trigger');
     const icon    = trigger ? trigger.querySelector('.icon') : null;
 
-    if (!trigger || !menu) return;
+    if (!trigger) return;
 
-    trigger.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      if (icon) icon.textContent = open ? '−' : '+'; // show minus when open
+    // Prevent default navigation and toggle drawer on any tap within trigger
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = container.classList.toggle('is-open');
+      if (icon) icon.textContent = '+'; // icon rotates via CSS when open
     });
+
+    // Extra safety: prevent the title link inside trigger from navigating
+    const titleLink = trigger.querySelector('a.sidebar-title');
+    if (titleLink) {
+      titleLink.addEventListener('click', (e) => {
+        e.preventDefault();
+      });
+    }
   }
 
   //--------------------------------------------------------------
