@@ -1,9 +1,13 @@
 {
     "prototypes": [
         {
-            "title": "Interactive",
+            "number": "001",
+            "title": "Synapse",
             "status": "active",
+            "collaborator": "Imperial College London",
             "description": "A tool for visually exploring and organizing complex ideas using a graph-based interface. This prototype helps users build and navigate mental models of their research.",
+            "date": "Jan 2025 - Present",
+            "image": "/placeholder-prototype-001.jpg",
             "tags": ["Mental Models", "Systems Thinking", "HCI"],
             "links": [
                 {
@@ -13,9 +17,28 @@
             ]
         },
         {
-            "title": "Testing one more",
+            "number": "002",
+            "title": "Confidential",
             "status": "active",
-            "description": "A tool for visually exploring and organizing complex ideas using a graph-based interface. This prototype helps users build and navigate mental models of their research.",
+            "collaborator": "Map Project Office",
+            "description": "Future of Personal AI",
+            "date": "May - Present",
+            "image": "/placeholder-prototype-002.jpg",
+            "tags": ["AI", "HCI"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "View Prototype"
+                }
+            ]
+        },
+        {
+            "number": "003",
+            "title": "RssCast",
+            "status": "active",
+            "description": "iOS app Rss feed into daily podcast generator",
+            "date": "Aug 2025 - Present",
+            "image": "/placeholder-prototype-002.jpg",
             "tags": ["Mental Models", "Systems Thinking", "HCI"],
             "links": [
                 {
@@ -25,14 +48,62 @@
             ]
         },
         {
-            "title": "Personal AI Alignment Simulator",
-            "status": "completed",
-            "description": "A simulation environment for testing and refining personal AI alignment strategies. Users can define their own ethical frameworks and observe how different AI agents behave.",
-            "tags": ["Personal Model Alignment", "Ethics", "Simulation"],
+            "number": "004",
+            "title": "Finger Gesture Ring",
+            "status": "active",
+            "description": "mmWave wearable that allows users to control AR with subtle finger gestures.",
+            "date": "Aug 2025 - Present",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["AR", "mmWave", "HCI"],
             "links": [
                 {
                     "url": "#",
                     "label": "View Case Study"
+                }
+            ]
+        },
+        {
+            "number": "005",
+            "title": "Local LLM API for browser",
+            "status": "draft",
+            "description": "A local LLM API for browser that allows users to use local llm on demand for websites.",
+            "date": "Planning Stage",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["LLM", "Browser", "API"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "Open for collaboration"
+                }
+            ]
+        },
+        {
+            "number": "006",
+            "title": "Everychat",
+            "status": "active",
+            "description": "Visualising the branches of conversation with ai llm",
+            "date": "Aug 2025 - Present",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["LLM", "Browser", "API"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "Open for collaboration"
+                }
+            ]
+        },
+        {
+            "number": "007",
+            "title": "Comment",
+            "status": "draft",
+            "description": "Canvas, comment with AI, solve or apply",
+            "date": "Planning Stage",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["LLM", "Browser", "API"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "Open for collaboration"
                 }
             ]
         }
