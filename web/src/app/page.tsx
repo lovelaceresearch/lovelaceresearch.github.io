@@ -30,23 +30,9 @@ export default function Home() {
           </div>
         </div>
       </aside>
-      <main className="main-content">
-        <section className="hero-slideshow">
-          <div className="slide active">
-            <div className="slide-content">
-              <h1>Personal & Humane AI</h1>
-            </div>
-          </div>
-          <div className="slide">
-            <div className="slide-content">
-              <h1>Research-led Innovation</h1>
-            </div>
-          </div>
-          <div className="slide">
-            <div className="slide-content">
-              <h1>Lovelace Research</h1>
-            </div>
-          </div>
+      <main className="main-content home-hero">
+        <section className="hero-center">
+          <h1 className="blend-difference">Human-Centred AI.</h1>
         </section>
       </main>
       <div className="mobile-nav-container">

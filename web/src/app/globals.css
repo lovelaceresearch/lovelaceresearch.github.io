@@ -41,6 +41,12 @@ body {
 .main-content { grid-column: 4 / span 6; display: flex; flex-direction: column; gap: 2rem; }
 .container { padding: 0; }
 
+/* Home hero centering and blend mode */
+.home-hero { align-items: center; justify-content: center; }
+.hero-center { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 24px); }
+.hero-center h1 { font-size: 56px; text-align: center; }
+.blend-difference { mix-blend-mode: difference; color: #fff; }
+
 h1, h2, h3, h4, h5, h6 { font-weight: 400; letter-spacing: -0.02em; }
 h1 { font-size: 48px; font-weight: 300; margin-bottom: 24px; letter-spacing: -0.03em; }
 h2 { font-size: 28px; margin-bottom: 32px; }
@@ -50,10 +56,10 @@ a { color: #000; text-decoration: none; }
 
 .sidebar-block { background: #1a1a1a; color: #fff; border-radius: 4px; padding: 12px 12px 10px; display: flex; flex-direction: column; }
 .sidebar-block--footer { margin-top: auto; }
-.sidebar-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; }
+.sidebar-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; align-self: flex-start; display: inline-block; }
 .sidebar-subtitle { font-size: 14px; color: #a0a0a0; font-weight: 300; margin-bottom: 0; }
 .sidebar-nav ul { list-style: none; }
-.sidebar-nav li a { color: #fff; font-size: 16px; display: block; padding: 0; transition: color 0.2s ease; }
+.sidebar-nav li a { color: #fff; font-size: 16px; display: inline; padding: 0; transition: color 0.2s ease; }
 .sidebar-nav li a:hover { color: #888; }
 .sidebar-nav li a.nav-active { font-weight: 500; }
 .sidebar-contact { font-size: 13px; color: #a0a0a0; display: flex; justify-content: space-between; align-items: center; }
@@ -141,6 +147,8 @@ section:last-of-type { border-bottom: none; }
   .sidebar { display: none; }
   .hero { padding: 40px 0; }
   h1 { font-size: 36px; }
+  .hero-center { min-height: calc(100vh - 104px); }
+  .hero-center h1 { font-size: 40px; }
   .hero .subtitle { font-size: 18px; }
   .research-grid, .contributors-grid, .projects-grid { grid-template-columns: 1fr; gap: 12px; }
   .contributors-grid { gap: 12px; }
