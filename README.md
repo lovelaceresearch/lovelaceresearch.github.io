@@ -30,7 +30,3 @@ Project structure:
 ## Archived static site (html-css-js)
 
 The `html-css-js` branch preserves the original static site (HTML/CSS/JS). It is no longer deployed.
-
----
-
-© 2024 Lovelace Research. All rights reserved.
