@@ -1,43 +1,35 @@
 # Lovelace Research
 
-Official website for Lovelace Research - an independent research-led innovation lab for personal & humane AI.
+Official website for Lovelace Research — an independent research-led innovation lab for personal & humane AI.
 
-## About
+## Branches
 
-This website showcases our research focus areas, approach, and mission to advance artificial intelligence through thoughtful research and design.
+- nextjs: Active production site built with Next.js (code lives under `web/`). Deployed on Vercel. This is the default branch.
+- html-css-js: Archived static site (original HTML/CSS/JS version) preserved for reference.
 
-## Features
+## Development (Next.js)
 
-- **Minimal Design**: Clean, left-aligned layout with modern typography
-- **Responsive**: Optimized for all device sizes
-- **Fast Loading**: Lightweight with optimized assets
-- **Accessible**: Semantic HTML and proper contrast ratios
+Local dev:
 
-## Research Areas
+1. `cd web`
+2. `npm install`
+3. `npm run dev`
 
-- Mental Models
-- Frameworks  
-- Futures
-- System Architecture
-- Fine-tuning
-- Personal Model Alignment
-- Reasoning
+Project structure:
 
-## Development
+- `web/src/app/*`: App Router pages (`/`, `/about`, `/publications`, `/reading-list`, `/opinion-notes`, `/prototypes`)
+- `web/public/data/*.json`: Content sources for data-driven pages
+- `web/public/fonts/*`: Font files
+- `web/src/app/globals.css`: Global styles (ported from the original site)
 
-This is a static website built with HTML and CSS, designed to be hosted on GitHub Pages.
+## Deployment (Vercel)
 
-### Local Development
+- Production: Push to `nextjs` → Vercel builds and deploys
+- Previews: Pull Requests → preview deployments (unique URLs)
 
-Simply open `index.html` in your browser to view the site locally.
+## Archived static site (html-css-js)
 
-### Deployment
-
-The site is automatically deployed via GitHub Pages when changes are pushed to the main branch.
-
-## Design Philosophy
-
-The website embodies our values of simplicity, clarity, and human-centered design. The minimal aesthetic reflects our focus on substance over style, while maintaining a professional and approachable presence.
+The `html-css-js` branch preserves the original static site (HTML/CSS/JS). It is no longer deployed.
 
 ---
 
