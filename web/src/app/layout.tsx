@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const favoritRegular = localFont({
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en" className={`${favoritRegular.variable}`}>
       <body>
         {children}
+        <Analytics />
       </body>
     </html>
   );
