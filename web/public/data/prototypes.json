@@ -1,7 +1,7 @@
 {
     "prototypes": [
         {
-            "title": "Interactive Concept Mapper",
+            "title": "Interactive",
             "status": "active",
             "description": "A tool for visually exploring and organizing complex ideas using a graph-based interface. This prototype helps users build and navigate mental models of their research.",
             "tags": ["Mental Models", "Systems Thinking", "HCI"],
