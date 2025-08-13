@@ -1,4 +1,3 @@
-import ClientScripts from "../(components)/ClientScripts";
 import Link from "next/link";
 export const metadata = {
   title: "About - Lovelace Research",
@@ -116,7 +115,7 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-      <ClientScripts />
+      
     </div>
   );
 }

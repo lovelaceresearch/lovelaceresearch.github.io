@@ -9,11 +9,56 @@ Official website for Lovelace Research — an independent research-led innovatio
 
 ## Development (Next.js)
 
-Local dev:
+### Prerequisites
+- Node.js (v18+ recommended)
+- VS Code with Cursor editor (or any editor)
+- Terminal access
 
-1. `cd web`
-2. `npm install`
-3. `npm run dev`
+### Local Development Setup
+
+1. **Navigate to the web directory:**
+   ```bash
+   cd web
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Preview the site:**
+   - Open your browser and go to: `http://localhost:3000`
+   - The site will automatically reload when you make changes
+   - Check your terminal for any error messages
+
+### Development Tips for VS Code/Cursor
+
+- **No extensions required** - Next.js runs its own development server
+- **Hot reload** - Changes save automatically and refresh the browser
+- **Terminal integration** - Use VS Code's integrated terminal (`Ctrl+`` ` or `Cmd+`` `)
+- **Port configuration** - The dev server runs on port 3000 by default (configured in `package.json`)
+- **Error debugging** - Check both the terminal and browser console for errors
+
+### Useful Commands
+
+```bash
+# Development server (with hot reload)
+npm run dev
+
+# Production build (for testing)
+npm run build
+
+# Start production server (after build)
+npm start
+
+# Lint code
+npm run lint
+```
 
 Project structure:
 

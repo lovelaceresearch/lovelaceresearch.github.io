@@ -1,4 +1,3 @@
-import ClientScripts from "./(components)/ClientScripts";
 import Link from "next/link";
 
 export default function Home() {
@@ -69,7 +68,7 @@ export default function Home() {
         </div>
       </div>
       {/* Load legacy client scripts for email copy + slideshow */}
-      <ClientScripts />
+      
     </div>
   );
 }
