@@ -1,4 +1,5 @@
 import Sidebar from "../(components)/Sidebar";
+import AboutClient from "./AboutClient";
 
 export const metadata = {
   title: "About - Lovelace Research",
@@ -9,50 +10,50 @@ export default function AboutPage() {
   return (
     <div className="page-container">
       <Sidebar />
-      <main className="main-content">
-        <section className="hero">
+      <main className="main-content" style={{ gap: '12px' }}>
+        <AboutClient />
+
+        <section id="story">
           <div className="container">
-            <h1>Independent research-led innovation lab for personal & humane AI</h1>
-            <p className="subtitle">Alternative research, Innovative product, Thoughtful impact.</p>
-            <p>
-              Lovelace Research aims to be a new PARC, infused with design thinking.
-              We believe in fundamental paradigm redesign that ultimately translates into
-              transformative products.
-            </p>
-            <p className="description">
-              We explore fundamental questions about AI systems, focusing on mental models, frameworks,
-              and architectures that prioritize human values and personal alignment. Our work aims to
-              create meaningful change in how we think about and build AI technologies.
-            </p>
+            <div className="title-block">
+              <h2>Story</h2>
+            </div>
+            <img 
+              src="/images/general/imperial.jpg" 
+              alt="Imperial College London" 
+              className="story-image"
+              style={{
+                width: '100%',
+                height: 'auto',
+                marginTop: '4px',
+                marginBottom: '12px',
+                borderRadius: '4px'
+              }}
+            />
+            <div className="story-content" style={{ paddingLeft: '12px', paddingRight: '12px' }}>
+              <p>
+                We believe that meaningful progress in AI requires a fundamental rethinking of current paradigms.
+                Our methodology combines rigorous research with practical application, bringing together expertise 
+                from AI research, design, and human-computer interaction.
+              </p>
+              <p>
+                Our approach emphasizes research-led innovation that prioritizes long-term impact over short-term gains,
+                applying design thinking principles to technical AI research with a focus on personal and humane AI 
+                that augments human capabilities.
+              </p>
+            </div>
           </div>
         </section>
 
         <section id="contributors">
           <div className="container">
             <div className="title-block">
-              <h2>Contributors</h2>
+              <h2>contributors</h2>
             </div>
-            <p>Our interdisciplinary team brings together expertise from AI research, design, and human-computer interaction.</p>
-            <div className="contributors-grid" id="contributors-grid" />
-          </div>
-        </section>
-
-        <section id="approach">
-          <div className="container">
-            <div className="title-block">
-              <h2>Approach</h2>
+            <div style={{ paddingLeft: '12px', paddingRight: '12px' }}>
+              <p>Our interdisciplinary team brings together expertise from AI research, design, and human-computer interaction.</p>
+              <div className="contributors-grid" id="contributors-grid" />
             </div>
-            <p>
-              We believe that meaningful progress in AI requires a fundamental rethinking of current paradigms.
-              Our methodology combines rigorous research with practical application.
-            </p>
-            <ul className="approach-points">
-              <li>Research-led innovation that prioritizes long-term impact over short-term gains</li>
-              <li>Design thinking principles applied to technical AI research</li>
-              <li>Focus on personal and humane AI that augments human capabilities</li>
-              <li>Interdisciplinary collaboration across technology, design, and social sciences</li>
-              <li>Open research culture that shares insights with the broader community</li>
-            </ul>
           </div>
         </section>
       </main>

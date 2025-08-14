@@ -122,6 +122,9 @@ export default function PrototypesPage() {
         <section id="projects">
           <div className="container">
             <div className="title-block"><h2>Prototypes</h2></div>
+            <div className="subtitle-block">
+              <h2>Building 20 prototypes until the end of 2026.</h2>
+            </div>
             <div className="prototypes-grid">
               {prototypes.map((prototype: Prototype, i: number) => (
                                  <div 
