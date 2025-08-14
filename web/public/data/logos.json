@@ -1,0 +1,52 @@
+{
+  "logos": [
+    {
+      "src": "/images/logos/logo1.svg",
+      "alt": "Company Logo 1"
+    },
+    {
+      "src": "/images/logos/logo2.svg",
+      "alt": "Company Logo 2"
+    },
+    {
+      "src": "/images/logos/logo3.svg",
+      "alt": "Company Logo 3"
+    },
+    {
+      "src": "/images/logos/logo4.svg",
+      "alt": "Company Logo 4"
+    },
+    {
+      "src": "/images/logos/logo5.svg",
+      "alt": "Company Logo 5"
+    },
+    {
+      "src": "/images/logos/logo6.svg",
+      "alt": "Company Logo 6"
+    },
+    {
+      "src": "/images/logos/logo7.svg",
+      "alt": "Company Logo 7"
+    },
+    {
+      "src": "/images/logos/logo8.svg",
+      "alt": "Company Logo 8"
+    },
+    {
+      "src": "/images/logos/logo9.svg",
+      "alt": "Company Logo 9"
+    },
+    {
+      "src": "/images/logos/logo10.svg",
+      "alt": "Company Logo 10"
+    },
+    {
+      "src": "/images/logos/logo11.svg",
+      "alt": "Company Logo 11"
+    },
+    {
+      "src": "/images/logos/logo12.svg",
+      "alt": "Company Logo 12"
+    }
+  ]
+}

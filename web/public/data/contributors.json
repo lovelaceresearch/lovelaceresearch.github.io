@@ -1,3 +1,28 @@
 {
-  "contributors": []
+  "contributors": [
+    {
+      "name": "Chanwoo Lee",
+      "city": "London",
+      "role": "Founder",
+      "affiliation": "Imperial College London",
+      "bio": "Leading research in personal AI systems and human-AI interaction. Focuses on creating AI that understands and adapts to individual user needs.",
+      "image": "/images/contributors/chanwoo.jpg",
+      "links": [
+        {
+          "url": "https://linkedin.com/in/alicejohnson",
+          "label": "LinkedIn"
+        }
+      ]
+    },
+    {
+      "name": "Aida",
+      "city": "Web",
+      "role": "AI SW Engineer",
+      "affiliation": "",
+      "bio": "Specializes in human-centered design for AI interfaces. Creates intuitive and empathetic user experiences that bridge the gap between humans and AI.",
+      "image": "/images/avatars/david.jpg",
+      "links": [
+      ]
+    }
+  ]
 }
