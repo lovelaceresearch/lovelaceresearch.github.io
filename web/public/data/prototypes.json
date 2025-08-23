@@ -35,7 +35,7 @@
         {
             "number": "003",
             "title": "RssCast",
-            "status": "active",
+            "status": "draft",
             "description": "iOS app Rss feed into daily podcast generator",
             "date": "Aug 2025 - Present",
             "image": "/placeholder-prototype-002.jpg",
@@ -49,9 +49,9 @@
         },
         {
             "number": "004",
-            "title": "Finger Gesture Ring",
+            "title": "Tact Ring",
             "status": "active",
-            "description": "mmWave wearable that allows users to control AR with subtle finger gestures.",
+            "description": "Future of AI-AR, subtle finger gestures",
             "date": "Aug 2025 - Present",
             "image": "/placeholder-prototype-003.jpg",
             "tags": ["AR", "mmWave", "HCI"],
@@ -59,21 +59,6 @@
                 {
                     "url": "#",
                     "label": "View Case Study"
-                }
-            ]
-        },
-        {
-            "number": "005",
-            "title": "Local LLM API for browser",
-            "status": "draft",
-            "description": "A local LLM API for browser that allows users to use local llm on demand for websites.",
-            "date": "Planning Stage",
-            "image": "/placeholder-prototype-003.jpg",
-            "tags": ["LLM", "Browser", "API"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "Open for collaboration"
                 }
             ]
         },

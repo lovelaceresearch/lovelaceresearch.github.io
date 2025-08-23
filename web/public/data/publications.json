@@ -24,5 +24,42 @@
             ],
             "tags": ["Reasoning", "LLMs", "Futures"]
         }
+    ],
+    "pastPublications": [
+        {
+            "title": "Designing Ethical AI Systems: A Historical Perspective",
+            "authors": ["Katherine Johnson", "Margaret Hamilton"],
+            "venue": "International Conference on Computer Ethics",
+            "year": "2022",
+            "abstract": "Drawing from the history of computing and ethical frameworks, this paper proposes guidelines for developing AI systems that align with human values and societal needs.",
+            "links": [
+                { "url": "#", "label": "PDF" },
+                { "url": "#", "label": "Archive" }
+            ],
+            "tags": ["Ethics", "History", "Guidelines"]
+        },
+        {
+            "title": "Understanding Bias in Machine Learning Models",
+            "authors": ["Dorothy Vaughan", "Mary Jackson"],
+            "venue": "Journal of AI Fairness",
+            "year": "2021",
+            "abstract": "This study examines various sources of bias in machine learning models and proposes methods for detection and mitigation to ensure fair and equitable AI systems.",
+            "links": [
+                { "url": "#", "label": "PDF" },
+                { "url": "#", "label": "Code" }
+            ],
+            "tags": ["Bias", "Fairness", "Machine Learning"]
+        },
+        {
+            "title": "The Role of Human Oversight in Automated Decision Making",
+            "authors": ["Frances Allen", "Barbara Liskov"],
+            "venue": "Symposium on Human-AI Collaboration",
+            "year": "2020",
+            "abstract": "As AI systems become more prevalent in decision-making processes, this paper explores the critical importance of maintaining human oversight and control.",
+            "links": [
+                { "url": "#", "label": "PDF" }
+            ],
+            "tags": ["Human-AI", "Decision Making", "Oversight"]
+        }
     ]
 }

@@ -188,6 +188,14 @@ section:last-of-type { border-bottom: none; }
 .project-links { display: flex; gap: 8px; }
 .publication-links { display: flex; gap: 12px; }
 
+/* Past Publications Section */
+.past-publications-section { 
+  margin-top: 48px; 
+  padding-top: 32px; 
+}
+
+
+
 .email-container { position: relative; display: inline-block; }
 .email-container a { cursor: pointer; }
 .hover-tooltip, .copied-message { position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); background-color: #333; color: #fff; padding: 5px 10px; border-radius: 4px; font-size: 12px; white-space: nowrap; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }

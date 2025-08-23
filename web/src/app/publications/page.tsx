@@ -19,6 +19,33 @@ async function getData() {
 
 export default async function PublicationsPage() {
   const data = await getData();
+  
+  const renderPublications = (publications: { title: string; authors?: string[]; venue?: string; year?: string; abstract?: string; tags?: string[]; links?: { url: string; label: string }[] }[]) => {
+    return publications?.map((p, i) => (
+      <div className="publication-item" key={i}>
+        <div className="publication-title">{p.title}</div>
+        <div className="publication-meta">
+          <span>{p.authors?.join(', ')} · </span>
+          <span className="publication-venue">{p.venue}</span>
+          <span> · <span className="publication-year">{p.year}</span></span>
+        </div>
+        {p.abstract && <div className="publication-abstract">{p.abstract}</div>}
+        <div className="publication-footer">
+          <div className="publication-tags">
+            {p.tags?.map((t: string, j: number) => (
+              <span key={j} className="publication-tag">{t}</span>
+            ))}
+          </div>
+          <div className="publication-links">
+            {p.links?.map((l: { url: string; label: string }, k: number) => (
+              <a key={k} className="publication-link" href={l.url} target="_blank">{l.label}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    ));
+  };
+
   return (
     <div className="page-container">
       <Sidebar />
@@ -27,32 +54,21 @@ export default async function PublicationsPage() {
           <div className="container">
             <div className="title-block"><h2>Publications</h2></div>
             <div className="publications-list">
-              {data.publications?.map((p: { title: string; authors?: string[]; venue?: string; year?: string; abstract?: string; tags?: string[]; links?: { url: string; label: string }[] }, i: number) => (
-                <div className="publication-item" key={i}>
-                  <div className="publication-title">{p.title}</div>
-                  <div className="publication-meta">
-                    <span>{p.authors?.join(', ')} · </span>
-                    <span className="publication-venue">{p.venue}</span>
-                    <span> · <span className="publication-year">{p.year}</span></span>
-                  </div>
-                  {p.abstract && <div className="publication-abstract">{p.abstract}</div>}
-                  <div className="publication-footer">
-                    <div className="publication-tags">
-                      {p.tags?.map((t: string, j: number) => (
-                        <span key={j} className="publication-tag">{t}</span>
-                      ))}
-                    </div>
-                    <div className="publication-links">
-                      {p.links?.map((l: { url: string; label: string }, k: number) => (
-                        <a key={k} className="publication-link" href={l.url} target="_blank">{l.label}</a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
+              {renderPublications(data.publications)}
             </div>
           </div>
         </section>
+        
+        {data.pastPublications && data.pastPublications.length > 0 && (
+          <section id="past-publications">
+            <div className="container">
+              <div className="title-block"><h2>Past Publications</h2></div>
+              <div className="publications-list past-publications-list">
+                {renderPublications(data.pastPublications)}
+              </div>
+            </div>
+          </section>
+        )}
       </main>
     </div>
   );
