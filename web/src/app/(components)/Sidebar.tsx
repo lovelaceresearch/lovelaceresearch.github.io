@@ -3,8 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import EmailCopy from './EmailCopy';
+import PageNav from './PageNav';
 
-export default function Sidebar() {
+interface SidebarProps {
+  pageNavSections?: { id: string; title: string }[];
+}
+
+export default function Sidebar({ pageNavSections }: SidebarProps) {
     const pathname = usePathname();
 
     return (
@@ -23,6 +28,7 @@ export default function Sidebar() {
                     </ul>
                 </nav>
             </div>
+            <PageNav sections={pageNavSections || []} />
             <div className="sidebar-block sidebar-block--footer" style={{ borderRadius: '4px' }}>
                 <div className="sidebar-contact">
                     <a href="https://instagram.com/lovelaceresearch" target="_blank" rel="noopener noreferrer">IG</a>

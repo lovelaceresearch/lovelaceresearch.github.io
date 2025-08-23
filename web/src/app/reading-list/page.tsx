@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { promises as fs } from "fs";
 import path from "path";
 import Sidebar from "../(components)/Sidebar";
+import Footer from "../(components)/Footer";
 
 export const metadata: Metadata = {
   title: "Reading List - Lovelace Research",
@@ -39,6 +40,7 @@ export default async function ReadingListPage() {
             </div>
           </div>
         </section>
+        <Footer />
       </main>
     </div>
   );

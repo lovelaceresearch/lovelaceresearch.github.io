@@ -63,6 +63,21 @@
             ]
         },
         {
+            "number": "005",
+            "title": "ShortTerm",
+            "status": "draft",
+            "description": "Smart terminal with shortcuts and AI",
+            "date": "Aug 2025 - Present",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["LLM", "Browser", "API"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "Open for collaboration"
+                }
+            ]
+        },
+        {
             "number": "006",
             "title": "Everychat",
             "status": "active",
@@ -89,6 +104,53 @@
                 {
                     "url": "#",
                     "label": "Open for collaboration"
+                }
+            ]
+        }
+    ],
+    "pastPrototypes": [
+        {
+            "number": "2023",
+            "title": "Learning Canvas",
+            "description": "Interactive visualization tool for mapping learning paths and knowledge connections",
+            "collaborator": "Stanford University",
+            "date": "Jan - Mar 2023",
+            "image": "/placeholder-past-001.jpg",
+            "tags": ["Education", "Visualization", "Learning"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "View Archive"
+                }
+            ]
+        },
+        {
+            "number": "2022",
+            "title": "Memory Palace",
+            "description": "Digital tool for creating and navigating memory palaces for knowledge retention",
+            "collaborator": "MIT Media Lab",
+            "date": "Aug - Dec 2022",
+            "image": "/placeholder-past-002.jpg",
+            "tags": ["Memory", "Cognitive Science", "HCI"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "View Archive"
+                }
+            ]
+        },
+        {
+            "number": "2021",
+            "title": "Research Network",
+            "description": "Platform for visualizing academic research connections and collaboration networks",
+            "collaborator": "Carnegie Mellon",
+            "date": "Mar - Nov 2021",
+            "image": "/placeholder-past-003.jpg",
+            "tags": ["Research", "Networks", "Academia"],
+            "links": [
+                {
+                    "url": "#",
+                    "label": "View Archive"
                 }
             ]
         }

@@ -5,6 +5,7 @@ import Sidebar from "../(components)/Sidebar";
 import AboutClient from "./AboutClient";
 import ContributorsList from "../(components)/ContributorsList";
 import LogoWall from "../(components)/LogoWall";
+import Footer from "../(components)/Footer";
 
 interface Contributor {
   name: string;
@@ -165,6 +166,7 @@ export default function AboutPage() {
             <LogoWall />
           </div>
         </section>
+        <Footer />
       </main>
       <aside 
         className="hover-info-area"

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Sidebar from "../(components)/Sidebar";
+import Footer from "../(components)/Footer";
 
 interface Prototype {
   number: string;
@@ -18,6 +19,7 @@ interface Prototype {
 export default function PrototypesPage() {
   const [hoveredPrototype, setHoveredPrototype] = useState<Prototype | null>(null);
   const [prototypes, setPrototypes] = useState<Prototype[]>([]);
+  const [pastPrototypes, setPastPrototypes] = useState<Prototype[]>([]);
   const [isScrolling, setIsScrolling] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -31,8 +33,10 @@ export default function PrototypesPage() {
         const response = await fetch("/data/prototypes.json");
         const data = await response.json();
         setPrototypes(data.prototypes || []);
+        setPastPrototypes(data.pastPrototypes || []);
       } catch {
         setPrototypes([]);
+        setPastPrototypes([]);
       }
     }
     loadData();
@@ -152,6 +156,43 @@ export default function PrototypesPage() {
             </div>
           </div>
         </section>
+        
+        {pastPrototypes.length > 0 && (
+          <section id="past-prototypes">
+            <div className="container">
+              <div className="title-block"><h2>Past Prototypes</h2></div>
+              <div className="subtitle-block">
+                <h2>Previous explorations and completed research prototypes.</h2>
+              </div>
+              <div className="past-prototypes-grid">
+                {pastPrototypes.map((prototype: Prototype, i: number) => (
+                  <div 
+                    key={i} 
+                    className="prototype-item"
+                    onMouseEnter={() => handleHoverEnter(prototype)}
+                    onMouseLeave={handleHoverLeave}
+                  >
+                    <div className="prototype-header">
+                      <div className="prototype-number">{prototype.number}</div>
+                    </div>
+                    <div className="prototype-content">
+                      <div className="prototype-left">
+                        <div className="prototype-title">{prototype.title}</div>
+                      </div>
+                      <div className="prototype-right">
+                        <div className="prototype-description">{prototype.description}</div>
+                        {prototype.collaborator && (
+                          <a href="#" className="prototype-collaborator-link">{prototype.collaborator}</a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+        <Footer />
       </main>
       <aside 
         className="hover-info-area"
