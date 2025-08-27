@@ -42,10 +42,10 @@ export default function AboutPage() {
                 img.loading = "eager";
                 img.src = url;
                 const finalize = () => resolve();
-                if ("decode" in img) {
+                const decodeFn = (img as HTMLImageElement & { decode?: () => Promise<void> }).decode;
+                if (typeof decodeFn === "function") {
                   // Attempt full decode to avoid paint delay on hover
-                  // @ts-expect-error decode exists on HTMLImageElement in modern browsers
-                  img.decode().then(finalize).catch(finalize);
+                  decodeFn.call(img).then(finalize).catch(finalize);
                 } else {
                   img.onload = finalize;
                   img.onerror = finalize;
