@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface Logo {
   src: string;
@@ -31,7 +32,16 @@ export default function LogoWall() {
     <div className="logo-wall">
       {logos.map((logo, index) => (
         <div key={index} className="logo-item">
-          <img src={logo.src} alt={logo.alt} />
+          <div className="logo-img-wrapper">
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              fill
+              sizes="(max-width: 768px) 50vw, 25vw"
+              style={{ objectFit: 'contain', backgroundColor: 'transparent' }}
+              priority={index < 4}
+            />
+          </div>
         </div>
       ))}
     </div>

@@ -30,11 +30,11 @@ export default function ImageBackground() {
         
         // Preload images to prevent flashing
         const preloadImages = async () => {
-          const imagePromises = paths.map((src) => {
-            return new Promise((resolve) => {
+          const imagePromises = paths.map((src: string) => {
+            return new Promise<void>((resolve) => {
               const img = new Image();
-              img.onload = resolve;
-              img.onerror = resolve; // Continue even if image fails to load
+              img.onload = () => resolve();
+              img.onerror = () => resolve(); // Continue even if image fails to load
               img.src = src;
             });
           });
@@ -60,10 +60,10 @@ export default function ImageBackground() {
     if (!imagePaths[newIndex]) return;
     
     // Preload the new image to ensure it's ready
-    await new Promise((resolve) => {
+    await new Promise<void>((resolve) => {
       const img = new Image();
-      img.onload = resolve;
-      img.onerror = resolve;
+      img.onload = () => resolve();
+      img.onerror = () => resolve();
       img.src = imagePaths[newIndex];
     });
     
