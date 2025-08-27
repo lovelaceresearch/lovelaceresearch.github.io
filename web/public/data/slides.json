@@ -1,0 +1,16 @@
+{
+  "slides": [
+    {
+      "id": "slide-1",
+      "filename": "DSC06369.jpg",
+      "alt": "Research lab workspace with electronics",
+      "order": 1
+    },
+    {
+      "id": "slide-2", 
+      "filename": "DSC06366.jpg",
+      "alt": "Close-up view of circuit board development",
+      "order": 2
+    }
+  ]
+}
