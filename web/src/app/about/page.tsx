@@ -31,7 +31,33 @@ export default function AboutPage() {
       try {
         const response = await fetch("/data/contributors.json");
         const data = await response.json();
-        // Data is loaded in ContributorsList component
+        // Preload contributor images to avoid hover flicker
+        const prefetchImages = async (urls: string[], limit: number = 12) => {
+          const uniqueUrls = Array.from(new Set(urls.filter(Boolean)));
+          await Promise.all(
+            uniqueUrls.slice(0, limit).map((url) =>
+              new Promise<void>((resolve) => {
+                const img = new Image();
+                img.decoding = "async";
+                img.loading = "eager";
+                img.src = url;
+                const finalize = () => resolve();
+                if ("decode" in img) {
+                  // Attempt full decode to avoid paint delay on hover
+                  // @ts-expect-error decode exists on HTMLImageElement in modern browsers
+                  img.decode().then(finalize).catch(finalize);
+                } else {
+                  img.onload = finalize;
+                  img.onerror = finalize;
+                }
+              })
+            )
+          );
+        };
+        const contributorImageUrls = (data.contributors || [])
+          .map((c: { image?: string }) => c.image || "")
+          .filter((src: string) => src.startsWith("/images/"));
+        prefetchImages(contributorImageUrls, 24);
       } catch {
         // Handle error silently
       }
@@ -179,6 +205,8 @@ export default function AboutPage() {
               <img 
                 src={hoveredContributor.image || "/placeholder-image.jpg"} 
                 alt={hoveredContributor.name}
+                loading="eager"
+                decoding="async"
                 onError={(e) => {
                   e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'%3E%3Crect width='200' height='150' fill='%23f0f0f0'/%3E%3Ctext x='100' y='75' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='14' fill='%23666'%3EContributor Photo%3C/text%3E%3C/svg%3E";
                 }}
