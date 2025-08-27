@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import EmailCopy from './EmailCopy';
+import { navLinks } from './navLinks';
 
 export default function MobileNav() {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,10 +30,11 @@ export default function MobileNav() {
                 <div className="sidebar-block" style={{ borderRadius: '4px' }}>
                     <nav className="mobile-nav">
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                            <li><Link href="/prototypes" className={pathname === '/prototypes' ? 'nav-active' : ''}>Prototypes</Link></li>
-                            <li><Link href="/publications" className={pathname === '/publications' ? 'nav-active' : ''}>Publications</Link></li>
-                            <li><Link href="/reading-list" className={pathname === '/reading-list' ? 'nav-active' : ''}>Reading List</Link></li>
-                            <li><Link href="/about" className={pathname === '/about' ? 'nav-active' : ''}>About</Link></li>
+                            {navLinks.map(link => (
+                              <li key={link.href}>
+                                <Link href={link.href} className={pathname === link.href ? 'nav-active' : ''}>{link.label}</Link>
+                              </li>
+                            ))}
                         </ul>
                     </nav>
                 </div>

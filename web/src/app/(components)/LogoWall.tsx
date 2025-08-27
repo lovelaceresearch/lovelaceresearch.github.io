@@ -11,18 +11,20 @@ export default function LogoWall() {
   const [logos, setLogos] = useState<Logo[]>([]);
 
   useEffect(() => {
-    // Auto-generate logos based on the 12 logo files in the directory
-    const logoFiles = [
-      '1.svg', '2.svg', '3.svg', '4.svg', '5.svg', '6.svg',
-      '7.svg', '8.svg', '9.svg', '10.svg', '11.svg', '12.svg'
-    ];
-    
-    const logoList = logoFiles.map((filename, index) => ({
-      src: `/images/logos/${filename}`,
-      alt: `Logo ${index + 1}`
-    }));
-    
-    setLogos(logoList);
+    fetch('/data/logos.json')
+      .then(r => r.json())
+      .then((data: { logos: Logo[] }) => {
+        setLogos(data.logos || []);
+      })
+      .catch(() => {
+        // fallback to 1-12 if json missing
+        const logoFiles = Array.from({ length: 12 }, (_, i) => `${i + 1}.svg`);
+        const logoList = logoFiles.map((filename, index) => ({
+          src: `/images/logos/${filename}`,
+          alt: `Logo ${index + 1}`
+        }));
+        setLogos(logoList);
+      });
   }, []);
 
   return (
