@@ -64,9 +64,9 @@
         },
         {
             "number": "005",
-            "title": "ShortTerm",
+            "title": "nlt",
             "status": "draft",
-            "description": "Smart terminal with shortcuts and AI",
+            "description": "natural language terminal with shortcuts and AI",
             "date": "Aug 2025 - Present",
             "image": "/placeholder-prototype-003.jpg",
             "tags": ["LLM", "Browser", "API"],
@@ -106,6 +106,13 @@
                     "label": "Open for collaboration"
                 }
             ]
+        },
+        {
+            "number": "008",
+            "title": "ShortTerm",
+            "status": "draft",
+            "description": "Smart terminal with shortcuts and AI",
+            "date": "Planning Stage",
         }
     ],
     "pastPrototypes": [

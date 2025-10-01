@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Sidebar from "../(components)/Sidebar";
-import AboutClient from "./AboutClient";
 import ContributorsList from "../(components)/ContributorsList";
 import LogoWall from "../(components)/LogoWall";
 import Footer from "../(components)/Footer";
@@ -146,7 +145,26 @@ export default function AboutPage() {
     <div className="page-container">
       <Sidebar />
       <main className="main-content" style={{ gap: '12px' }}>
-        <AboutClient />
+        <section id="about">
+          <div className="container">
+            <div className="title-block">
+              <h2>About</h2>
+            </div>
+            <div className="about-content">
+              <div className="about-title">
+                <div className="about-mini-subtitle">statement</div>
+              </div>
+              <div className="about-text">
+                <p>
+                  Lovelace Research is an R&D office for human-centred AI operating in Seoul and London. Like the PARC, think tank with hands-on development.
+                  As an alternative to current technology-driven AI development, we centre humans and open development to co-design desirable technology for humanity.
+                  Our practice spans paradigm-setting, prototyping, and product development.
+                  We believe in fundamental paradigm redesign that translates into transformative products—practical alternatives to the status quo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section id="story">
           <div className="container">
