@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — Lovelace Research</title>
+    <link rel="icon" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="page-container">
+      <aside data-component="sidebar"></aside>
+      <main class="main-content" style="gap: 12px;">
+        <section id="about" data-section="About">
+          <div class="container">
+            <div class="title-block"><h2>About</h2></div>
+            <div class="about-content">
+              <div class="about-title">
+                <div class="about-mini-subtitle">statement</div>
+              </div>
+              <div class="about-text">
+                <p>
+                  Lovelace Research is an R&amp;D office for human-centred AI operating in Seoul and London. Like the PARC, think tank with hands-on development.
+                  As an alternative to current technology-driven AI development, we centre humans and open development to co-design desirable technology for humanity.
+                  Our practice spans paradigm-setting, prototyping, and product development.
+                  We believe in fundamental paradigm redesign that translates into transformative products—practical alternatives to the status quo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="story" data-section="Story">
+          <div class="container">
+            <div class="title-block"><h2>Story</h2></div>
+            <img
+              src="images/general/imperial.jpg"
+              alt="Imperial College London"
+              class="story-image"
+              style="width: 100%; height: auto; margin-top: 4px; margin-bottom: 12px; border-radius: 4px;"
+              loading="lazy"
+            />
+            <div class="story-content" style="padding-left: 12px; padding-right: 12px;">
+              <p>
+                We believe that meaningful progress in AI requires a fundamental rethinking of current paradigms.
+                Our methodology combines rigorous research with practical application, bringing together expertise
+                from AI research, design, and human-computer interaction.
+              </p>
+              <p>
+                Our approach emphasizes research-led innovation that prioritizes long-term impact over short-term gains,
+                applying design thinking principles to technical AI research with a focus on personal and humane AI
+                that augments human capabilities.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contributors" data-section="Contributors">
+          <div class="container">
+            <div class="title-block"><h2>Contributors</h2></div>
+            <div class="contributors-list" data-contributors-list></div>
+            <div class="subtitle-block">
+              <h2>Our team worked with world leaders in AI research and design</h2>
+            </div>
+            <div class="logo-wall" data-logo-wall></div>
+          </div>
+        </section>
+
+        <div data-component="footer"></div>
+      </main>
+      <aside class="hover-info-area" data-hover-area>
+        <div data-hover-card></div>
+      </aside>
+    </div>
+    <div class="mobile-nav-container" data-component="mobile-nav"></div>
+
+    <script type="module" src="assets/js/common.js"></script>
+    <script type="module" src="assets/js/about.js"></script>
+  </body>
+</html>
