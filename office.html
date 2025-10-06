@@ -3,81 +3,131 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About — Lovelace Research</title>
+    <title>Lovelace Research</title>
     <link rel="icon" href="favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="favicon-16x16.png" sizes="16x16" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body>
-    <div class="page-container">
-      <aside data-component="sidebar"></aside>
-      <main class="main-content" style="gap: 12px;">
-        <section id="about" data-section="About">
-          <div class="container">
-            <div class="title-block"><h2>About</h2></div>
-            <div class="about-content">
-              <div class="about-title">
-                <div class="about-mini-subtitle">statement</div>
+  <body class="page-office">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar--office">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="/">Lovelace Research</a>
+        </div>
+        <div class="nav-menu">
+          <a href="rnd.html" class="nav-link">R&D</a>
+          <a href="office.html" class="nav-link">Office</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="office-content">
+      <div class="office-wrapper">
+        
+        <!-- Header Section -->
+        <section class="office-header-section">
+          <div class="office-header-grid">
+            <h1 class="office-header-title">Office</h1>
+            <p class="office-header-subtitle">Led by people worked with world-leaders in AI and design</p>
+          </div>
+        </section>
+
+        <!-- Hero Image -->
+        <section class="office-hero-section">
+          <img src="/images/general/imperial2.jpg" alt="Office" class="office-hero-image" />
+        </section>
+
+        <!-- Body Text -->
+        <section class="office-body-section">
+          <p class="section-title">
+            Founded at Albertopolis, home to Imperial College and the Royal College of Art, and named after Ada Lovelace, we bring together expertise in human-centred AI and design thinking to build transformative AI products and prototypes. Like the PARC, think tank with hands-on development.
+          </p>
+        </section>
+
+        <!-- Practice Section -->
+        <section class="office-practice-section">
+          <div class="practice-container">
+            <h2 class="section-title">Practice</h2>
+            
+            <div class="practice-grid">
+              <div class="practice-item">
+                <h3 class="practice-title">Paradigm Leading</h3>
+                <p class="practice-description">Human-Centred AI paradigm through lectures and teaching, community</p>
               </div>
-              <div class="about-text">
-                <p>
-                  Lovelace Research is an R&amp;D office for human-centred AI operating in Seoul and London. Like the PARC, think tank with hands-on development.
-                  As an alternative to current technology-driven AI development, we centre humans and open development to co-design desirable technology for humanity.
-                  Our practice spans paradigm-setting, prototyping, and product development.
-                  We believe in fundamental paradigm redesign that translates into transformative products—practical alternatives to the status quo.
-                </p>
+
+              <div class="practice-item">
+                <h3 class="practice-title">New Product Development</h3>
+                <p class="practice-description">Digital & Physical product Prototyping and development</p>
+              </div>
+
+              <div class="practice-item">
+                <h3 class="practice-title">Research Paper collaboration</h3>
+                <p class="practice-description">Human-Computer Interaction, Human-Centred Computing, Design Research</p>
+              </div>
+
+              <div class="practice-item">
+                <h3 class="practice-title">Innovation Strategy</h3>
+                <p class="practice-description">1-5Y horizon innovation strategy, speculative design scenarios</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="story" data-section="Story">
-          <div class="container">
-            <div class="title-block"><h2>Story</h2></div>
-            <img
-              src="images/general/imperial.jpg"
-              alt="Imperial College London"
-              class="story-image"
-              style="width: 100%; height: auto; margin-top: 4px; margin-bottom: 12px; border-radius: 4px;"
-              loading="lazy"
-            />
-            <div class="story-content" style="padding-left: 12px; padding-right: 12px;">
-              <p>
-                We believe that meaningful progress in AI requires a fundamental rethinking of current paradigms.
-                Our methodology combines rigorous research with practical application, bringing together expertise
-                from AI research, design, and human-computer interaction.
+        <!-- Approach Section -->
+        <section class="office-approach-section">
+          <div class="office-approach-container">
+            <h2 class="section-title">Approach</h2>
+            <div class="approach-content">
+              <p class="approach-text">
+                As an alternative to current technology-driven AI development, we centre humans and open development to co-design desirable technology for humanity. Our practice spans paradigm-setting, prototyping, and product development. We believe in fundamental paradigm redesign that translates into transformative products—practical alternatives to the status quo.
               </p>
-              <p>
-                Our approach emphasizes research-led innovation that prioritizes long-term impact over short-term gains,
-                applying design thinking principles to technical AI research with a focus on personal and humane AI
-                that augments human capabilities.
-              </p>
+              <img src="/images/general/DSC06366.jpg" alt="Approach" class="approach-image" />
             </div>
           </div>
         </section>
 
-        <section id="contributors" data-section="Contributors">
-          <div class="container">
-            <div class="title-block"><h2>Contributors</h2></div>
-            <div class="contributors-list" data-contributors-list></div>
-            <div class="subtitle-block">
-              <h2>Our team worked with world leaders in AI research and design</h2>
-            </div>
-            <div class="logo-wall" data-logo-wall></div>
+        <!-- Contributors Section -->
+        <section class="office-contributors-section">
+          <h2 class="section-title">Contributors</h2>
+          <div class="contributors-grid" id="contributorsGrid">
+            <!-- Will be populated by JavaScript -->
           </div>
         </section>
 
-        <div data-component="footer"></div>
-      </main>
-      <aside class="hover-info-area" data-hover-area>
-        <div data-hover-card></div>
-      </aside>
-    </div>
-    <div class="mobile-nav-container" data-component="mobile-nav"></div>
+        <!-- Contact Section -->
+        <section class="office-contact-section">
+          <h2 class="section-title">Contact</h2>
+          <div class="contact-links">
+            <div class="contact-email-wrapper">
+              <button class="contact-email-button" id="copyEmailButton">
+                office@lovelace-research.com
+              </button>
+              <span class="email-tooltip" id="emailTooltip">Copy email</span>
+            </div>
+            <a href="https://instagram.com/lovelaceresearch" class="contact-link" target="_blank" rel="noopener">Instagram↗</a>
+            <a href="https://linkedin.com/company/lovelace-research" class="contact-link" target="_blank" rel="noopener">LinkedIn↗</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div class="footer-divider"></div>
+    
+    <footer class="footer footer--office">
+      
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="/images/logos/logo-huge.svg" alt="Lovelace Research" />
+        </div>
+      </div>
+    </footer>
 
     <script type="module" src="assets/js/common.js"></script>
-    <script type="module" src="assets/js/about.js"></script>
+    <script type="module" src="assets/js/office.js"></script>
   </body>
 </html>

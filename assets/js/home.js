@@ -205,10 +205,20 @@ async function loadFeaturedProjects() {
     }));
 
     featuredProjectsGrid.innerHTML = withMeta.map(({ project, src, ratioClass }, idx) => {
-      // Make some 4:3 items span 2 columns for dynamism
-      const span = ratioClass === 'ratio-4-3' && idx % 3 === 0 ? 'project-item--span-2' : '';
+      // Add size variations for visual interest
+      let sizeVariant = '';
+      
+      // Make some square items larger
+      if (ratioClass === 'ratio-square' && (idx === 0 || idx % 5 === 0)) {
+        sizeVariant = 'project-item--large';
+      }
+      // Make some landscape items smaller
+      else if (ratioClass === 'ratio-4-3' && idx % 4 === 2) {
+        sizeVariant = 'project-item--small';
+      }
+      
       return `
-      <div class="project-item ${ratioClass} ${span}">
+      <div class="project-item ${ratioClass} ${sizeVariant}">
         <div class="project-thumb">
           <img src="${src}" alt="${project.imageAlt || project.title}" />
         </div>

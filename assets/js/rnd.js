@@ -12,6 +12,7 @@ const STATUS_PRIORITY = new Map([
 ]);
 
 const STATUS_FILTERS = {
+  shuffle: () => true, // shuffle shows all
   shake: (project) => Boolean(project.shake),
   featured: (project) => Boolean(project.featured),
   active: (project) => project.statusKey === 'active',
@@ -20,8 +21,6 @@ const STATUS_FILTERS = {
 };
 
 let preparedProjects = [];
-let masonryFrame = null;
-let resizeTimer = null;
 
 function normalise(value, fallback = '') {
   return String(value ?? fallback).trim();
@@ -86,46 +85,51 @@ function pickStatusBadge(project) {
   return status || category || 'In progress';
 }
 
-function scheduleMasonry() {
-  if (!projectsGrid) return;
-  if (masonryFrame) window.cancelAnimationFrame(masonryFrame);
-  masonryFrame = window.requestAnimationFrame(applyMasonryLayout);
-}
-
-function applyMasonryLayout() {
-  masonryFrame = null;
-  if (!projectsGrid) return;
-
-  const computed = window.getComputedStyle(projectsGrid);
-  const rowHeight = parseFloat(computed.getPropertyValue('grid-auto-rows')) || 8;
-  const rowGap = parseFloat(computed.getPropertyValue('grid-row-gap')) || 0;
-
-  projectsGrid.querySelectorAll('.project-item').forEach((item) => {
-    item.style.gridRowEnd = 'span 1';
-    const rect = item.getBoundingClientRect();
-    const height = rect.height;
-    const span = Math.max(1, Math.ceil((height + rowGap) / (rowHeight + rowGap)));
-    item.style.gridRowEnd = `span ${span}`;
-  });
-}
-
-function setupResizeListener() {
-  window.addEventListener('resize', () => {
-    if (resizeTimer) window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(scheduleMasonry, 150);
-  });
-}
 
 function setupFilters() {
   filterGroups.forEach((group) => {
     group.addEventListener('click', (event) => {
-      const button = event.target.closest('.rnd-filter-button');
-      if (!button) return;
-      const isActive = button.classList.toggle('is-active');
-      button.setAttribute('aria-pressed', String(isActive));
+      const item = event.target.closest('.filter-item');
+      if (!item) return;
+      
+      // Handle "Shuffle!" - clear all filters and shuffle
+      if (item.dataset.filterValue === 'shuffle') {
+        // Clear all active filters
+        document.querySelectorAll('.filter-item.is-active').forEach(el => el.classList.remove('is-active'));
+        // Shuffle the projects within each category
+        const shuffled = shuffleArray([...preparedProjects]);
+        renderProjects(shuffled);
+        return;
+      }
+      
+      const filterType = group.dataset.filterGroup;
+      
+      // For category filters, only allow one selection at a time
+      if (filterType === 'category') {
+        const wasActive = item.classList.contains('is-active');
+        // Deselect all category filters
+        group.querySelectorAll('.filter-item').forEach(el => el.classList.remove('is-active'));
+        // Toggle this item (if it wasn't active, make it active)
+        if (!wasActive) {
+          item.classList.add('is-active');
+        }
+      } else {
+        // For status filters, allow multiple selections
+        item.classList.toggle('is-active');
+      }
+      
       applyFiltersAndRender();
     });
   });
+}
+
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
 }
 
 function getActiveFilters() {
@@ -133,9 +137,9 @@ function getActiveFilters() {
   filterGroups.forEach((group) => {
     const type = group.dataset.filterGroup;
     if (!type) return;
-    group.querySelectorAll('.rnd-filter-button.is-active').forEach((button) => {
-      const value = button.dataset.filterValue;
-      if (!value) return;
+    group.querySelectorAll('.filter-item.is-active').forEach((item) => {
+      const value = item.dataset.filterValue;
+      if (!value || value === 'shuffle') return;
       if (type === 'category') {
         filters.category.add(normaliseCategory(value));
       } else if (type === 'status') {
@@ -203,63 +207,149 @@ function renderProjects(projects) {
 
   if (!projects.length) {
     projectsGrid.appendChild(createEl('p', 'rnd-empty-state', 'No projects match the current filters.'));
-    scheduleMasonry();
     return;
   }
 
+  // Group projects by category in the order: Product, Prototype, Paradigm
+  const categoryOrder = ['product', 'prototype', 'paradigm'];
+  const groupedProjects = {
+    product: [],
+    prototype: [],
+    paradigm: []
+  };
+
+  projects.forEach(project => {
+    const cat = project.categoryKey || 'paradigm';
+    if (groupedProjects[cat]) {
+      groupedProjects[cat].push(project);
+    }
+  });
+
   const fragment = document.createDocumentFragment();
 
-  projects.forEach((project) => {
-    const card = createEl('div', `project-item rnd-card ${project.ratioClass}`.trim());
-    card.style.gridRowEnd = 'span 1';
+  categoryOrder.forEach(category => {
+    const categoryProjects = groupedProjects[category];
+    if (!categoryProjects || categoryProjects.length === 0) return;
 
-    const thumb = createEl('div', 'project-thumb');
-    const image = document.createElement('img');
-    image.src = project.imageSrc;
-    image.alt = project.imageAlt || project.title || 'R&D project image';
-    image.loading = 'lazy';
-    image.addEventListener('load', scheduleMasonry);
-    image.addEventListener('error', scheduleMasonry);
-    if (image.complete) scheduleMasonry();
-    thumb.appendChild(image);
+    // Create section header
+    const sectionHeader = createEl('h2', 'rnd-section-header', formatLabel(category));
+    sectionHeader.dataset.category = category;
+    fragment.appendChild(sectionHeader);
 
-    const meta = createEl('div', 'project-meta');
+    // Render projects in this category
+    categoryProjects.forEach((project, idx) => {
+      // Add size variations for visual interest
+      let sizeVariant = '';
+      
+      // Make some square items larger
+      if (project.ratioClass === 'ratio-square' && (idx === 0 || idx % 5 === 0)) {
+        sizeVariant = 'project-item--large';
+      }
+      // Make some landscape items smaller
+      else if (project.ratioClass === 'ratio-4-3' && idx % 4 === 2) {
+        sizeVariant = 'project-item--small';
+      }
+      
+      const card = createEl('div', `project-item rnd-card ${project.ratioClass} ${sizeVariant}`.trim());
+      card.dataset.category = category;
 
-    const heading = createEl('div', 'rnd-card-heading');
-    heading.appendChild(createEl('span', 'rnd-card-status', pickStatusBadge(project)));
-    heading.appendChild(createEl('h3', 'rnd-card-title', project.title || 'Untitled exploration'));
+      const thumb = createEl('div', 'project-thumb');
+      const image = document.createElement('img');
+      image.src = project.imageSrc;
+      image.alt = project.imageAlt || project.title || 'R&D project image';
+      image.loading = 'lazy';
+      thumb.appendChild(image);
 
-    const description = createEl('p', 'rnd-card-description', project.description || 'Details coming soon.');
+      const meta = createEl('div', 'project-meta');
 
-    const metaRow = createEl('div', 'rnd-card-meta');
-    if (project.collaborator) {
-      metaRow.appendChild(createEl('span', null, project.collaborator));
-    }
-    if (project.date) {
-      metaRow.appendChild(createEl('span', null, project.date));
-    }
+      const heading = createEl('div', 'rnd-card-heading');
+      heading.appendChild(createEl('span', 'rnd-card-status', pickStatusBadge(project)));
+      heading.appendChild(createEl('h3', 'rnd-card-title', project.title || 'Untitled exploration'));
 
-    meta.appendChild(heading);
-    meta.appendChild(description);
-    if (metaRow.children.length) meta.appendChild(metaRow);
+      const description = createEl('p', 'rnd-card-description', project.description || 'Details coming soon.');
 
-    renderTags(meta, project.tags);
-    renderLinks(meta, project.links);
+      const metaRow = createEl('div', 'rnd-card-meta');
+      if (project.collaborator) {
+        metaRow.appendChild(createEl('span', null, project.collaborator));
+      }
+      if (project.date) {
+        metaRow.appendChild(createEl('span', null, project.date));
+      }
 
-    card.appendChild(thumb);
-    card.appendChild(meta);
+      meta.appendChild(heading);
+      meta.appendChild(description);
+      if (metaRow.children.length) meta.appendChild(metaRow);
 
-    fragment.appendChild(card);
+      renderTags(meta, project.tags);
+      renderLinks(meta, project.links);
+
+      card.appendChild(thumb);
+      card.appendChild(meta);
+
+      fragment.appendChild(card);
+    });
   });
 
   projectsGrid.appendChild(fragment);
-  scheduleMasonry();
 }
 
 function applyFiltersAndRender() {
   const filters = getActiveFilters();
-  const filtered = filterProjects(preparedProjects, filters);
-  renderProjects(filtered);
+  
+  // If category filters are active, show/hide sections
+  if (filters.category.size > 0) {
+    // Hide all sections first
+    projectsGrid.querySelectorAll('.rnd-section-header, .project-item').forEach(el => {
+      el.style.display = 'none';
+    });
+    
+    // Show only selected category sections
+    filters.category.forEach(category => {
+      projectsGrid.querySelectorAll(`[data-category="${category}"]`).forEach(el => {
+        el.style.display = '';
+      });
+    });
+  } else {
+    // Show all sections if no category filter
+    projectsGrid.querySelectorAll('.rnd-section-header, .project-item').forEach(el => {
+      el.style.display = '';
+    });
+  }
+  
+  // Apply status filters by hiding/showing individual cards
+  if (filters.status.size > 0) {
+    projectsGrid.querySelectorAll('.project-item').forEach(card => {
+      const project = preparedProjects.find(p => 
+        card.querySelector('.rnd-card-title')?.textContent === p.title
+      );
+      
+      if (project) {
+        let matchesStatus = false;
+        for (const value of filters.status) {
+          const predicate = STATUS_FILTERS[value];
+          if (predicate && predicate(project)) {
+            matchesStatus = true;
+            break;
+          }
+        }
+        
+        if (!matchesStatus) {
+          card.style.display = 'none';
+        }
+      }
+    });
+  }
+  
+  // Hide section headers that have no visible projects
+  projectsGrid.querySelectorAll('.rnd-section-header').forEach(header => {
+    const category = header.dataset.category;
+    const visibleProjects = Array.from(projectsGrid.querySelectorAll(`[data-category="${category}"].project-item`))
+      .filter(el => el.style.display !== 'none');
+    
+    if (visibleProjects.length === 0) {
+      header.style.display = 'none';
+    }
+  });
 }
 
 function sortProjects(projects) {
@@ -292,7 +382,6 @@ async function init() {
   if (!projectsGrid) return;
 
   setupFilters();
-  setupResizeListener();
 
   try {
     const data = await fetchJson('data/rnd.json');

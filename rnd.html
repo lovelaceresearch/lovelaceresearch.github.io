@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lovelace Research</title>
+    <link rel="icon" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="page-rnd">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="/">Lovelace Research</a>
+        </div>
+        <div class="nav-menu">
+          <a href="rnd.html" class="nav-link">R&D</a>
+          <a href="office.html" class="nav-link">Office</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-content">
+
+      <div class="main-content-group">
+
+        <!-- Header and filters Area -->
+        <section class="rnd-header-section">
+          <div class="projects-container">
+            <div class="projects-header projects-header--rnd">
+              <h2 class="section-title section-title--left">R&D</h2>
+              <div class="rnd-filter-col" data-filter-group="category">
+                <span class="filter-item" data-filter-value="product">Product</span>
+                <span class="filter-item" data-filter-value="prototype">Prototype</span>
+                <span class="filter-item" data-filter-value="paradigm">Paradigm</span>
+              </div>
+              <div class="rnd-filter-col" data-filter-group="status">
+                <span class="filter-item" data-filter-value="shuffle">Shuffle!</span>
+                <span class="filter-item" data-filter-value="featured">Featured</span>
+                <span class="filter-item" data-filter-value="active">Ongoing</span>
+                <span class="filter-item" data-filter-value="archive">Archive</span>
+                <span class="filter-item" data-filter-value="previous">Previous</span>
+              </div>
+            </div>
+            <div class="projects-grid" id="rndProjectsGrid">
+              <!-- Projects will be populated by JavaScript -->
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-grid">
+            <div class="footer-text">
+              <p>Lovelace Research is an R&D office for human-centred AI paradigm, prototype and product based in London. We bring together expertise in human-centred AI and design thinking to build transformative AI products and prototypes.</p>
+            </div>
+            <div class="footer-right">
+              <div class="footer-contact">
+                <a href="mailto:office@lovelace-research.com" class="contact-email">office@lovelace-research.com</a>
+                <a href="https://instagram.com/lovelaceresearch" class="contact-instagram" target="_blank" rel="noopener">@lovelaceresearch</a>
+              </div>
+              <p class="footer-copyright">© 2025 Lovelace Research. All rights reserved. Third-party logos and trademarks are the property of their respective owners.</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-logo">
+          <img src="/images/logos/logo-huge.svg" alt="Lovelace Research" />
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="assets/js/common.js"></script>
+    <script type="module" src="assets/js/rnd.js"></script>
+  </body>
+</html>
