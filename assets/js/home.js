@@ -1,4 +1,10 @@
 import { fetchJson } from './data.js';
+import {
+  loadImageSize,
+  classifyRatio,
+  slugifyCompany,
+  tryLoadImageSequential
+} from './utils.js';
 
 // Hover scroll functionality
 const hoverScrollContainer = document.getElementById('hoverScrollContainer');
@@ -183,24 +189,10 @@ async function loadFeaturedProjects() {
       .slice(0, 6);
 
     // Preload images to detect aspect ratios
-    const loadImage = (src) => new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => resolve({ width: img.naturalWidth, height: img.naturalHeight });
-      img.onerror = () => resolve(null);
-      img.src = src;
-    });
-
     const withMeta = await Promise.all(featuredProjects.map(async (project) => {
       const src = project.image || '/placeholder-prototype.jpg';
-      const dims = await loadImage(src);
-      let ratioClass = 'ratio-4-3';
-      if (dims && dims.width && dims.height) {
-        const r = dims.width / dims.height;
-        // Tolerance for classification
-        if (Math.abs(r - 1) < 0.06) ratioClass = 'ratio-square';
-        else if (Math.abs(r - (3/4)) < 0.06) ratioClass = 'ratio-3-4';
-        else if (Math.abs(r - (4/3)) < 0.12) ratioClass = 'ratio-4-3';
-      }
+      const dims = await loadImageSize(src);
+      const ratioClass = classifyRatio(dims);
       return { project, src, ratioClass };
     }));
 
@@ -280,36 +272,7 @@ async function loadPeople() {
 }
 
 // Office image hover functionality (direct from images/office/)
-function slugifyCompany(name) {
-  return (name || '')
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
-}
-
-function tryLoadImageSequential(srcBases, exts) {
-  return new Promise((resolve, reject) => {
-    let index = 0;
-    function attempt() {
-      if (index >= exts.length) {
-        reject(new Error('No matching image found'));
-        return;
-      }
-      const img = new Image();
-      img.onload = () => resolve(img);
-      img.onerror = () => {
-        index += 1;
-        attempt();
-      };
-      img.src = `${srcBases}${exts[index]}`;
-      img.alt = '';
-    }
-    attempt();
-  });
-}
+// slugifyCompany and tryLoadImageSequential imported from utils
 
 async function resolveCompanyImage(companyName) {
   const slug = slugifyCompany(companyName);

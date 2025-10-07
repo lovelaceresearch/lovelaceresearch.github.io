@@ -1,4 +1,5 @@
 import { fetchJson } from './data.js';
+import { copyToClipboard } from './utils.js';
 
 // Load contributors
 async function loadContributors() {
@@ -30,12 +31,10 @@ function setupEmailCopy() {
 
   emailButton.addEventListener('click', async () => {
     const email = 'office@lovelace-research.com';
-    
     try {
-      await navigator.clipboard.writeText(email);
+      await copyToClipboard(email);
       tooltip.textContent = 'Copied!';
       tooltip.classList.add('copied');
-      
       setTimeout(() => {
         tooltip.textContent = 'Copy email';
         tooltip.classList.remove('copied');
@@ -43,7 +42,6 @@ function setupEmailCopy() {
     } catch (error) {
       console.error('Failed to copy email:', error);
       tooltip.textContent = 'Failed to copy';
-      
       setTimeout(() => {
         tooltip.textContent = 'Copy email';
       }, 2000);

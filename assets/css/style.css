@@ -12,7 +12,7 @@
 @font-face {
     font-family: 'Favorit Hangul';
     src: url('../../fonts/ABCFavoritHangul-Medium.woff2') format('woff2');
-    font-weight: 600;
+    font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
@@ -61,6 +61,7 @@
     padding: 0;
     box-sizing: border-box;
     font-feature-settings: "zero", "ss05", "ss06", "ss04", "ss03", "ss02", "ss05";
+    line-height: 1;
 }
 
 html {
@@ -171,7 +172,7 @@ img, picture, video {
 
 .nav-logo a {
     font-size: var(--text-24);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.02em;
     display: inline-flex; 
     align-items: center;
@@ -289,12 +290,29 @@ img, picture, video {
     align-items: center;
 }
 
-.section-title {
-    font-size: var(--text-48);
-    font-weight: 600;
+.section-title,
+.filter-item,
+.rnd-section-header,
+.office-header-title,
+.office-header-subtitle,
+.contact-email,
+.contact-instagram,
+.contact-email-button,
+.contact-link {
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
 }
+
+.section-title { font-size: var(--text-48); }
+.filter-item { font-size: var(--text-48); }
+.rnd-section-header { font-size: var(--text-48); }
+.contact-email,
+.contact-instagram,
+.contact-email-button,
+.contact-link,
+.office-header-title,
+.office-header-subtitle { font-size: var(--text-48); }
 
 /* ===== Featured Projects ===== */
 .featured-projects {
@@ -327,9 +345,7 @@ img, picture, video {
     margin: 0;
 }
 
-.projects-header .section-title--right {
-    text-align: right;
-}
+/* .section-title--right removed (unused) */
 
 /* R&D page header: 4 column layout */
 .projects-header--rnd {
@@ -349,7 +365,7 @@ img, picture, video {
 
 .filter-item {
     font-size: var(--text-48);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     opacity: 0.5;
@@ -380,11 +396,7 @@ img, picture, video {
     letter-spacing: 0.05em;
 }
 
-.rnd-card-title {
-    font-size: var(--text-24);
-    font-weight: 600;
-    margin: 0;
-}
+.rnd-card-title { font-size: var(--text-24); }
 
 .rnd-card-description {
     font-size: var(--text-16);
@@ -437,7 +449,7 @@ img, picture, video {
 .rnd-section-header {
     grid-column: 1 / -1;
     font-size: var(--text-48);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     margin: var(--space-64) 0 var(--space-32) 0;
@@ -530,12 +542,7 @@ img, picture, video {
     align-items: center;
 }
 
-.project-one-liner {
-    font-size: var(--text-16);
-    color: var(--color-text-secondary);
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
-}
+.project-one-liner { color: var(--color-text-secondary); opacity: 0.5; transition: opacity 0.2s ease; }
 
 .project-item:hover .project-one-liner,
 .project-item:focus-within .project-one-liner {
@@ -573,7 +580,7 @@ img, picture, video {
 
 .company-name--list {
     font-size: var(--text-16);
-    font-weight: 600;
+    font-weight: bold;
     line-height: 1;
     display: block;
 }
@@ -628,14 +635,11 @@ img, picture, video {
     gap: var(--space-32);
 }
 
-.approach-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-24);
-}
+/* Removed duplicate .approach-content (flex); grid definition below is in use */
 
 .approach-intro,
 .approach-description {
+    line-height: 1.2;
     font-size: clamp(var(--text-16), 2.5vw, 1.125rem);
     color: var(--color-text-secondary);
 }
@@ -685,14 +689,11 @@ img, picture, video {
 .footer-text p {
     color: rgba(255, 255, 255, 0.72);
     font-size: var(--text-16);
-    line-height: 1.5;
+    line-height: 1.2;
     letter-spacing: -0.01em;
 }
 
-.footer-middle {
-    display: flex;
-    flex-direction: column;
-}
+/* .footer-middle removed (unused) */
 
 .footer-right {
     display: flex;
@@ -702,7 +703,7 @@ img, picture, video {
 
 .footer-copyright {
     font-size: var(--text-14);
-    line-height: 1.5;
+    line-height: 1;
     color: rgba(255, 255, 255, 0.5);
     margin: 0;
 }
@@ -740,7 +741,7 @@ img, picture, video {
 .contact-email,
 .contact-instagram {
     font-size: var(--text-48);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     color: rgba(255, 255, 255, 0.72);
@@ -782,7 +783,7 @@ img, picture, video {
 
 .office-header-title {
     font-size: var(--text-48);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     margin: 0;
@@ -790,7 +791,7 @@ img, picture, video {
 
 .office-header-subtitle {
     font-size: var(--text-48);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     margin: 0;
@@ -799,7 +800,6 @@ img, picture, video {
 
 /* Office Hero Image */
 .office-hero-section {
-    width: 100%;
     margin-inline: calc(var(--space-64) * -1);
     width: 100vw;
     margin-bottom: calc(var(--space-160) * -1 + var(--space-64));
@@ -816,29 +816,13 @@ img, picture, video {
     width: 100%;
 }
 
-.office-body-text {
-    font-size: var(--text-24);
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-    margin: 0;
-}
+/* .office-body-text removed (unused) */
 
 /* Office Divider */
-.office-divider {
-    width: 100%;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
+/* .office-divider removed (unused) */
 
 /* Office Section Title */
-.office-section-title {
-    font-size: var(--text-24);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin: 0 0 var(--space-48) 0;
-    text-transform: uppercase;
-}
+/* .office-section-title removed (unused) */
 
 /* Practice Section */
 .office-practice-section {
@@ -870,20 +854,11 @@ img, picture, video {
     gap: 0;
 }
 
-.practice-title {
-    font-size: var(--text-24);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin: 0;
-}
+.practice-title { font-size: var(--text-24); }
 
 .practice-description {
+    font-weight: bold;
     font-size: var(--text-24);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin: 0;
     opacity: 0.5;
     transition: opacity 0.2s ease;
 }
@@ -906,7 +881,7 @@ img, picture, video {
 
 .approach-text {
     font-size: var(--text-32);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.02em;
     line-height: 1;
     margin: 0;
@@ -941,32 +916,11 @@ img, picture, video {
     opacity: 1;
 }
 
-.contributor-name {
-    grid-column: span 2;
-    font-size: var(--text-16);
-    font-weight: 600;
-    line-height: 1;
-    margin: 0;
-    text-align: left;
-}
+.contributor-name { grid-column: span 2; }
 
-.contributor-role {
-    grid-column: span 1;
-    font-size: var(--text-16);
-    font-weight: 600;
-    line-height: 1;
-    margin: 0;
-    text-align: left;
-}
+.contributor-role { grid-column: span 1; }
 
-.contributor-city {
-    grid-column: span 1;
-    font-size: var(--text-16);
-    font-weight: 600;
-    line-height: 1;
-    margin: 0;
-    text-align: right;
-}
+.contributor-city { grid-column: span 1; text-align: right; }
 
 /* Contact Section */
 .office-contact-section {
@@ -997,7 +951,7 @@ img, picture, video {
 .contact-email-button {
     font-family: var(--font-sans-primary);
     font-size: var(--text-48);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     color: var(--color-surface);
@@ -1016,7 +970,7 @@ img, picture, video {
 
 .email-tooltip {
     font-size: var(--text-48);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     color: var(--color-surface);
@@ -1034,7 +988,7 @@ img, picture, video {
 
 .contact-link {
     font-size: var(--text-48);
-    font-weight: 600;
+    font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     color: var(--color-surface);
@@ -1086,9 +1040,7 @@ img, picture, video {
         grid-column: span 3;
     }
 
-    .people-logos-section {
-        gap: var(--space-48);
-    }
+    /* .people-logos-section removed (unused) */
 
     .projects-header--rnd {
         grid-template-columns: repeat(2, 1fr);
