@@ -160,6 +160,10 @@ function renderProjects(projects: any[]) {
       const card = document.createElement('div');
       card.className = `project-item rnd-card ${project.ratioClass} ${sizeVariant}`.trim();
       card.dataset.category = category;
+      // Set dataset for status filters
+      card.dataset.status = project.statusKey || '';
+      card.dataset.featured = project.featured ? '1' : '0';
+      card.dataset.shake = project.shake ? '1' : '0';
       const thumb = document.createElement('div');
       thumb.className = 'project-thumb';
       const image = document.createElement('img');
@@ -197,6 +201,8 @@ function renderProjects(projects: any[]) {
     });
   });
   projectsGrid.appendChild(fragment);
+  // Make items visible (CSS starts them at opacity:0 until .in-view)
+  projectsGrid.querySelectorAll('.project-item').forEach((el) => el.classList.add('in-view'));
 }
 
 function applyFiltersAndRender() {
@@ -219,22 +225,35 @@ function applyFiltersAndRender() {
   }
   if (filters.status.size > 0) {
     projectsGrid.querySelectorAll<HTMLElement>('.project-item').forEach((card) => {
-      const title = card.querySelector('.rnd-card-title')?.textContent;
-      const project = preparedProjects.find((p) => p.title === title);
-      if (!project) return;
+      // Only consider cards currently visible from category filter
+      if (card.style.display === 'none') return;
+      const status = (card.dataset.status || '').toLowerCase();
+      const featured = card.dataset.featured === '1';
+      const shake = card.dataset.shake === '1';
       let matchesStatus = false;
       for (const value of filters.status) {
-        const predicate = STATUS_FILTERS[value];
-        if (predicate && predicate(project)) { matchesStatus = true; break; }
+        if (value === 'featured' && featured) { matchesStatus = true; break; }
+        if (value === 'active' && status === 'active') { matchesStatus = true; break; }
+        if (value === 'archive' && status === 'archive') { matchesStatus = true; break; }
+        if (value === 'previous' && status === 'previous') { matchesStatus = true; break; }
+        if (value === 'shake' && shake) { matchesStatus = true; break; }
       }
-      if (!matchesStatus) card.style.display = 'none';
+      if (!matchesStatus) {
+        card.style.display = 'none';
+      }
     });
   }
   document.querySelectorAll<HTMLElement>('.rnd-section-header').forEach((header) => {
     const category = header.dataset.category!;
     const visibleProjects = Array.from(document.querySelectorAll<HTMLElement>(`[data-category="${category}"].project-item`)).filter((el) => el.style.display !== 'none');
     if (visibleProjects.length === 0) header.style.display = 'none';
+    else header.style.display = '';
   });
+  // Normalize top margin: ensure first visible header has zero top margin
+  const headers = Array.from(document.querySelectorAll<HTMLElement>('.rnd-section-header'));
+  headers.forEach((h) => { h.style.marginTop = ''; });
+  const firstVisible = headers.find((h) => h.style.display !== 'none');
+  if (firstVisible) firstVisible.style.marginTop = '0';
 }
 
 function sortProjects(projects: any[]) {
@@ -268,9 +287,27 @@ export async function init() {
   if (!projectsGrid) return;
   setupFilters();
   try {
-    const data = await fetchJson('data/rnd.json');
-    const projects = Array.isArray(data?.projects) ? data.projects : [];
-    preparedProjects = await prepareProjects(projects);
+    // Load category data separately
+    const [product, prototype, paradigm] = await Promise.all([
+      fetchJson('data/product.json').catch(() => null),
+      fetchJson('data/prototype.json').catch(() => null),
+      fetchJson('data/paradigm.json').catch(() => null)
+    ]);
+
+    const productProjects = product?.products ?? product ?? [];
+    const prototypeProjects = prototype?.prototypes ?? prototype ?? [];
+    const paradigmProjects = paradigm?.paradigms ?? paradigm ?? [];
+
+    const mapWithCategory = (arr: any[], categoryKey: string) =>
+      (Array.isArray(arr) ? arr : []).map((p) => ({ ...p, category: categoryKey }));
+
+    const combined = [
+      ...mapWithCategory(productProjects, 'product'),
+      ...mapWithCategory(prototypeProjects, 'prototype'),
+      ...mapWithCategory(paradigmProjects, 'paradigm')
+    ];
+
+    preparedProjects = await prepareProjects(combined);
     renderProjects(preparedProjects);
   } catch (e) {
     console.error('Failed to load R&D projects:', e);

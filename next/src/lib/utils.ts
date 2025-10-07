@@ -23,7 +23,7 @@ export function formatLabel(value?: string): string {
 
 export function resolveImage(src?: string): string {
   const path = normalise(src);
-  if (!path) return '/placeholder-prototype.jpg';
+  if (!path) return '/images/general/imperial2.jpg';
   return path;
 }
 

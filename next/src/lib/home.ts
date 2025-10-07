@@ -125,7 +125,7 @@ async function loadFeaturedProjects() {
       .filter((project: any) => (project?.status || 'active') === 'active')
       .slice(0, 6);
     const withMeta = await Promise.all(featuredProjects.map(async (project: any) => {
-      const src = project.image || '/placeholder-prototype.jpg';
+      const src = project.image || '/images/general/imperial2.jpg';
       const dims = await loadImageSize(src);
       const ratioClass = classifyRatio(dims);
       return { project, src, ratioClass };
@@ -145,6 +145,8 @@ async function loadFeaturedProjects() {
         </div>
       </div>`;
     }).join('');
+    // Make items visible per CSS
+    (featuredProjectsGrid as HTMLElement).querySelectorAll('.project-item').forEach((el) => el.classList.add('in-view'));
   } catch (e) {
     console.error('Error loading featured projects:', e);
     (featuredProjectsGrid as HTMLElement).innerHTML = '<p>Projects coming soon...</p>';

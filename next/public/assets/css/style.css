@@ -139,7 +139,7 @@ img, picture, video {
     display: flex;
     flex-direction: column;
     gap: var(--space-96);
-    padding-bottom: var(--space-160);
+    padding-bottom: 0;
 }
 
 .main-content-group {

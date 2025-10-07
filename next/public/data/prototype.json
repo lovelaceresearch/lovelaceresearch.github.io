@@ -5,9 +5,9 @@
             "title": "Synapse",
             "status": "active",
             "collaborator": "Imperial College London",
-            "description": "A tool for visually exploring and organizing complex ideas using a graph-based interface. This prototype helps users build and navigate mental models of their research.",
+            "description": "A tool for visually exploring and organizing complex ideas using a graph-based interface.",
             "date": "Jan 2025 - Present",
-            "image": "/placeholder-prototype-001.jpg",
+            "image": "/images/general/imperial2.jpg",
             "tags": ["Mental Models", "Systems Thinking", "HCI"],
             "links": [
                 {
@@ -18,42 +18,12 @@
         },
         {
             "number": "002",
-            "title": "Confidential",
-            "status": "active",
-            "collaborator": "Map Project Office",
-            "description": "Future of Personal AI",
-            "date": "May - Present",
-            "image": "/placeholder-prototype-002.jpg",
-            "tags": ["AI", "HCI"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "View Prototype"
-                }
-            ]
-        },
-        {
-            "number": "003",
-            "title": "RssCast",
-            "status": "draft",
-            "description": "iOS app Rss feed into daily podcast generator",
-            "date": "Aug 2025 - Present",
-            "image": "/placeholder-prototype-002.jpg",
-            "tags": ["Mental Models", "Systems Thinking", "HCI"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "View Prototype"
-                }
-            ]
-        },
-        {
-            "number": "004",
             "title": "Tact Ring",
             "status": "active",
-            "description": "Future of AI-AR, subtle finger gestures",
+            "collaborator": "MODEM",
+            "description": "Future of AI-AR, subtle finger gestures for calm interactions.",
             "date": "Aug 2025 - Present",
-            "image": "/placeholder-prototype-003.jpg",
+            "image": "/images/general/DSC06366.jpg",
             "tags": ["AR", "mmWave", "HCI"],
             "links": [
                 {
@@ -63,28 +33,13 @@
             ]
         },
         {
-            "number": "005",
-            "title": "nlt",
-            "status": "draft",
-            "description": "natural language terminal with shortcuts and AI",
-            "date": "Aug 2025 - Present",
-            "image": "/placeholder-prototype-003.jpg",
-            "tags": ["LLM", "Browser", "API"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "Open for collaboration"
-                }
-            ]
-        },
-        {
-            "number": "006",
+            "number": "003",
             "title": "Everychat",
             "status": "active",
-            "description": "Visualising the branches of conversation with ai llm",
+            "description": "Visualising the branches of conversation with AI LLM for better context recall.",
             "date": "Aug 2025 - Present",
-            "image": "/placeholder-prototype-003.jpg",
-            "tags": ["LLM", "Browser", "API"],
+            "image": "/images/general/DSC06369.jpg",
+            "tags": ["LLM", "Conversation"],
             "links": [
                 {
                     "url": "#",
@@ -93,71 +48,17 @@
             ]
         },
         {
-            "number": "007",
-            "title": "Comment",
+            "number": "004",
+            "title": "RssCast",
             "status": "draft",
-            "description": "Canvas, comment with AI, solve or apply",
-            "date": "Planning Stage",
-            "image": "/placeholder-prototype-003.jpg",
-            "tags": ["LLM", "Browser", "API"],
+            "description": "iOS app RSS feed into daily podcast generator.",
+            "date": "Aug 2025 - Present",
+            "image": "/images/general/imperial2.jpg",
+            "tags": ["Audio", "Automation"],
             "links": [
                 {
                     "url": "#",
-                    "label": "Open for collaboration"
-                }
-            ]
-        },
-        {
-            "number": "008",
-            "title": "ShortTerm",
-            "status": "draft",
-            "description": "Smart terminal with shortcuts and AI",
-            "date": "Planning Stage"
-        }
-    ],
-    "pastPrototypes": [
-        {
-            "number": "2023",
-            "title": "Learning Canvas",
-            "description": "Interactive visualization tool for mapping learning paths and knowledge connections",
-            "collaborator": "Stanford University",
-            "date": "Jan - Mar 2023",
-            "image": "/placeholder-past-001.jpg",
-            "tags": ["Education", "Visualization", "Learning"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "View Archive"
-                }
-            ]
-        },
-        {
-            "number": "2022",
-            "title": "Memory Palace",
-            "description": "Digital tool for creating and navigating memory palaces for knowledge retention",
-            "collaborator": "MIT Media Lab",
-            "date": "Aug - Dec 2022",
-            "image": "/placeholder-past-002.jpg",
-            "tags": ["Memory", "Cognitive Science", "HCI"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "View Archive"
-                }
-            ]
-        },
-        {
-            "number": "2021",
-            "title": "Research Network",
-            "description": "Platform for visualizing academic research connections and collaboration networks",
-            "collaborator": "Carnegie Mellon",
-            "date": "Mar - Nov 2021",
-            "image": "/placeholder-past-003.jpg",
-            "tags": ["Research", "Networks", "Academia"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "View Archive"
+                    "label": "View Prototype"
                 }
             ]
         }
