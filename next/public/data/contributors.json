@@ -1,0 +1,42 @@
+{
+  "contributors": [
+    {
+      "name": "Chanwoo Lee",
+      "city": "London",
+      "role": "Founder",
+      "affiliation": "Imperial College London",
+      "bio": "Leading research in personal AI systems and human-AI interaction. Currently a Visiting Lecturer at Imperial College London.",
+      "image": "/images/contributors/chanwoo.jpg",
+      "links": [
+        {
+          "url": "https://www.linkedin.com/in/chanulee/",
+          "label": "LinkedIn"
+        }
+      ]
+    },
+    {
+      "name": "Saetbyeol Leeyouk",
+      "city": "Boston",
+      "role": "Fellow",
+      "affiliation": "MIT Media Lab",
+      "bio": "Critical Technologist bridging social issues, AI engineering, and HCI research. As a media artist and system developer, she builds scalable systems to empower marginalized groups - individuals with disabilities, victims of deepfake sexual crimes, and underrepresented identities - and redefine human - machine relationships through critical and inclusive perspectives.",
+      "image": "/images/contributors/saetbyeol.jpg",
+      "links": [
+        {
+          "url": "https://www.linkedin.com/in/sbleeyouk/",
+          "label": "LinkedIn"
+        }
+      ]
+    },
+    {
+      "name": "Aida",
+      "city": "Web",
+      "role": "AI SW Engineer",
+      "affiliation": "",
+      "bio": "Aida is our AI agent helping us 10x the productivity of our development process.",
+      "image": "/images/contributors/aida.jpg",
+      "links": [
+      ]
+    }
+  ]
+}

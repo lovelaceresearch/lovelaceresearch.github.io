@@ -1,0 +1,24 @@
+{
+  "name": "lovelace-research-next",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "classnames": "2.5.1",
+    "next": "15.4.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.7.0",
+    "@types/react": "19.2.1",
+    "eslint": "9.11.1",
+    "typescript": "5.6.3"
+  }
+}

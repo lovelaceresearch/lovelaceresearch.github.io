@@ -1,0 +1,97 @@
+{
+    "projects": [
+        {
+            "id": "001",
+            "title": "Synapse",
+            "status": "active",
+            "category": "prototype",
+            "description": "Visually explore and organise complex ideas using a graph-based interface for knowledge teams.",
+            "collaborator": "Imperial College London",
+            "date": "2025 — Present",
+            "image": "/placeholder-prototype-001.jpg",
+            "tags": ["Mental Models", "Systems Thinking", "HCI"],
+            "links": [
+                { "url": "#", "label": "View prototype" }
+            ],
+            "featured": true
+        },
+        {
+            "id": "002",
+            "title": "Confidential",
+            "status": "active",
+            "category": "product",
+            "description": "Future of personal AI, building grounded assistants for industrial design teams.",
+            "collaborator": "Map Project Office",
+            "date": "2025 — Present",
+            "image": "/placeholder-prototype-002.jpg",
+            "tags": ["AI", "Workflow"],
+            "links": [
+                { "url": "#", "label": "Request briefing" }
+            ],
+            "featured": true
+        },
+        {
+            "id": "004",
+            "title": "Tact Ring",
+            "status": "active",
+            "category": "paradigm",
+            "description": "Subtle mmWave finger interactions for calm AI-AR experiences across urban environments.",
+            "collaborator": "MODEM",
+            "date": "2025 — Present",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["AR", "mmWave", "Embodied"],
+            "shake": true
+        },
+        {
+            "id": "006",
+            "title": "Everychat",
+            "status": "active",
+            "category": "prototype",
+            "description": "Visualising branches of conversation with large language models for better context recall.",
+            "date": "2025 — Present",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["LLM", "Conversation"]
+        },
+        {
+            "id": "003",
+            "title": "RssCast",
+            "status": "previous",
+            "category": "prototype",
+            "description": "Daily audio briefings that transform RSS feeds into synthesised podcasts.",
+            "date": "Exploration",
+            "image": "/placeholder-prototype-002.jpg",
+            "tags": ["Audio", "Automation"]
+        },
+        {
+            "id": "005",
+            "title": "nlt",
+            "status": "previous",
+            "category": "product",
+            "description": "Natural language terminal blending shortcuts with AI orchestration for builders.",
+            "date": "Exploration",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["LLM", "Developer Tools"]
+        },
+        {
+            "id": "007",
+            "title": "Comment",
+            "status": "archive",
+            "category": "paradigm",
+            "description": "Canvas for collaborative annotation with AI assistance that proposes next actions.",
+            "date": "Planning",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["Collaboration", "Design Tools"]
+        },
+        {
+            "id": "008",
+            "title": "ShortTerm",
+            "status": "archive",
+            "category": "prototype",
+            "description": "Smart terminal exploring AI-assisted multimodal shortcuts.",
+            "date": "2024",
+            "image": "/placeholder-prototype-003.jpg",
+            "tags": ["LLM", "Productivity"],
+            "featured": false
+        }
+    ]
+}
