@@ -603,6 +603,7 @@ img, picture, video {
     aspect-ratio: 1 / 1;
     position: relative;
     background-color: var(--color-surface-subtle);
+    overflow: hidden; /* prevent child overflow from expanding viewport */
 }
 
 .office-image-viewport img {
@@ -648,12 +649,23 @@ img, picture, video {
 .footer {
     display: flex;
     justify-content: center;
-    background-color: var(--color-text-primary);
-    color: var(--color-surface);
+    background-color: transparent;
+    color: var(--color-text-primary);
     padding: var(--space-64) var(--space-64) var(--space-48) var(--space-64);
-    min-height: 50vh;
+    min-height: 75vh;
     font-weight: normal;
     margin-top: var(--space-96);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: var(--space-64);
+    right: var(--space-64);
+    height: 1px;
+    background-color: var(--color-border);
 }
 
 .footer-container {
@@ -688,13 +700,11 @@ img, picture, video {
 }
 
 .footer-text p {
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--color-text-secondary);
     font-size: var(--text-16);
     line-height: 1.2;
     letter-spacing: -0.01em;
 }
-
-/* .footer-middle removed (unused) */
 
 .footer-right {
     display: flex;
@@ -705,7 +715,7 @@ img, picture, video {
 .footer-copyright {
     font-size: var(--text-14);
     line-height: 1;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-tertiary);
     margin: 0;
 }
 
@@ -726,7 +736,7 @@ img, picture, video {
 .footer-logo img {
     width: 100%;
     height: auto;
-    filter: brightness(0) invert(1);
+    filter: none;
 }
 
 .footer--office {
@@ -745,13 +755,13 @@ img, picture, video {
     font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--color-text-secondary);
     transition: color 0.2s ease;
 }
 
 .contact-email:hover,
 .contact-instagram:hover {
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 /* ===== Office Page ===== */
@@ -1100,6 +1110,7 @@ img, picture, video {
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden; /* safety on mobile */
     }
 
     .office-image-viewport img {
@@ -1130,6 +1141,11 @@ img, picture, video {
         padding: var(--space-48) var(--space-24) var(--space-32) var(--space-24);
     }
 
+    .footer::before {
+        left: var(--space-24);
+        right: var(--space-24);
+    }
+
     .footer-grid {
         grid-template-columns: 1fr;
         gap: var(--space-32);
@@ -1138,6 +1154,11 @@ img, picture, video {
     .contact-email,
     .contact-instagram {
         font-size: var(--text-32);
+    }
+
+    /* Mobile footer logo */
+    .footer-logo img {
+        content: url('/images/logos/logo-mid.svg');
     }
 
     /* R&D Page specific */

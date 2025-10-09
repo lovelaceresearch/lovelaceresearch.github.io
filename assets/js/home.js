@@ -339,19 +339,21 @@ async function initOfficeImageHover() {
     const company = (companyRaw || '').toLowerCase();
     if (!company) return;
 
-    // Deactivate current active
-    officeImageContainer.querySelectorAll('img').forEach((img) => img.classList.remove('active'));
+    // Deactivate cached images
+    logoMap.forEach((img) => img.classList.remove('active'));
+    // Ensure only one image node exists; this avoids double images and overflow
+    officeImageContainer.innerHTML = '';
 
-    if (logoMap.has(company)) {
-      logoMap.get(company)?.classList.add('active');
-      return;
+    let img = logoMap.get(company) || null;
+    if (!img) {
+      img = await resolveCompanyImage(company);
+      if (img) {
+        logoMap.set(company, img);
+      }
     }
-
-    const img = await resolveCompanyImage(company);
     if (img) {
-      officeImageContainer.appendChild(img);
-      logoMap.set(company, img);
       img.classList.add('active');
+      officeImageContainer.appendChild(img);
     }
   };
 

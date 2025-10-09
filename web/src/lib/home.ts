@@ -237,16 +237,20 @@ async function initOfficeImageHover() {
   const activateCompany = async (companyRaw: string) => {
     const company = (companyRaw || '').toLowerCase();
     if (!company) return;
-    officeImageContainer.querySelectorAll('img').forEach((img) => img.classList.remove('active'));
-    if (logoMap.has(company)) {
-      logoMap.get(company)!.classList.add('active');
-      return;
+    // Deactivate cached images
+    logoMap.forEach((img) => img.classList.remove('active'));
+    // Ensure only one image node exists in the container to avoid layout overflow
+    officeImageContainer.innerHTML = '';
+    let img = logoMap.get(company) || null;
+    if (!img) {
+      img = await resolveCompanyImage(company);
+      if (img) {
+        logoMap.set(company, img);
+      }
     }
-    const img = await resolveCompanyImage(company);
     if (img) {
-      officeImageContainer.appendChild(img);
-      logoMap.set(company, img);
       img.classList.add('active');
+      officeImageContainer.appendChild(img);
     }
   };
 
