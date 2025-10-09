@@ -2,44 +2,50 @@
   "slides": [
     {
       "id": "slide-01",
-      "filename": "imperial.jpg",
-      "alt": "Imperial",
-      "order": 3
+      "filename": "1.jpg",
+      "alt": "1",
+      "order": 0
+    },
+    {
+      "id": "slide-02",
+      "filename": "2.jpg",
+      "alt": "2",
+      "order": 1
     },
     {
       "id": "slide-03",
-      "filename": "Frame1898.jpg",
-      "alt": "Frame 1898",
+      "filename": "3.jpg",
+      "alt": "3",
       "order": 2
     },
     {
       "id": "slide-04",
-      "filename": "Frame2002.jpg",
-      "alt": "Frame 2002",
-      "order": 1
+      "filename": "4.png",
+      "alt": "4",
+      "order": 3
     },
     {
       "id": "slide-05",
-      "filename": "Frame2009.png",
-      "alt": "Frame 2009",
+      "filename": "5.jpg",
+      "alt": "5",
       "order": 4
     },
     {
       "id": "slide-06",
-      "filename": "Frame 2010s.jpg",
-      "alt": "Frame 2010",
+      "filename": "6.mov",
+      "alt": "6",
       "order": 5
     },
     {
       "id": "slide-07",
-      "filename": "short.mov",
-      "alt": "Short clip",
+      "filename": "Frame 5.png",
+      "alt": "Frame 5",
       "order": 6
     },
     {
       "id": "slide-08",
-      "filename": "Frame 5.png",
-      "alt": "Short clip 2",
+      "filename": "Frame 2011.jpg",
+      "alt": "Frame 2011",
       "order": 7
     }
   ]

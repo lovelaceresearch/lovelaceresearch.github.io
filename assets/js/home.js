@@ -75,8 +75,15 @@ function initHoverScroll() {
   updateActiveHoverItem(0);
 
   if (!hoverScrollListenersBound) {
+    // Desktop: mouse events
     hoverScrollContainer.addEventListener('mousemove', handleMouseMove);
     hoverScrollContainer.addEventListener('mouseleave', handleMouseLeave);
+    
+    // Mobile: touch events
+    hoverScrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+    hoverScrollContainer.addEventListener('touchmove', handleTouchMove, { passive: true });
+    hoverScrollContainer.addEventListener('touchend', handleTouchEnd);
+    
     hoverScrollListenersBound = true;
   }
 }
@@ -101,6 +108,37 @@ function handleMouseMove(e) {
 function handleMouseLeave() {
   // Keep the last active item when mouse leaves
   // No need to change anything
+}
+
+let touchStartX = 0;
+let touchCurrentX = 0;
+
+function handleTouchStart(e) {
+  if (e.touches.length > 0) {
+    touchStartX = e.touches[0].clientX;
+  }
+}
+
+function handleTouchMove(e) {
+  if (e.touches.length === 0 || hoverScrollItems.length === 0) return;
+  
+  touchCurrentX = e.touches[0].clientX;
+  const rect = hoverScrollContainer.getBoundingClientRect();
+  const x = touchCurrentX - rect.left;
+  const width = rect.width;
+  if (width === 0) return;
+  
+  const itemIndex = Math.floor((x / width) * hoverScrollItems.length);
+  const clampedIndex = Math.max(0, Math.min(itemIndex, hoverScrollItems.length - 1));
+  
+  if (clampedIndex !== currentHoverIndex) {
+    updateActiveHoverItem(clampedIndex);
+  }
+}
+
+function handleTouchEnd() {
+  // Optional: Add swipe gesture detection here if you want discrete swipes
+  // For now, the continuous touch tracking in handleTouchMove handles it
 }
 
 function updateActiveHoverItem(index) {
@@ -293,6 +331,8 @@ async function initOfficeImageHover() {
 
   const companyNameSpans = document.querySelectorAll('.company-name[data-company]');
   const logoMap = new Map();
+  const companyNames = Array.from(companyNameSpans).map(span => span.dataset.company || '');
+  let currentCompanyIndex = 0;
 
   // Helper to activate a company image, loading if needed
   const activateCompany = async (companyRaw) => {
@@ -315,15 +355,41 @@ async function initOfficeImageHover() {
     }
   };
 
+  const activateNextCompany = () => {
+    currentCompanyIndex = (currentCompanyIndex + 1) % companyNames.length;
+    const nextCompany = companyNames[currentCompanyIndex];
+    if (nextCompany) {
+      activateCompany(nextCompany);
+    }
+  };
+
   // Default: show OpenAI on init if available
   activateCompany('OpenAI');
 
-  // Preload on first hover per company and activate
-  companyNameSpans.forEach((span) => {
+  // Desktop: hover to show different company images
+  companyNameSpans.forEach((span, index) => {
     span.addEventListener('mouseenter', () => {
       const company = span.dataset.company || '';
+      currentCompanyIndex = index;
       activateCompany(company);
     });
+  });
+
+  // Mobile: click on names to show image
+  companyNameSpans.forEach((span, index) => {
+    span.addEventListener('click', () => {
+      const company = span.dataset.company || '';
+      currentCompanyIndex = index;
+      activateCompany(company);
+    });
+  });
+
+  // Mobile: tap on image viewport to cycle through companies
+  officeImageContainer.addEventListener('click', () => {
+    // Check if we're on mobile (simplified check)
+    if (window.innerWidth <= 768) {
+      activateNextCompany();
+    }
   });
 
   // Do not clear on mouseleave; keep last viewed image visible
