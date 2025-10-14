@@ -44,3 +44,7 @@ For best results, use descriptive filenames:
 - `short-video.mov` → "Short Video"
 
 The system will automatically generate human-readable alt text from your filenames.
+
+
+
+

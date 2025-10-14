@@ -11,6 +11,16 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
+    "/rnd/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/rnd/layout.js"
+    ],
+    "/rnd/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/rnd/page.js"
+    ],
     "/office/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

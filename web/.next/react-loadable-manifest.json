@@ -10,5 +10,11 @@
     "files": [
       "static/chunks/_app-pages-browser_src_lib_office_ts.js"
     ]
+  },
+  "components/RndClient.tsx -> @/lib/rnd": {
+    "id": "components/RndClient.tsx -> @/lib/rnd",
+    "files": [
+      "static/chunks/_app-pages-browser_src_lib_rnd_ts.js"
+    ]
   }
 }
