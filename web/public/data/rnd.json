@@ -1,10 +1,7 @@
 {
     "projects": [
         {
-            "id": "001",
             "description": "Visually explore and organise complex ideas using a graph-based interface for knowledge teams.",
-            "collaborator": "Imperial College London",
-            "date": "2025 — Present",
             "image": "/images/general/imperial2.jpg",
             "links": [
                 { "url": "#", "label": "View prototype" }
@@ -26,12 +23,6 @@
             "collaborator": "MODEM",
             "date": "2025 — Present",
             "image": "/images/general/DSC06369.jpg"
-        },
-        {
-            "id": "004",
-            "description": "Visualising branches of conversation with large language models for better context recall.",
-            "date": "2025 — Present",
-            "image": "/images/slides/Frame1898.jpg"
         }
     ]
 }

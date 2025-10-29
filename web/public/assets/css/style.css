@@ -1167,8 +1167,8 @@ img, picture, video {
     }
 
     .projects-header--rnd {
-        grid-template-columns: 1fr;
-        gap: var(--space-32);
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-24);
     }
 
     .projects-header--rnd .section-title {
@@ -1181,6 +1181,7 @@ img, picture, video {
 
     .rnd-section-header {
         font-size: var(--text-32);
+        margin-bottom: var(--space-24);
     }
 
     /* Office Page specific */
