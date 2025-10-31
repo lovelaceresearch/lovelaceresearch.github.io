@@ -6,8 +6,7 @@ import {
   formatLabel,
   resolveImage,
   loadImageSize,
-  classifyRatio,
-  shuffleArray
+  classifyRatio
 } from '@/lib/utils';
 
 const STATUS_PRIORITY = new Map<string, number>([
@@ -19,7 +18,6 @@ const STATUS_PRIORITY = new Map<string, number>([
 ]);
 
 const STATUS_FILTERS: Record<string, (project: any) => boolean> = {
-  shuffle: () => true,
   shake: (project) => Boolean(project.shake),
   featured: (project) => Boolean(project.featured),
   active: (project) => project.statusKey === 'active',
@@ -42,14 +40,13 @@ function setupFilters() {
     group.addEventListener('click', (event) => {
       const item = (event.target as HTMLElement).closest('.filter-item') as HTMLElement | null;
       if (!item) return;
-      if (item.dataset.filterValue === 'shuffle') {
-        document.querySelectorAll('.filter-item.is-active').forEach((el) => el.classList.remove('is-active'));
-        const shuffled = shuffleArray([...preparedProjects]);
-        renderProjects(shuffled);
-        return;
-      }
       const filterType = group.dataset.filterGroup;
       if (filterType === 'category') {
+        const wasActive = item.classList.contains('is-active');
+        group.querySelectorAll('.filter-item').forEach((el) => el.classList.remove('is-active'));
+        if (!wasActive) item.classList.add('is-active');
+      } else if (filterType === 'status') {
+        // Status filters are single-select
         const wasActive = item.classList.contains('is-active');
         group.querySelectorAll('.filter-item').forEach((el) => el.classList.remove('is-active'));
         if (!wasActive) item.classList.add('is-active');
@@ -69,7 +66,7 @@ function getActiveFilters() {
     if (!type) return;
     group.querySelectorAll<HTMLElement>('.filter-item.is-active').forEach((item) => {
       const value = item.dataset.filterValue;
-      if (!value || value === 'shuffle') return;
+      if (!value || value === 'all') return; // Skip 'all' filter - it means show everything
       if (type === 'category') filters.category.add(normaliseCategory(value));
       else if (type === 'status') filters.status.add(value.toLowerCase());
     });
@@ -112,12 +109,13 @@ function renderTags(host: HTMLElement, tags?: string[]) {
 
 function renderLinks(host: HTMLElement, links?: Array<{ url: string; label?: string }>) {
   if (!host || !Array.isArray(links) || !links.length) return;
+  const isDirectory = host.classList.contains('directory-desc-col');
   const container = document.createElement('div');
-  container.className = 'rnd-card-links';
+  container.className = isDirectory ? 'directory-links' : 'rnd-card-links';
   links.forEach((link) => {
     if (!link?.url) return;
     const anchor = document.createElement('a');
-    anchor.className = 'rnd-card-link';
+    anchor.className = isDirectory ? 'directory-link' : 'rnd-card-link';
     anchor.href = link.url;
     anchor.target = '_blank';
     anchor.rel = 'noopener noreferrer';
@@ -154,49 +152,79 @@ function renderProjects(projects: any[]) {
     sectionHeader.textContent = formatLabel(category);
     fragment.appendChild(sectionHeader);
     categoryProjects.forEach((project: any, idx: number) => {
-      let sizeVariant = '';
-      if (project.ratioClass === 'ratio-square' && (idx === 0 || idx % 5 === 0)) sizeVariant = 'project-item--large';
-      else if (project.ratioClass === 'ratio-4-3' && idx % 4 === 2) sizeVariant = 'project-item--small';
+      // Directory-style layout for all categories
       const card = document.createElement('div');
-      card.className = `project-item rnd-card ${project.ratioClass} ${sizeVariant}`.trim();
+      card.className = 'project-item project-item--directory';
       card.dataset.category = category;
-      // Set dataset for status filters
       card.dataset.status = project.statusKey || '';
       card.dataset.featured = project.featured ? '1' : '0';
       card.dataset.shake = project.shake ? '1' : '0';
-      const thumb = document.createElement('div');
-      thumb.className = 'project-thumb';
+      
+      // Column 1: Number
+      const numberCol = document.createElement('div');
+      numberCol.className = 'directory-number';
+      numberCol.textContent = project.number || String(idx + 1).padStart(3, '0');
+      
+      // Column 2: Title / Tagline / Collaborator (for Prototype)
+      const titleCol = document.createElement('div');
+      titleCol.className = 'directory-title-col';
+      const title = document.createElement('h3');
+      title.className = 'directory-title';
+      title.textContent = project.title || 'Untitled';
+      titleCol.appendChild(title);
+      
+      // Show tagline if it exists (with gap = font size from title)
+      if (project.tagline) {
+        const tagline = document.createElement('div');
+        tagline.className = 'directory-tagline';
+        tagline.textContent = project.tagline;
+        titleCol.appendChild(tagline);
+      }
+      
+      // For Prototype items, show collaborator as a hover-able link below tagline
+      if (category === 'prototype' && project.collaborator) {
+        const collaboratorLink = document.createElement('a');
+        collaboratorLink.className = 'directory-collaborator';
+        collaboratorLink.href = project.collaboratorUrl || '#';
+        collaboratorLink.textContent = project.collaborator;
+        if (!project.collaboratorUrl || project.collaboratorUrl === '#') {
+          collaboratorLink.addEventListener('click', (e) => {
+            e.preventDefault();
+          });
+        }
+        collaboratorLink.target = project.collaboratorUrl && project.collaboratorUrl !== '#' ? '_blank' : '_self';
+        collaboratorLink.rel = project.collaboratorUrl && project.collaboratorUrl !== '#' ? 'noopener noreferrer' : '';
+        titleCol.appendChild(collaboratorLink);
+      } else if (category !== 'prototype' && project.collaborator && !project.tagline) {
+        // For non-prototype items, show collaborator as tagline if no tagline exists
+        const tagline = document.createElement('div');
+        tagline.className = 'directory-tagline';
+        tagline.textContent = project.collaborator;
+        titleCol.appendChild(tagline);
+      }
+      
+      // Column 3: Description / Links
+      const descCol = document.createElement('div');
+      descCol.className = 'directory-desc-col';
+      const description = document.createElement('p');
+      description.className = 'directory-description';
+      description.textContent = project.description || 'Details coming soon.';
+      descCol.appendChild(description);
+      renderLinks(descCol, project.links);
+      
+      // Column 4: Image
+      const imageCol = document.createElement('div');
+      imageCol.className = 'directory-image-col';
       const image = document.createElement('img');
       image.src = project.imageSrc;
       image.alt = project.imageAlt || project.title || 'R&D project image';
       image.loading = 'lazy';
-      thumb.appendChild(image);
-      const meta = document.createElement('div');
-      meta.className = 'project-meta';
-      const heading = document.createElement('div');
-      heading.className = 'rnd-card-heading';
-      const statusSpan = document.createElement('span');
-      statusSpan.className = 'rnd-card-status';
-      statusSpan.textContent = pickStatusBadge(project);
-      heading.appendChild(statusSpan);
-      const h3 = document.createElement('h3');
-      h3.className = 'rnd-card-title';
-      h3.textContent = project.title || 'Untitled exploration';
-      heading.appendChild(h3);
-      const description = document.createElement('p');
-      description.className = 'rnd-card-description';
-      description.textContent = project.description || 'Details coming soon.';
-      const metaRow = document.createElement('div');
-      metaRow.className = 'rnd-card-meta';
-      if (project.collaborator) metaRow.appendChild(document.createTextNode(project.collaborator));
-      if (project.date) metaRow.appendChild(document.createTextNode(project.date));
-      meta.appendChild(heading);
-      meta.appendChild(description);
-      if (metaRow.children.length) meta.appendChild(metaRow);
-      renderTags(meta, project.tags);
-      renderLinks(meta, project.links);
-      card.appendChild(thumb);
-      card.appendChild(meta);
+      imageCol.appendChild(image);
+      
+      card.appendChild(numberCol);
+      card.appendChild(titleCol);
+      card.appendChild(descCol);
+      card.appendChild(imageCol);
       fragment.appendChild(card);
     });
   });
@@ -249,11 +277,28 @@ function applyFiltersAndRender() {
     if (visibleProjects.length === 0) header.style.display = 'none';
     else header.style.display = '';
   });
-  // Normalize top margin: ensure first visible header has zero top margin
+  // Normalize margins: ensure consistent spacing between headers and lists
   const headers = Array.from(document.querySelectorAll<HTMLElement>('.rnd-section-header'));
-  headers.forEach((h) => { h.style.marginTop = ''; });
+  // Get the computed value of --space-32 (which is 2rem = 32px)
+  const root = document.documentElement;
+  const space32 = getComputedStyle(root).getPropertyValue('--space-32').trim() || '2rem';
+  
+  headers.forEach((h) => {
+    // Reset all margins to use CSS defaults
+    h.style.marginTop = '';
+    h.style.marginBottom = '';
+  });
+  // Set first visible header to have zero top margin, but keep consistent bottom margin
   const firstVisible = headers.find((h) => h.style.display !== 'none');
-  if (firstVisible) firstVisible.style.marginTop = '0';
+  if (firstVisible) {
+    firstVisible.style.marginTop = '0';
+  }
+  // Ensure all visible headers have consistent bottom margin (32px gap between header and list)
+  headers.forEach((h) => {
+    if (h.style.display !== 'none') {
+      h.style.marginBottom = space32;
+    }
+  });
 }
 
 function sortProjects(projects: any[]) {

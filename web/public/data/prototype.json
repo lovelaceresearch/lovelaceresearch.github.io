@@ -3,8 +3,9 @@
         {
             "number": "001",
             "title": "Synapse",
+            "tagline": "Reflection Journal for Researcher",
             "status": "active",
-            "collaborator": "Imperial College London",
+            "collaborator": "Imperial College London / Royal College of Art",
             "description": "A tool for visually exploring and organizing complex ideas using a graph-based interface.",
             "date": "Jan 2025 - Present",
             "image": "/images/general/imperial2.jpg",

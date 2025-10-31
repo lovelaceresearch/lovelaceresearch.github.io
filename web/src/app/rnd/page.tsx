@@ -20,21 +20,32 @@ export default function RndPage() {
       <div className="main-content-group">
         <section className="rnd-header-section">
           <div className="projects-container">
-            <div className="projects-header projects-header--rnd">
-              <h2 className="section-title section-title--left">R&D</h2>
+            <div className="rnd-header-grid">
+              <h1 className="rnd-header-title">R&D</h1>
+              <p className="rnd-header-subtitle">Fueled with vision-led curiosity and hands-on development.</p>
+            </div>
+          </div>
+        </section>
+        <section className="rnd-filters-section">
+          <div className="projects-container">
+            <div className="rnd-filters-container">
               <div className="rnd-filter-col" data-filter-group="category">
+                <span className="filter-item is-active" data-filter-value="all">All</span>
                 <span className="filter-item" data-filter-value="product">Product</span>
                 <span className="filter-item" data-filter-value="prototype">Prototype</span>
                 <span className="filter-item" data-filter-value="paradigm">Paradigm</span>
               </div>
               <div className="rnd-filter-col" data-filter-group="status">
-                <span className="filter-item" data-filter-value="shuffle">Shuffle!</span>
                 <span className="filter-item" data-filter-value="featured">Featured</span>
                 <span className="filter-item" data-filter-value="active">Ongoing</span>
                 <span className="filter-item" data-filter-value="archive">Archive</span>
                 <span className="filter-item" data-filter-value="previous">Previous</span>
               </div>
             </div>
+          </div>
+        </section>
+        <section className="rnd-projects-section">
+          <div className="projects-container">
             <div className="projects-grid" id="rndProjectsGrid"></div>
           </div>
         </section>
