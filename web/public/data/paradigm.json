@@ -1,35 +1,178 @@
 {
-    "paradigms": [
+  "paradigms" : [
+    {
+      "number" : "001",
+      "title" : "Digital Renaissance Manifesto",
+      "status" : "done",
+      "collaborator" : "Imperial College London / Royal College of Art",
+      "tagline" : "Less Technology, More Human",
+      "description" : "A manifesto for a more human-centred approach to technology, role of design engineers interface architects.",
+      "date" : "2024",
+      "image" : "/images/general/imperial2.jpg", // Imperial Dyson Library Image
+      "links" : [
         {
-            "number": "001",
-            "title": "Human-Centred AI Framework",
-            "status": "active",
-            "collaborator": "Imperial College London",
-            "description": "Research framework for designing AI systems that prioritize human values and agency.",
-            "date": "2025 - Present",
-            "image": "/images/general/imperial2.jpg",
-            "tags": ["Research", "Framework", "Human-Centred AI"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "Read Paper"
-                }
-            ]
-        },
-        {
-            "number": "002",
-            "title": "Embodied Interaction Paradigm",
-            "status": "active",
-            "description": "Exploring subtle, calm computing through physical and spatial interactions.",
-            "date": "2024 - Present",
-            "image": "/images/general/DSC06366.jpg",
-            "tags": ["Paradigm", "Embodied", "Interaction"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "Learn More"
-                }
-            ]
+          "url" : "#",
+          "label" : "Full Manifesto"
         }
-    ]
+      ]
+    },
+    {
+      "number" : "002",
+      "title" : "Information Gardening",
+      "status" : "active",
+      "description" : "Exploring subtle, calm computing through physical and spatial interactions.",
+      "date" : "2024 - Present",
+      "image" : "/images/general/DSC06366.jpg",
+      "links" : [
+        {
+          "url" : "#",
+          "label" : "Learn More"
+        }
+      ]
+    },
+    {
+        "number" : "003",
+        "title" : "New Reality, New Normal, New Designers",
+        "status" : "done",
+        "tagline" : "New Reality, New Normal, New Designers",
+        "collaborator" : "New Reality Design",
+        "description" : "Exploring subtle, calm computing through physical and spatial interactions.",
+        "date" : "2024",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Learn More"
+          }
+        ]
+      },
+      {
+        "number" : "004",
+        "title" : "Techno Mythicism",
+        "status" : "done",
+        "tagline" : "",
+        "collaborator" : "TaskTask",
+        "description" : "Exploring subtle, calm computing through physical and spatial interactions.",
+        "date" : "2025",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Full Article"
+          }
+        ]
+      },
+      {
+        "number" : "005",
+        "title" : "Being a Young Designer in the Era of AI",
+        "status" : "done",
+        "tagline" : "",
+        "collaborator" : "Monthly Design",
+        "description" : "Exploring subtle, calm computing through physical and spatial interactions.",
+        "date" : "2025",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Full Article"
+          }
+        ]
+      },
+      {
+        "number" : "006",
+        "title" : "Framing AI for Innovation Opportunities",
+        "status" : "done",
+        "tagline" : "",
+        "collaborator" : "OpenAI / Imperial College London / Royal College of Art",
+        "description" : "Exploring subtle, calm computing through physical and spatial interactions.",
+        "date" : "2025",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Full Article"
+          }
+        ]
+      },
+      {
+        "number" : "007",
+        "title" : "Building Web-Based AI Products I, II, III",
+        "status" : "done",
+        "tagline" : "",
+        "collaborator" : "Seoul National University",
+        "description" : "Guest lectures, tutorials, and workshops for Major in Information Science and Culture",
+        "date" : "2025",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Full Article"
+          }
+        ]
+      },
+      {
+        "number" : "008",
+        "title" : "App & Game Interaction Design",
+        "status" : "done",
+        "tagline" : "",
+        "collaborator" : "Myongji College",
+        "description" : "Guest lecture and tutorial",
+        "date" : "2025",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Full Article"
+          }
+        ]
+      },
+      {
+        "number" : "009",
+        "title" : "Designing XR Experiences",
+        "status" : "active",
+        "tagline" : "",
+        "collaborator" : "Seoul Women's University",
+        "description" : "Guest lecture and tutorial for Major in New Media Design course, School of Art & Design",
+        "date" : "Nov 2025",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Full Article"
+          }
+        ]
+      },
+      {
+        "number" : "010",
+        "title" : "The Practice of Designing AI",
+        "status" : "active",
+        "tagline" : "",
+        "collaborator" : "Sookmyung Women's University",
+        "description" : "Guest lecture and tutorial for Department of Visual and Media Design",
+        "date" : "Nov 2025",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Full Article"
+          }
+        ]
+      },
+      {
+        "number" : "011",
+        "title" : "AI Design Engineering",
+        "status" : "active",
+        "tagline" : "",
+        "collaborator" : "Sogang University",
+        "description" : "Mentoring for Department of Art & Technology",
+        "date" : "Nov 2025",
+        "image" : "/images/general/DSC06366.jpg",
+        "links" : [
+          {
+            "url" : "#",
+            "label" : "Full Article"
+          }
+        ]
+      }
+  ]
 }
