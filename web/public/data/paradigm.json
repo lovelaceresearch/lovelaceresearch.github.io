@@ -8,7 +8,7 @@
       "tagline" : "Less Technology, More Human",
       "description" : "A manifesto for a more human-centred approach to technology, role of design engineers interface architects.",
       "date" : "2024",
-      "image" : "/images/general/imperial2.jpg", // Imperial Dyson Library Image
+      "image" : "/images/general/imperial2.jpg",
       "links" : [
         {
           "url" : "#",
