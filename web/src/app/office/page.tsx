@@ -27,34 +27,30 @@ export default function OfficePage() {
         </section>
 
         <section className="office-hero-section">
-          <img src="/images/general/imperial2.jpg" alt="Office" className="office-hero-image" />
+          <img src="/images/general/3.jpg" alt="Office" className="office-hero-image" />
         </section>
 
         <section className="office-body-section">
           <p className="section-title">
-            Founded at Albertopolis, home to Imperial College and the Royal College of Art, and named after Ada Lovelace, we bring together expertise in human-centred AI and design thinking to build transformative AI products and prototypes. Like the PARC, think tank with hands-on development.
+            Founded at Albertopolis, home to Imperial College London and the Royal College of Art, and named after Ada Lovelace, we bring together expertise in human-centred AI and design thinking to build transformative AI products and prototypes.
           </p>
         </section>
 
         <section className="office-practice-section">
           <div className="practice-container">
-            <h2 className="section-title">Practice</h2>
+            <h2 className="section-title">What We Do</h2>
             <div className="practice-grid">
               <div className="practice-item">
                 <h3 className="practice-title">Paradigm Leading</h3>
-                <p className="practice-description">Human-Centred AI paradigm through lectures and teaching, community</p>
+                <p className="practice-description">Through teaching, community building, artwork and research</p>
               </div>
               <div className="practice-item">
                 <h3 className="practice-title">New Product Development</h3>
                 <p className="practice-description">Digital & Physical product Prototyping and development</p>
               </div>
               <div className="practice-item">
-                <h3 className="practice-title">Research Paper collaboration</h3>
-                <p className="practice-description">Human-Computer Interaction, Human-Centred Computing, Design Research</p>
-              </div>
-              <div className="practice-item">
-                <h3 className="practice-title">Innovation Strategy</h3>
-                <p className="practice-description">1-5Y horizon innovation strategy, speculative design scenarios</p>
+                <h3 className="practice-title">Academic Research</h3>
+                <p className="practice-description">In HCI, Human-Centred Computing and Design Research</p>
               </div>
             </div>
           </div>
@@ -65,7 +61,9 @@ export default function OfficePage() {
             <h2 className="section-title">Approach</h2>
             <div className="approach-content">
               <p className="approach-text">
-                As an alternative to current technology-driven AI development, we centre humans and open development to co-design desirable technology for humanity. Our practice spans paradigm-setting, prototyping, and product development. We believe in fundamental paradigm redesign that translates into transformative products—practical alternatives to the status quo.
+                As an alternative to technology-driven AI development, we centre humans and open development to co-design desirable technology for humanity.
+                <br /><br />
+                Our practice spans paradigm-setting, prototyping, and product development aiming for practical alternatives.
               </p>
               <img src="/images/general/DSC06366.jpg" alt="Approach" className="approach-image" />
             </div>

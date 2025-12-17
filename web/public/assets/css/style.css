@@ -21,24 +21,40 @@
 /* ===== Design Tokens ===== */
 :root {
     /* spacing scale */
-    --space-8: 0.5rem;     /* 8px */
-    --space-16: 1rem;      /* 16px */
-    --space-24: 1.5rem;    /* 24px */
-    --space-32: 2rem;      /* 32px */
-    --space-48: 3rem;      /* 48px */
-    --space-64: 4rem;      /* 64px */
-    --space-96: 6rem;      /* 96px */
-    --space-160: 12rem;     /* 160px */
+    --space-8: 0.5rem;
+    /* 8px */
+    --space-16: 1rem;
+    /* 16px */
+    --space-24: 1.5rem;
+    /* 24px */
+    --space-32: 2rem;
+    /* 32px */
+    --space-48: 3rem;
+    /* 48px */
+    --space-64: 4rem;
+    /* 64px */
+    --space-96: 6rem;
+    /* 96px */
+    --space-160: 12rem;
+    /* 160px */
 
     /* type scale */
-    --text-12: 0.75rem;    /* 12px */
-    --text-14: 0.875rem;   /* 14px */
-    --text-16: 1rem;       /* 16px */
-    --text-24: 1.5rem;     /* 24px */
-    --text-32: 2rem;       /* 32px */
-    --text-48: 3rem;       /* 48px */
-    --text-64: 4rem;       /* 64px */
-    --text-96: 6rem;       /* 96px */
+    --text-12: 0.75rem;
+    /* 12px */
+    --text-14: 0.875rem;
+    /* 14px */
+    --text-16: 1rem;
+    /* 16px */
+    --text-24: 1.5rem;
+    /* 24px */
+    --text-32: 2rem;
+    /* 32px */
+    --text-48: 3rem;
+    /* 48px */
+    --text-64: 4rem;
+    /* 64px */
+    --text-96: 6rem;
+    /* 96px */
 
     /* type + layout tokens */
     --font-sans-primary: 'Favorit Hangul', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -51,12 +67,15 @@
     --shadow-card: 0 24px 36px rgba(0, 0, 0, 0.08);
     --radius-sm: 0.5rem;
     --radius-md: 0.75rem;
-    --layout-max-width: 75rem; /* 1200px */
+    --layout-max-width: 75rem;
+    /* 1200px */
     --layout-nav-height: 4.5rem;
 }
 
 /* ===== Base Reset ===== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -70,7 +89,7 @@ html {
 }
 
 body {
-    
+
     background-color: var(--color-surface);
     color: var(--color-text-primary);
     line-height: 1.5;
@@ -128,7 +147,9 @@ a:focus-visible {
     outline-offset: 4px;
 }
 
-img, picture, video {
+img,
+picture,
+video {
     display: block;
     max-width: 100%;
     height: auto;
@@ -174,7 +195,7 @@ img, picture, video {
     font-size: var(--text-24);
     font-weight: bold;
     letter-spacing: -0.02em;
-    display: inline-flex; 
+    display: inline-flex;
     align-items: center;
     padding-block: calc(var(--space-8) * 1.25);
 }
@@ -258,6 +279,10 @@ img, picture, video {
     width: auto;
     height: auto;
     object-fit: contain;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
 }
 
 /* ===== Headline ===== */
@@ -306,15 +331,26 @@ img, picture, video {
     line-height: 1;
 }
 
-.section-title { font-size: var(--text-48); }
-.filter-item { font-size: var(--text-24); }
-.rnd-section-header { font-size: var(--text-48); }
+.section-title {
+    font-size: var(--text-48);
+}
+
+.filter-item {
+    font-size: var(--text-24);
+}
+
+.rnd-section-header {
+    font-size: var(--text-48);
+}
+
 .contact-email,
 .contact-instagram,
 .contact-email-button,
 .contact-link,
 .office-header-title,
-.office-header-subtitle { font-size: var(--text-48); }
+.office-header-subtitle {
+    font-size: var(--text-48);
+}
 
 /* ===== Featured Projects ===== */
 .featured-projects {
@@ -386,6 +422,85 @@ img, picture, video {
 .rnd-filters-container {
     display: flex;
     gap: var(--space-64);
+    justify-content: flex-start;
+    /* Align filters to the left of the right column */
+}
+
+/* View Toggle (Floating Bar) */
+.view-toggle {
+    position: fixed;
+    bottom: var(--space-32);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    display: flex;
+    gap: 2px;
+    /* Tight gap for switch feel */
+
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    border-radius: 8px;
+    padding: 4px;
+    /* Tight container padding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.view-btn {
+    background: transparent;
+    border: none;
+    padding: 8px 8px;
+    /* Reduced horizontal padding to 8px */
+    font-size: var(--text-14);
+    /* Slightly smaller/cleaner for switch */
+    line-height: 1;
+    color: var(--color-text-secondary);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.view-btn:hover {
+    color: var(--color-text-primary);
+}
+
+.view-btn.is-active {
+    background-color: #1a1a1a;
+    /* Off-black */
+    color: #ffffff;
+    opacity: 1;
+}
+
+.view-btn.is-active:hover {
+    /* No change on hover if active */
+    opacity: 1;
+    text-decoration: none;
+}
+
+/* Prototype Link Button */
+.card-prototype .rnd-card-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 8px;
+    /* Reduced horizontal padding to 8px */
+    margin-top: 12px;
+
+    font-size: var(--text-14);
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+
+    color: var(--color-text-primary);
+    background-color: transparent;
+    border: 1px solid var(--color-text-primary);
+    border-radius: 4px;
+
+    opacity: 1;
+    transition: all 0.2s ease;
 }
 
 /* R&D Projects Section */
@@ -435,7 +550,9 @@ img, picture, video {
     letter-spacing: 0.05em;
 }
 
-.rnd-card-title { font-size: var(--text-24); }
+.rnd-card-title {
+    font-size: var(--text-24);
+}
 
 .rnd-card-description {
     font-size: var(--text-16);
@@ -487,12 +604,75 @@ img, picture, video {
 /* R&D Section Headers */
 .rnd-section-header {
     grid-column: 1 / -1;
-    font-size: var(--text-48);
+    font-size: var(--text-24);
+    /* Reduced from 48px to 24px */
     font-weight: bold;
     letter-spacing: -0.03em;
     line-height: 1;
     margin: var(--space-64) 0 var(--space-32) 0;
     color: var(--color-text-primary);
+}
+
+/* ... existing code ... */
+
+/* ===== R&D VIEW REDESIGN ===== */
+
+/* --- INDEX VIEW (`.project-item--index`) --- */
+.project-item--index {
+    grid-column: 1 / -1 !important;
+    display: grid;
+    /* [Number] [Title] [Venue] [Tag] */
+    grid-template-columns: 80px 2fr 2fr 1fr;
+    gap: var(--space-32);
+    align-items: baseline;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+    border-top: 1px solid var(--color-border);
+}
+
+.index-number,
+.index-title,
+.index-venue,
+.index-tag {
+    font-size: var(--text-16);
+    font-family: var(--font-sans-primary);
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+.index-number {
+    color: var(--color-text-tertiary);
+}
+
+.index-title {
+    color: var(--color-text-primary);
+}
+
+.index-row-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.index-row-link:hover {
+    opacity: 0.7;
+}
+
+.index-venue {
+    color: var(--color-text-secondary);
+}
+
+.index-tag {
+    text-align: right;
+    color: var(--color-text-tertiary);
+}
+
+/* Remove old col styles if they conflict or just let them be overridden by general selector above */
+.index-title-col,
+.index-desc-col,
+.index-link-col {
+    display: none;
+    /* Hide if accidentally rendered? No, we changed JS so these won't exist. */
 }
 
 /* Project grid items (no cards) */
@@ -501,7 +681,13 @@ img, picture, video {
     gap: var(--space-32);
     grid-template-columns: repeat(12, 1fr);
     grid-auto-flow: dense;
-    grid-auto-rows: minmax(120px, auto);
+}
+
+/* Index view: rows auto-size to content */
+.projects-grid.view-index {
+    grid-auto-rows: auto;
+    gap: 0;
+    /* Paradigm items define their own padding */
 }
 
 .project-item {
@@ -587,6 +773,7 @@ img, picture, video {
     padding-top: var(--space-16);
     padding-bottom: var(--space-48);
     position: relative;
+    border-top: 1px solid var(--color-border);
 }
 
 /* Column 1: Number */
@@ -598,16 +785,7 @@ img, picture, video {
     position: relative;
 }
 
-.directory-number::before {
-    content: '';
-    position: absolute;
-    top: calc(-1 * var(--space-16));
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: var(--color-text-primary);
-    opacity: 0.2;
-}
+/* .directory-number::before removed */
 
 /* Column 2: Title / Tagline */
 .directory-title-col {
@@ -617,16 +795,7 @@ img, picture, video {
     position: relative;
 }
 
-.directory-title-col::before {
-    content: '';
-    position: absolute;
-    top: calc(-1 * var(--space-16));
-    left: 0;
-    width: calc(300% + 2 * var(--space-32));
-    height: 2px;
-    background-color: var(--color-text-primary);
-    opacity: 0.2;
-}
+/* .directory-title-col::before removed */
 
 .directory-title {
     font-size: var(--text-24);
@@ -668,7 +837,7 @@ img, picture, video {
 .directory-description {
     font-size: var(--text-16);
     line-height: 1;
-    font-weight: bold;
+    font-weight: normal;
     color: var(--color-text-primary);
 }
 
@@ -681,7 +850,7 @@ img, picture, video {
 .directory-link {
     font-size: var(--text-16);
     line-height: 1;
-    font-weight: bold;
+    font-weight: normal;
     text-decoration: none;
     color: var(--color-text-primary);
     opacity: 0.5;
@@ -706,7 +875,11 @@ img, picture, video {
     object-fit: cover;
 }
 
-.project-one-liner { color: var(--color-text-secondary); opacity: 0.5; transition: opacity 0.2s ease; }
+.project-one-liner {
+    color: var(--color-text-secondary);
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
 
 .project-item:hover .project-one-liner,
 .project-item:focus-within .project-one-liner {
@@ -767,7 +940,8 @@ img, picture, video {
     aspect-ratio: 1 / 1;
     position: relative;
     background-color: var(--color-surface-subtle);
-    overflow: hidden; /* prevent child overflow from expanding viewport */
+    overflow: hidden;
+    /* prevent child overflow from expanding viewport */
 }
 
 .office-image-viewport img {
@@ -778,7 +952,7 @@ img, picture, video {
     object-fit: contain;
     padding: var(--space-16);
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.4s ease;
 }
 
 .office-image-viewport img.active {
@@ -1029,7 +1203,9 @@ img, picture, video {
     gap: 0;
 }
 
-.practice-title { font-size: var(--text-24); }
+.practice-title {
+    font-size: var(--text-24);
+}
 
 .practice-description {
     font-weight: bold;
@@ -1091,11 +1267,18 @@ img, picture, video {
     opacity: 1;
 }
 
-.contributor-name { grid-column: span 2; }
+.contributor-name {
+    grid-column: span 2;
+}
 
-.contributor-role { grid-column: span 1; }
+.contributor-role {
+    grid-column: span 1;
+}
 
-.contributor-city { grid-column: span 1; text-align: right; }
+.contributor-city {
+    grid-column: span 1;
+    text-align: right;
+}
 
 /* Contact Section */
 .office-contact-section {
@@ -1177,6 +1360,7 @@ img, picture, video {
 
 /* ===== Responsive (Mobile-First) ===== */
 @media (max-width: 768px) {
+
     /* Remove gap between hero slider and content */
     .page-content {
         gap: 0;
@@ -1299,7 +1483,8 @@ img, picture, video {
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden; /* safety on mobile */
+        overflow: hidden;
+        /* safety on mobile */
     }
 
     .office-image-viewport img {
@@ -1447,11 +1632,476 @@ img, picture, video {
         grid-template-columns: 1fr;
         gap: var(--space-8);
     }
-    
+
     .contributor-name,
     .contributor-role,
     .contributor-city {
         grid-column: span 1;
         text-align: left;
     }
+}
+
+/* ===== R&D VIEW REDESIGN ===== */
+
+/* --- INDEX VIEW (`.project-item--index`) --- */
+.project-item--index {
+    grid-column: 1 / -1 !important;
+    display: grid;
+    /* 12 Column Grid System */
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    /* User specified 24px gap */
+    align-items: baseline;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+    border-top: 1px solid var(--color-border);
+}
+
+.index-number {
+    grid-column: 1 / span 1;
+}
+
+.index-title {
+    grid-column: 2 / 5;
+    /* Starts at 2, ends before 5 (span 3) */
+}
+
+.index-venue {
+    grid-column: 5 / 9;
+    /* Starts at 5, ends before 9 (span 4) */
+}
+
+.index-tag {
+    grid-column: 9 / -1;
+    /* Starts at 9, goes to end (span 4) */
+    text-align: right;
+}
+
+.index-number,
+
+.index-title,
+.index-venue,
+.index-tag {
+    font-size: var(--text-16);
+    font-family: var(--font-sans-primary);
+    font-weight: normal;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+.index-number {
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+}
+
+.index-title {
+    color: var(--color-text-primary);
+}
+
+.index-row-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.index-row-link:hover {
+    opacity: 0.7;
+}
+
+.index-venue {
+    color: var(--color-text-secondary);
+}
+
+.index-tag {
+    text-align: right;
+    color: var(--color-text-tertiary);
+}
+
+
+.index-item-tagline,
+.index-item-description,
+.index-item-date {
+    font-size: var(--text-16);
+    line-height: 1.2;
+    font-weight: normal;
+}
+
+.index-item-tagline {
+    color: var(--color-text-secondary);
+}
+
+.index-item-description {
+    color: var(--color-text-tertiary);
+}
+
+.index-item-date {
+    color: var(--color-text-tertiary);
+}
+
+
+/* --- CARD VIEW (`.view-card`) --- */
+
+/* Grid Wrapper per Category */
+/* Grid Wrapper per Category */
+.category-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    /* Consistent with Index */
+    row-gap: var(--space-64);
+    /* Row gap for cards */
+    margin-bottom: var(--space-64);
+}
+
+/* Base Card Item - Default to Span 4 (3 up) */
+.project-item--card {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    background: transparent;
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* Specific Spans */
+.project-item--card.card-paradigm {
+    grid-column: span 2;
+    /* 6 up */
+}
+
+.project-item--card.card-product {
+    grid-column: span 4;
+    /* 3 up */
+}
+
+.project-item--card.card-prototype {
+    grid-column: span 3;
+    /* 4 up */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Card Image */
+.card-image-container {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    /* Default ratio */
+    background-color: var(--color-surface-subtle);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--color-border);
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-item--card:hover .card-image-container img {
+    transform: scale(1.02);
+}
+
+/* Remove hover animation for Prototype images (keep for videos) */
+.card-prototype:hover .card-image-container img {
+    transform: none;
+}
+
+.card-image-container.no-image {
+    display: none;
+    /* Hide container if no image and not forced */
+}
+
+/* Card Content Standard */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    flex-grow: 1;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Baseline grid (approx leading for 1.2 line-height) */
+}
+
+.card-title {
+    font-size: var(--text-16);
+    font-weight: normal;
+    line-height: 1.2;
+    /* Baseline grid */
+}
+
+.card-tagline {
+    font-size: var(--text-16);
+    color: var(--color-text-secondary);
+    line-height: 1.2;
+    /* Baseline grid */
+    opacity: 0.5;
+}
+
+.card-description {
+    font-size: var(--text-16);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-8);
+}
+
+.card-status-badge {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    background: var(--color-surface-subtle);
+    border-radius: 99px;
+    color: var(--color-text-secondary);
+}
+
+/* --- CATEGORY VARIATIONS --- */
+
+/* PRODUCT (Grey Card) */
+.card-product {
+    background-color: var(--color-surface-subtle);
+    padding: var(--space-24);
+    border-radius: var(--radius-md);
+    border: none;
+    gap: var(--space-24);
+}
+
+.card-product .card-image-container {
+    aspect-ratio: 16 / 9;
+    background: transparent;
+    border: none;
+    /* Images inside grey card sit naturally, no internal border needed? Or keep for definition? */
+    /* "nicely" suggests clean. Let's try no border on image if card has bg. */
+}
+
+.card-product .card-title {
+    font-size: var(--text-16);
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+.card-product .card-tagline {
+    font-size: var(--text-16);
+    color: var(--color-text-secondary);
+    line-height: 1.2;
+    opacity: 0.5;
+}
+
+.card-product .card-description {
+    font-size: var(--text-16);
+    color: var(--color-text-tertiary);
+    line-height: 1.2;
+}
+
+.card-product .rnd-card-link {
+    font-size: var(--text-16);
+}
+
+/* PROTOTYPE (Visual/Collab Focus) */
+.card-prototype .card-image-container {
+    aspect-ratio: 3 / 4;
+    /* Vertical visual */
+}
+
+/* Prototype Typography - Baseline Grid */
+.card-prototype .card-title,
+.card-prototype .card-collaborator,
+.card-prototype .card-tagline,
+.card-prototype .card-tags,
+.card-prototype .card-date,
+.card-prototype .rnd-card-link {
+    font-size: var(--text-16);
+    font-weight: normal;
+    line-height: 1.2;
+    /* Baseline grid */
+    color: var(--color-text-primary);
+    transition: opacity 0.3s ease;
+}
+
+.card-prototype .card-title {
+    font-family: 'Favorit Hangul', var(--font-sans-primary);
+    font-weight: bold;
+    /* Maps to ABCFavoritHangul-Medium */
+    opacity: 0.6;
+    /* Medium opacity (Normal) */
+}
+
+/* Hover: Title goes to 100% */
+.card-prototype:hover .card-title {
+    opacity: 1;
+}
+
+.card-prototype .card-collaborator {
+    text-transform: none;
+    opacity: 0.4;
+    /* Low opacity (Normal) */
+    margin-bottom: 2px;
+}
+
+/* Collaborator stays 0.4 on hover */
+
+.card-prototype .card-description {
+    opacity: 0.4;
+    /* Low opacity (Normal) */
+    margin-top: 4px;
+    -webkit-line-clamp: 2;
+    /* Ensure limit */
+}
+
+/* Hover: Description goes to Title's normal level (0.6) */
+.card-prototype:hover .card-description {
+    opacity: 0.6;
+}
+
+.card-prototype .card-date {
+    opacity: 0.3;
+}
+
+/* Link Style (Prototype Button) */
+.card-prototype .rnd-card-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 8px;
+    margin-top: 12px;
+    /* Separation */
+
+    font-size: var(--text-14);
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    /* No underline */
+
+    color: var(--color-text-primary);
+    background-color: transparent;
+    border: 1px solid var(--color-text-primary);
+    /* Stroke */
+    border-radius: 4px;
+    /* Box shape */
+
+    opacity: 1;
+    /* Reset opacity from previous override if any */
+    transition: all 0.2s ease;
+}
+
+.card-prototype .rnd-card-link:hover {
+    background-color: var(--color-text-primary);
+    /* Fill on hover */
+    color: var(--color-surface);
+    /* Text white */
+    opacity: 1;
+}
+
+/* PARADIGM (Text/Context Focus) */
+/* PARADIGM (Text/Context Focus) */
+.card-paradigm {
+    /* Simple, clean, no border/box */
+    background: transparent;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Baseline grid */
+}
+
+/* Hide image for Paradigm entirely in Card view as per density logic */
+.card-paradigm .card-image-container {
+    display: none !important;
+}
+
+/* Typography Hierarchy - Baseline Grid */
+.card-paradigm .card-number,
+.card-paradigm .card-title,
+.card-paradigm .card-tags,
+.card-paradigm .card-date,
+.card-paradigm .rnd-card-link {
+    font-size: var(--text-16);
+    line-height: 1.2;
+    /* Baseline grid */
+    font-weight: normal;
+    color: var(--color-text-primary);
+}
+
+.card-paradigm .card-number {
+    opacity: 0.3;
+    font-variant-numeric: tabular-nums;
+}
+
+.card-paradigm .card-tags {
+    opacity: 0.5;
+}
+
+.card-paradigm .card-date {
+    opacity: 0.3;
+}
+
+.card-paradigm .card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Baseline grid */
+}
+
+.card-paradigm .card-footer {
+    padding-top: 4px;
+    /* Minimal space before link */
+    justify-content: flex-start;
+}
+
+.card-paradigm .rnd-card-link {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.card-paradigm .rnd-card-link:hover {
+    opacity: 0.7;
+}
+
+
+/* General Card Cleanup */
+.card-image-container {
+    border-radius: var(--radius-sm);
+    /* Clean borders for product/prototype images */
+    border: 1px solid var(--color-border);
+}
+
+/* Product Title (Keep larger for Product) */
+.card-product .card-title {
+    font-size: var(--text-16);
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.card-tagline {
+    font-size: var(--text-16);
+    opacity: 0.5;
 }

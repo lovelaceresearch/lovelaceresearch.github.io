@@ -6,61 +6,89 @@
             "tagline": "Reflection Journal for Researcher",
             "status": "active",
             "collaborator": "Imperial College London / Royal College of Art",
-            "description": "A tool for visually exploring and organizing complex ideas using a graph-based interface.",
             "date": "Jan 2025 - Present",
-            "image": "/images/general/imperial2.jpg",
-            "tags": ["Mental Models", "Systems Thinking", "HCI"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "View Prototype"
-                }
+            "image": "/images/projects/c.jpg",
+            "tags": [
+                "Mental Models",
+                "Systems Thinking",
+                "HCI"
             ]
         },
         {
             "number": "002",
             "title": "Tact Ring",
-            "status": "active",
-            "collaborator": "MODEM",
-            "description": "Future of AI-AR, subtle finger gestures for calm interactions.",
-            "date": "Aug 2025 - Present",
-            "image": "/images/general/DSC06366.jpg",
-            "tags": ["AR", "mmWave", "HCI"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "View Case Study"
-                }
+            "featured": true,
+            "status": "done",
+            "collaborator": "London Design Festival 2025",
+            "tagline": "Ring Interface for Everyday AR",
+            "date": "Aug 2025",
+            "image": "/images/slides/2.jpg",
+            "tags": [
+                "AR",
+                "mmWave",
+                "HCI"
             ]
         },
         {
             "number": "003",
             "title": "Everychat",
             "status": "active",
-            "description": "Visualising the branches of conversation with AI LLM for better context recall.",
+            "tagline": "Multiverse timeline AI chat. Git for chat.",
             "date": "Aug 2025 - Present",
-            "image": "/images/general/DSC06369.jpg",
-            "tags": ["LLM", "Conversation"],
+            "image": "/images/slides/5.jpg",
+            "tags": [
+                "LLM",
+                "Conversation"
+            ],
             "links": [
                 {
-                    "url": "#",
-                    "label": "Open for collaboration"
+                    "url": "https://github.com/lovelaceresearch/003-everychat",
+                    "label": "GitHub ↗"
                 }
             ]
         },
         {
             "number": "004",
-            "title": "RssCast",
-            "status": "draft",
-            "description": "iOS app RSS feed into daily podcast generator.",
-            "date": "Aug 2025 - Present",
-            "image": "/images/general/imperial2.jpg",
-            "tags": ["Audio", "Automation"],
+            "title": "Cognitive Bloom",
+            "status": "done",
+            "tagline": "Socratic AI Device for Critical Thinking & Self-Understanding",
+            "featured": true,
+            "collaborator": "Map Project Office",
+            "date": "Aug 2025",
+            "image": "/images/slides/teaser.mov",
+            "tags": [
+                "AI",
+                "HCI"
+            ],
             "links": [
                 {
-                    "url": "#",
-                    "label": "View Prototype"
+                    "url": "https://mapprojectoffice.com/work/cognitive-bloom/",
+                    "label": "View Project ↗"
                 }
+            ]
+        },
+        {
+            "number": "005",
+            "title": "PBC - Personal ",
+            "status": "active",
+            "tagline": "Your Daily Generated Podcast from Personal RSS feed.",
+            "date": "Aug 2025 - Present",
+            "image": "/images/general/imperial2.jpg",
+            "tags": [
+                "Audio",
+                "Automation"
+            ]
+        },
+        {
+            "number": "006",
+            "title": "Fluid Prompting",
+            "status": "active",
+            "tagline": "",
+            "date": "Aug 2025 - Present",
+            "image": "/images/general/imperial2.jpg",
+            "tags": [
+                "Audio",
+                "Automation"
             ]
         }
     ]

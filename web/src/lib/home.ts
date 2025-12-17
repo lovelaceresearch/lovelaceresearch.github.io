@@ -130,7 +130,7 @@ async function loadHoverSlides() {
     // Try automatic loading first (GitHub API or local files)
     const autoSlides = await listSlidesViaGithubApi();
     let slides: Array<{ src: string; alt: string; order: number }> = [];
-    
+
     if (autoSlides && autoSlides.length) {
       // Use GitHub API results if available
       slides = autoSlides;
@@ -138,7 +138,7 @@ async function loadHoverSlides() {
       // Fallback to local automatic loading based on filename order
       slides = await loadSlidesFromLocalDirectory();
     }
-    
+
     // Only use JSON as final fallback if no automatic slides found
     if (!slides.length) {
       const data = await fetchJson(HOVER_SLIDES_PATH);
@@ -237,20 +237,36 @@ async function initOfficeImageHover() {
   const activateCompany = async (companyRaw: string) => {
     const company = (companyRaw || '').toLowerCase();
     if (!company) return;
-    // Deactivate cached images
-    logoMap.forEach((img) => img.classList.remove('active'));
-    // Ensure only one image node exists in the container to avoid layout overflow
-    officeImageContainer.innerHTML = '';
+    // Do not clear innerHTML; we want to keep old images for cross-fading
+    // officeImageContainer.innerHTML = '';
+
     let img = logoMap.get(company) || null;
     if (!img) {
       img = await resolveCompanyImage(company);
       if (img) {
         logoMap.set(company, img);
+        // Append to container immediately so it's ready to fade in
+        officeImageContainer.appendChild(img);
+        // Force reflow
+        void img.offsetWidth;
+      }
+    } else {
+      // Ensure it's in the DOM if it was cached but removed (though we aren't removing anymore)
+      if (!officeImageContainer.contains(img)) {
+        officeImageContainer.appendChild(img);
       }
     }
+
     if (img) {
+      // Deactivate others *after* ensuring new one is ready
+      // Actually, standard cross-fade: add active to new, remove active from others
+      // The CSS transition will handle the opacity change
+      logoMap.forEach((otherImg) => {
+        if (otherImg !== img) {
+          otherImg.classList.remove('active');
+        }
+      });
       img.classList.add('active');
-      officeImageContainer.appendChild(img);
     }
   };
 

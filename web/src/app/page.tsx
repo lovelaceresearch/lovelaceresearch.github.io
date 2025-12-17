@@ -29,7 +29,7 @@ export default function Page() {
               <img src="/images/logos/logo-black.svg" alt="Lovelace Research" width={64} height={64} />
             </div>
             <div className="headline-right">
-              <h2 className="section-title">Lovelace Research is an R&D Office for human-centred AI paradigm, prototype and product. </h2>
+              <h2 className="section-title">Lovelace is a lab for Human-Centred AI.<br />Vision + Curiosity + Building.</h2>
             </div>
           </div>
         </section>
@@ -38,7 +38,7 @@ export default function Page() {
           <div className="projects-container">
             <div className="projects-header">
               <h2 className="section-title"></h2>
-              <h2 className="section-title section-title--left">R&D <br />Fueled with vision-led curiosity and hands-on development.</h2>
+              <h2 className="section-title section-title--left">R&D <br />In Paradigm, Prototype and Product.</h2>
             </div>
             <div className="projects-grid" id="featuredProjectsGrid"></div>
           </div>
@@ -65,7 +65,7 @@ export default function Page() {
         <section className="approach-section">
           <div className="approach-container">
             <div className="projects-header">
-              <img src="/images/general/imperial2.jpg" alt="Imperial College London" className="approach-image" />
+              <img src="/images/general/appr.png" alt="Imperial College London" className="approach-image" />
               <h2 className="section-title section-title--left">Hybrid Approach <br />Of Future Research and Design Thinking, Macro to Micro.</h2>
               <p className="approach-intro">
                 Founded at Albertopolis, home to Imperial College and the Royal College of Art, and named after Ada Lovelace, we bring together expertise in human-centred AI and design thinking to build transformative AI products and prototypes. Like the PARC, think tank with hands-on development.

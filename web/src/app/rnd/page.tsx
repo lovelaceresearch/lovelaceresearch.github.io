@@ -22,24 +22,24 @@ export default function RndPage() {
           <div className="projects-container">
             <div className="rnd-header-grid">
               <h1 className="rnd-header-title">R&D</h1>
-              <p className="rnd-header-subtitle">Fueled with vision-led curiosity and hands-on development.</p>
-            </div>
-          </div>
-        </section>
-        <section className="rnd-filters-section">
-          <div className="projects-container">
-            <div className="rnd-filters-container">
-              <div className="rnd-filter-col" data-filter-group="category">
-                <span className="filter-item is-active" data-filter-value="all">All</span>
-                <span className="filter-item" data-filter-value="product">Product</span>
-                <span className="filter-item" data-filter-value="prototype">Prototype</span>
-                <span className="filter-item" data-filter-value="paradigm">Paradigm</span>
-              </div>
-              <div className="rnd-filter-col" data-filter-group="status">
-                <span className="filter-item" data-filter-value="featured">Featured</span>
-                <span className="filter-item" data-filter-value="active">Ongoing</span>
-                <span className="filter-item" data-filter-value="archive">Archive</span>
-                <span className="filter-item" data-filter-value="previous">Previous</span>
+              <div className="rnd-filters-container">
+                <div className="rnd-filter-col" data-filter-group="category">
+                  <span className="filter-item is-active" data-filter-value="all">All</span>
+                  <span className="filter-item" data-filter-value="product">Product</span>
+                  <span className="filter-item" data-filter-value="prototype">Prototype</span>
+                  <span className="filter-item" data-filter-value="paradigm">Paradigm</span>
+                </div>
+                <div className="rnd-filter-col" data-filter-group="status">
+                  <span className="filter-item" data-filter-value="all">All</span>
+                  <span className="filter-item is-active" data-filter-value="featured">Featured</span>
+                  <span className="filter-item" data-filter-value="active">Active</span>
+                  <span className="filter-item" data-filter-value="archive">Archive</span>
+                  <span className="filter-item" data-filter-value="previous">Previous</span>
+                </div>
+                <div className="view-toggle">
+                  <button className="view-btn is-active" data-view="card">Card</button>
+                  <button className="view-btn" data-view="index">Index</button>
+                </div>
               </div>
             </div>
           </div>

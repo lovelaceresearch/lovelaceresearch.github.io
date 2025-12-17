@@ -2,37 +2,27 @@
     "products": [
         {
             "number": "001",
-            "title": "AI Design Assistant",
-            "tagline": "Map Project Office",
+            "title": "Project Needle",
+            "tagline": "Finder on Steroids",
+            "featured": true,
             "status": "active",
-            "collaborator": "Map Project Office",
-            "description": "Future of personal AI, building grounded assistants for industrial design teams.",
-            "date": "Jan 2025 - Present",
-            "image": "/images/general/imperial2.jpg",
-            "tags": ["AI", "Product", "Design"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "Request Demo"
-                }
-            ]
+            "description": "Intelligent file management app"
         },
         {
             "number": "002",
-            "title": "Collaboration Platform",
-            "tagline": "MODEM",
+            "title": "Project HyperNote",
+            "tagline": "Magic Notebook",
+            "featured": true,
             "status": "active",
-            "collaborator": "MODEM",
-            "description": "Real-time collaborative workspace for distributed teams with AI assistance.",
-            "date": "May 2025 - Present",
-            "image": "/images/general/DSC06366.jpg",
-            "tags": ["Product", "Collaboration"],
-            "links": [
-                {
-                    "url": "#",
-                    "label": "Learn More"
-                }
-            ]
+            "description": "Fluid Notebook App"
+        },
+        {
+            "number": "003",
+            "title": "Project Surfhouse",
+            "tagline": "AI Control Centre",
+            "featured": true,
+            "status": "active",
+            "description": "Manage your AI agents"
         }
     ]
 }
