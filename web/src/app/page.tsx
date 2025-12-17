@@ -29,7 +29,7 @@ export default function Page() {
               <img src="/images/logos/logo-black.svg" alt="Lovelace Research" width={64} height={64} />
             </div>
             <div className="headline-right">
-              <h2 className="section-title">Lovelace is a lab for Human-Centred AI.<br />Vision + Curiosity + Building.</h2>
+              <h2 className="section-title">Lovelace Research is an R&D Office for human-centred AI paradigm, prototype and product.</h2>
             </div>
           </div>
         </section>
