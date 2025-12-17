@@ -29,7 +29,7 @@ export default function Page() {
               <img src="/images/logos/logo-black.svg" alt="Lovelace Research" width={64} height={64} />
             </div>
             <div className="headline-right">
-              <h2 className="section-title">Lovelace Research is an R&D Office for human-centred AI paradigm, prototype and product.</h2>
+              <h2 className="section-title">Lovelace Research is an R&D Lab for human-centred AI paradigm, prototype and product.</h2>
             </div>
           </div>
         </section>
@@ -38,7 +38,7 @@ export default function Page() {
           <div className="projects-container">
             <div className="projects-header">
               <h2 className="section-title"></h2>
-              <h2 className="section-title section-title--left">R&D <br />In Paradigm, Prototype and Product.</h2>
+              <h2 className="section-title section-title--left">R&D <br />Fueled by vision, curiosity and the hacker mind.</h2>
             </div>
             <div className="projects-grid" id="featuredProjectsGrid"></div>
           </div>

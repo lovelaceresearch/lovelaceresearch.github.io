@@ -8,6 +8,7 @@
             "collaborator": "Imperial College London / Royal College of Art",
             "date": "Jan 2025 - Present",
             "image": "/images/projects/c.jpg",
+            "featured": true,
             "tags": [
                 "Mental Models",
                 "Systems Thinking",
@@ -35,7 +36,8 @@
             "status": "active",
             "tagline": "Multiverse timeline AI chat. Git for chat.",
             "date": "Aug 2025 - Present",
-            "image": "/images/slides/5.jpg",
+            "image": "images/projects/every.png",
+            "featured": true,
             "tags": [
                 "LLM",
                 "Conversation"
@@ -69,23 +71,12 @@
         },
         {
             "number": "005",
-            "title": "PBC - Personal ",
+            "title": "GenCast",
             "status": "active",
-            "tagline": "Your Daily Generated Podcast from Personal RSS feed.",
+            "tagline": "Your Daily Generated Podcast from RSS.",
             "date": "Aug 2025 - Present",
-            "image": "/images/general/imperial2.jpg",
-            "tags": [
-                "Audio",
-                "Automation"
-            ]
-        },
-        {
-            "number": "006",
-            "title": "Fluid Prompting",
-            "status": "active",
-            "tagline": "",
-            "date": "Aug 2025 - Present",
-            "image": "/images/general/imperial2.jpg",
+            "featured": true,
+            "image": "/images/projects/gencast.png",
             "tags": [
                 "Audio",
                 "Automation"
