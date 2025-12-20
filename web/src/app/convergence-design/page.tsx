@@ -3,75 +3,76 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 import kartsLogo from './images/karts.svg';
 
 /**
  * DATA MOCK
  */
 const INTERVIEWS = [
-    {
-        id: 1,
-        title: 'Conceptual Gems',
-        interviewee: "Stephanie D'heygere",
-        studio: "D'heygere",
-        location: "Paris",
-        date: 'Jan. 12 2021',
-        image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=1000&auto=format&fit=crop'
-    },
-    {
-        id: 2,
-        title: 'Zeitgeist Design',
-        interviewee: 'Willo Perron',
-        studio: 'Perron-Roettinger',
-        location: 'Los Angeles',
-        date: 'Mar. 11 2021',
-        image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop'
-    },
-    {
-        id: 3,
-        title: 'Dealing with Dealing',
-        interviewee: 'Jean-Baptiste Levée',
-        studio: 'Production Type',
-        location: 'Paris',
-        date: 'Dec. 11 2020',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop'
-    },
-    {
-        id: 4,
-        title: 'Leaving Room For Mistakes',
-        interviewee: 'Scheltens & Abbenes',
-        studio: 'S&A Photography',
-        location: 'Amsterdam',
-        date: 'Mar. 31 2021',
-        image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop'
-    },
-    {
-        id: 5,
-        title: 'The Art of Cooking',
-        interviewee: 'Liza Enebeis',
-        studio: 'Studio Dumbar',
-        location: 'Rotterdam',
-        date: 'Jan. 19 2021',
-        image: 'https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=1000&auto=format&fit=crop'
-    },
-    {
-        id: 6,
-        title: 'War & Peace',
-        interviewee: 'Mirko Borsche',
-        studio: 'Bureau Borsche',
-        location: 'Munich',
-        date: 'Jan. 26 2021',
-        image: 'https://images.unsplash.com/photo-1544256718-3bcf237f3974?q=80&w=1000&auto=format&fit=crop'
-    },
-    {
-        id: 7,
-        title: 'Successional Dynamics',
-        interviewee: 'Dinamo',
-        studio: 'Dinamo Typefaces',
-        location: 'Basel & Berlin',
-        date: 'Nov. 09 2021',
-        image: 'https://images.unsplash.com/photo-1502014822147-1aed80671e0a?q=80&w=1000&auto=format&fit=crop'
-    },
+  {
+    id: 1,
+    title: 'Conceptual Gems',
+    interviewee: "Stephanie D'heygere",
+    studio: "D'heygere",
+    location: "Paris",
+    date: 'Jan. 12 2021',
+    image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=1000&auto=format&fit=crop'
+  },
+  {
+    id: 2,
+    title: 'Zeitgeist Design',
+    interviewee: 'Willo Perron',
+    studio: 'Perron-Roettinger',
+    location: 'Los Angeles',
+    date: 'Mar. 11 2021',
+    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop'
+  },
+  {
+    id: 3,
+    title: 'Dealing with Dealing',
+    interviewee: 'Jean-Baptiste Levée',
+    studio: 'Production Type',
+    location: 'Paris',
+    date: 'Dec. 11 2020',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop'
+  },
+  {
+    id: 4,
+    title: 'Leaving Room For Mistakes',
+    interviewee: 'Scheltens & Abbenes',
+    studio: 'S&A Photography',
+    location: 'Amsterdam',
+    date: 'Mar. 31 2021',
+    image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop'
+  },
+  {
+    id: 5,
+    title: 'The Art of Cooking',
+    interviewee: 'Liza Enebeis',
+    studio: 'Studio Dumbar',
+    location: 'Rotterdam',
+    date: 'Jan. 19 2021',
+    image: 'https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=1000&auto=format&fit=crop'
+  },
+  {
+    id: 6,
+    title: 'War & Peace',
+    interviewee: 'Mirko Borsche',
+    studio: 'Bureau Borsche',
+    location: 'Munich',
+    date: 'Jan. 26 2021',
+    image: 'https://images.unsplash.com/photo-1544256718-3bcf237f3974?q=80&w=1000&auto=format&fit=crop'
+  },
+  {
+    id: 7,
+    title: 'Successional Dynamics',
+    interviewee: 'Dinamo',
+    studio: 'Dinamo Typefaces',
+    location: 'Basel & Berlin',
+    date: 'Nov. 09 2021',
+    image: 'https://images.unsplash.com/photo-1502014822147-1aed80671e0a?q=80&w=1000&auto=format&fit=crop'
+  },
 ];
 
 /**
@@ -410,254 +411,260 @@ const cssStyles = `
  * HOOK: MOUSE POSITION
  */
 const useMousePosition = () => {
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-    useEffect(() => {
-        const updateMousePosition = (e: MouseEvent) => {
-            mouseX.set(e.clientX);
-            mouseY.set(e.clientY);
-        };
-        window.addEventListener('mousemove', updateMousePosition);
-        return () => window.removeEventListener('mousemove', updateMousePosition);
-    }, [mouseX, mouseY]);
+  useEffect(() => {
+    const updateMousePosition = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener('mousemove', updateMousePosition);
+    return () => window.removeEventListener('mousemove', updateMousePosition);
+  }, [mouseX, mouseY]);
 
-    return { mouseX, mouseY };
+  return { mouseX, mouseY };
 };
 
 /**
  * COMPONENT: FLOATING PREVIEW
  */
 interface FloatingPreviewProps {
-    activeImage: string | null;
-    mouseX: any;
-    mouseY: any;
+  activeImage: string | null;
+  mouseX: any;
+  mouseY: any;
 }
 
 const FloatingPreview = ({ activeImage, mouseX, mouseY }: FloatingPreviewProps) => {
-    const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
-    const x = useSpring(mouseX, springConfig);
-    const y = useSpring(mouseY, springConfig);
+  const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
+  const x = useSpring(mouseX, springConfig);
+  const y = useSpring(mouseY, springConfig);
 
-    return (
-        <motion.div style={{ x, y }} className="floating-preview">
-            <AnimatePresence>
-                {activeImage && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
-                        className="preview-box"
-                    >
-                        <img src={activeImage} alt="Preview" className="preview-img" />
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </motion.div>
-    );
+  return (
+    <motion.div style={{ x, y }} className="floating-preview">
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
+            className="preview-box"
+          >
+            <img src={activeImage} alt="Preview" className="preview-img" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
 };
 
 /**
  * COMPONENT: HEADER
  */
 const Header = () => (
-    <header className="site-header">
-        <div className="logo">
-            <img src={(kartsLogo as any).src || kartsLogo} alt="KARTS Logo" />
-        </div>
-        <div className="header-center">
-            <div className="header-text">CONVERGENCE DESIGN III<br />KARTS design<br />Spring Term 2026</div>
-            <div className="header-text header-bio">
-                Experimental web interfaces exploring the intersection of interaction and visual design for the next generation of web.
-            </div>
-            <div className="header-text">
-                <a href="#">INFO</a>
-            </div>
-        </div>
-    </header>
+  <header className="site-header">
+    <div className="logo">
+      <img src={(kartsLogo as any).src || kartsLogo} alt="KARTS Logo" />
+    </div>
+    <div className="header-center">
+      <div className="header-text">CONVERGENCE DESIGN III<br />KARTS design<br />Spring Term 2026</div>
+      <div className="header-text header-bio">
+        Experimental web interfaces exploring the intersection of interaction and visual design for the next generation of web.
+      </div>
+      <div className="header-text">
+        <Link href="/convergence-design/info">INFO</Link>
+      </div>
+    </div>
+  </header>
 );
 
 /**
  * COMPONENT: LIST ITEM
  */
 interface ListItemProps {
-    item: any;
-    onHover: (image: string) => void;
-    onLeave: () => void;
-    onClick: (item: any) => void;
-    isDimmed: boolean;
+  item: any;
+  onHover: (image: string) => void;
+  onLeave: () => void;
+  onClick: (item: any) => void;
+  isDimmed: boolean;
 }
 
 const ListItem = ({ item, onHover, onLeave, onClick, isDimmed }: ListItemProps) => {
-    return (
-        <motion.div
-            layoutId={`row-${item.id}`}
-            onMouseEnter={() => onHover(item.image)}
-            onMouseLeave={onLeave}
-            onClick={() => onClick(item)}
-            className="list-item"
-        >
-            <div className={`item-content ${isDimmed ? 'dimmed' : ''}`}>
-                <div className="item-title">{item.title}</div>
-                <div className="item-meta">{item.studio} — {item.location}</div>
-                <div className="item-name">{item.interviewee}</div>
-            </div>
-        </motion.div>
-    );
+  return (
+    <motion.div
+      layoutId={`row-${item.id}`}
+      onMouseEnter={() => onHover(item.image)}
+      onMouseLeave={onLeave}
+      onClick={() => onClick(item)}
+      className="list-item"
+    >
+      <div className={`item-content ${isDimmed ? 'dimmed' : ''}`}>
+        <div className="item-title">{item.title}</div>
+        <div className="item-meta">{item.studio} — {item.location}</div>
+        <div className="item-name">{item.interviewee}</div>
+      </div>
+    </motion.div>
+  );
 };
 
 /**
  * COMPONENT: DETAIL VIEW
  */
 interface DetailViewProps {
-    item: any;
-    onBack: () => void;
+  item: any;
+  onBack: () => void;
 }
 
 const DetailView = ({ item, onBack }: DetailViewProps) => {
-    if (!item) return null;
+  if (!item) return null;
 
-    return (
-        <motion.article
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.8, ease: [0.6, 0.05, -0.01, 0.9] }}
-            className="detail-view"
-        >
-            <button onClick={onBack} className="back-btn">
-                <ArrowLeft size={14} /> Back to Index
-            </button>
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.8, ease: [0.6, 0.05, -0.01, 0.9] }}
+      className="detail-view"
+    >
+      <button onClick={onBack} className="back-btn">
+        <ArrowLeft size={14} /> Back to Index
+      </button>
 
-            <div className="container">
-                <div className="detail-header">
-                    <motion.h1
-                        className="detail-title"
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.8 }}
-                    >
-                        {item.title}
-                    </motion.h1>
+      <div className="container">
+        <div className="detail-header">
+          <motion.h1
+            className="detail-title"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            {item.title}
+          </motion.h1>
 
-                    <motion.div
-                        className="detail-info"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4, duration: 0.8 }}
-                    >
-                        <p className="item-name">{item.interviewee}</p>
-                        <p className="item-meta" style={{ marginTop: '0.25rem' }}>{item.studio}, {item.location}</p>
-                        <p className="item-meta" style={{ color: '#aaa', marginTop: '0.25rem' }}>{item.date}</p>
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    className="detail-image-container"
-                    initial={{ scale: 0.95, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1, ease: "circOut" }}
-                >
-                    <img src={item.image} alt={item.title} className="detail-image" />
-                </motion.div>
-
-                <div className="detail-content">
-                    <p className="lead-text">
-                        "We believe in integrating strategy, design, and technology to create impactful solutions. That said, there is one area we don't handle: marketing."
-                    </p>
-                    <p className="content-text">
-                        This is a replica of the editorial layout found on Developments.media. The design system relies heavily on Swiss typography principles: rigid grids, high contrast, and grotesque sans-serif typefaces.
-                    </p>
-                    <p className="content-text">
-                        When hovering over the list items on the homepage, note how the non-active items fade away. This focus-assist pattern is common in brutalist digital design.
-                    </p>
-                </div>
+          <motion.div
+            className="detail-info"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            <p className="item-name">{item.interviewee}</p>
+            <div className="header-text">
+              <Link href="/convergence-design/info">INFO</Link>
             </div>
-        </motion.article>
-    );
+            <p className="item-meta" style={{ marginTop: '0.25rem' }}>{item.studio}, {item.location}</p>
+            <p className="item-meta" style={{ color: '#aaa', marginTop: '0.25rem' }}>{item.date}</p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          className="detail-image-container"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1, ease: "circOut" }}
+        >
+          <img src={item.image} alt={item.title} className="detail-image" />
+        </motion.div>
+
+        <div className="header-text">
+          <Link href="/convergence-design/info">INFO</Link>
+        </div>
+        <div className="detail-content">
+          <p className="lead-text">
+            "We believe in integrating strategy, design, and technology to create impactful solutions. That said, there is one area we don't handle: marketing."
+          </p>
+          <p className="content-text">
+            This is a replica of the editorial layout found on Developments.media. The design system relies heavily on Swiss typography principles: rigid grids, high contrast, and grotesque sans-serif typefaces.
+          </p>
+          <p className="content-text">
+            When hovering over the list items on the homepage, note how the non-active items fade away. This focus-assist pattern is common in brutalist digital design.
+          </p>
+        </div>
+      </div>
+    </motion.article>
+  );
 };
 
 /**
  * COMPONENT: FOOTER
  */
 const Footer = () => (
-    <footer className="site-footer">
-        <div className="footer-grid">
-            <div className="footer-col">
-                <h3>About</h3>
-                <p>Developments is an online publication exploring the process of creation across design, architecture, and technology.</p>
-                <p style={{ marginTop: '1rem', fontStyle: 'italic', opacity: 0.7 }}>(This is a microwebsite for ConvDes course at KARTS)</p>
-            </div>
-            <div className="footer-col">
-                <h3>Social</h3>
-                <ul style={{ padding: 0, listStyle: 'none' }}>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+  <footer className="site-footer">
+    <div className="footer-grid">
+      <div className="footer-col">
+        <h3>About</h3>
+        <p>Developments is an online publication exploring the process of creation across design, architecture, and technology.</p>
+        <p style={{ marginTop: '1rem', fontStyle: 'italic', opacity: 0.7 }}>(This is a microwebsite for ConvDes course at KARTS)</p>
+      </div>
+      <div className="footer-col">
+        <h3>Social</h3>
+        <ul style={{ padding: 0, listStyle: 'none' }}>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 );
 
 /**
  * MAIN APP COMPONENT
  */
 export default function App() {
-    const [activeImage, setActiveImage] = useState<string | null>(null);
-    const [selectedInterview, setSelectedInterview] = useState<any>(null);
-    const { mouseX, mouseY } = useMousePosition();
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [selectedInterview, setSelectedInterview] = useState<any>(null);
+  const { mouseX, mouseY } = useMousePosition();
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [selectedInterview]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selectedInterview]);
 
-    const handleHover = (image: string) => setActiveImage(image);
-    const handleLeave = () => setActiveImage(null);
+  const handleHover = (image: string) => setActiveImage(image);
+  const handleLeave = () => setActiveImage(null);
 
-    return (
-        <>
-            <style>{cssStyles}</style>
+  return (
+    <>
+      <style>{cssStyles}</style>
 
-            <div className="app-container">
-                <Header />
+      <div className="app-container">
+        <Header />
 
-                <FloatingPreview activeImage={activeImage} mouseX={mouseX} mouseY={mouseY} />
+        <FloatingPreview activeImage={activeImage} mouseX={mouseX} mouseY={mouseY} />
 
-                <AnimatePresence mode="wait">
-                    {!selectedInterview ? (
-                        <motion.main
-                            key="list"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.6 }}
-                            className="list-wrapper"
-                        >
-                            <div className="container">
-                                {INTERVIEWS.map((item) => (
-                                    <ListItem
-                                        key={item.id}
-                                        item={item}
-                                        onHover={handleHover}
-                                        onLeave={handleLeave}
-                                        onClick={setSelectedInterview}
-                                        isDimmed={activeImage !== null && activeImage !== item.image}
-                                    />
-                                ))}
-                            </div>
-                            <Footer />
-                        </motion.main>
-                    ) : (
-                        <DetailView
-                            key="detail"
-                            item={selectedInterview}
-                            onBack={() => setSelectedInterview(null)}
-                        />
-                    )}
-                </AnimatePresence>
-            </div>
-        </>
-    );
+        <AnimatePresence mode="wait">
+          {!selectedInterview ? (
+            <motion.main
+              key="list"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6 }}
+              className="list-wrapper"
+            >
+              <div className="container">
+                {INTERVIEWS.map((item) => (
+                  <ListItem
+                    key={item.id}
+                    item={item}
+                    onHover={handleHover}
+                    onLeave={handleLeave}
+                    onClick={setSelectedInterview}
+                    isDimmed={activeImage !== null && activeImage !== item.image}
+                  />
+                ))}
+              </div>
+              <Footer />
+            </motion.main>
+          ) : (
+            <DetailView
+              key="detail"
+              item={selectedInterview}
+              onBack={() => setSelectedInterview(null)}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </>
+  );
 }
